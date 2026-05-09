@@ -15,7 +15,7 @@ export function UiSoundProvider() {
       const audio = new Audio(new URL(CLICK_SOUND_SRC, window.location.origin).toString());
       audio.preload = "auto";
       audio.volume = 0.88;
-      audio.playsInline = true;
+      audio.setAttribute("playsinline", "true");
       clickAudioRef.current = audio;
     }
 
