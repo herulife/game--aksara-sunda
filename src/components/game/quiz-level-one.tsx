@@ -141,7 +141,7 @@ export function QuizLevelOne() {
   }
 
   return (
-    <div className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[760px] flex-col px-3 pb-5 pt-4 sm:px-5 sm:pb-7 sm:pt-5">
+    <div className="screen-stage relative z-10 mx-auto flex w-full max-w-[760px] flex-col px-3 sm:px-5">
       {phase === "game-over" ? (
         <div className="mx-auto flex w-full max-w-[540px] flex-1 flex-col items-center text-center">
           <div className="feedback-panel-error pdf-panel-cream relative w-full overflow-hidden rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
@@ -400,7 +400,7 @@ export function QuizLevelOne() {
         </div>
       ) : (
         <>
-          <div className="quiz-shell flex w-full flex-wrap items-start justify-between gap-3 rounded-[1.5rem] px-4 py-4 sm:px-5 sm:py-5">
+          <div className="quiz-shell flex w-full flex-wrap items-start justify-between gap-3 rounded-[1.35rem] px-3.5 py-3.5 sm:px-5 sm:py-4.5">
             <div className="pdf-button-green max-w-full rounded-[1rem] px-4 py-2.5 text-xl font-black leading-[1.05] text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:max-w-[70%] sm:rounded-[1.2rem] sm:px-5 sm:py-3 sm:text-3xl">
               Level 1 - Huruf Dasar
             </div>
@@ -431,29 +431,29 @@ export function QuizLevelOne() {
 
           {phase === "question" ? (
             <>
-              <div className="quiz-main-panel mt-4 w-full rounded-[1.15rem] px-4 py-4 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.2)] sm:rounded-[1.35rem] sm:px-6 sm:py-6">
+              <div className="quiz-main-panel mt-3.5 w-full rounded-[1.05rem] px-4 py-3.5 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.2)] sm:rounded-[1.25rem] sm:px-6 sm:py-5">
                 <p className="text-xl font-black leading-[1.14] tracking-[-0.01em] sm:text-3xl">
                   {currentQuestion.prompt}
                 </p>
-                <div className="font-aksara mt-3 text-[3.6rem] leading-none text-[#1f1a10] drop-shadow-[0_2px_0_rgba(255,255,255,0.28)] sm:mt-4 sm:text-[5.8rem] lg:text-[6.6rem]">
+                <div className="font-aksara mt-2.5 text-[3.3rem] leading-none text-[#1f1a10] drop-shadow-[0_2px_0_rgba(255,255,255,0.28)] sm:mt-3 sm:text-[5.3rem] lg:text-[6rem]">
                   {currentQuestion.aksara}
                 </div>
               </div>
 
-              <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4">
+              <div className="mt-3.5 grid grid-cols-2 gap-2.5 sm:gap-3">
                 {currentQuestion.options.map((option) => (
                   <button
                     key={option}
                     type="button"
                     onClick={() => handleAnswer(option)}
-                    className="quiz-answer-secondary quiz-answer-primary-hover rounded-[1rem] border border-[rgba(164,136,74,0.34)] px-3 py-3.5 text-2xl font-black leading-none text-[#58411a] shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition sm:rounded-[1.2rem] sm:py-4 sm:text-4xl"
+                    className="quiz-answer-secondary quiz-answer-primary-hover rounded-[0.95rem] border border-[rgba(164,136,74,0.34)] px-3 py-3 text-[1.6rem] font-black leading-none text-[#58411a] shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition sm:rounded-[1.1rem] sm:py-3.5 sm:text-[2.35rem]"
                   >
                     {option}
                   </button>
                 ))}
               </div>
 
-              <div className="mt-5 flex justify-end">
+              <div className="mt-4 flex justify-end">
                 <div className="pdf-button-green rounded-[0.9rem] px-3 py-2 text-xl font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:px-4 sm:py-2.5 sm:text-2xl">
                   {currentIndex + 1}/{totalQuestions}
                 </div>
@@ -461,7 +461,7 @@ export function QuizLevelOne() {
             </>
           ) : (
             <div className="mx-auto mt-4 flex w-full max-w-[620px] flex-1 flex-col items-center">
-              <div className={`${isCorrect ? "feedback-panel-success" : "feedback-panel-error"} pdf-panel-cream w-full rounded-[1rem] px-4 pb-6 pt-5 text-center text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:rounded-[1.2rem] sm:px-6 sm:pb-7 sm:pt-6`}>
+              <div className={`${isCorrect ? "feedback-panel-success" : "feedback-panel-error"} pdf-panel-cream w-full rounded-[1rem] px-4 pb-5 pt-4.5 text-center text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:rounded-[1.2rem] sm:px-6 sm:pb-6 sm:pt-5`}>
                 <div className="flex items-center justify-center gap-3 sm:gap-4">
                   <Image
                     src={isCorrect ? "/assets/extracted/icon-check-circle.png" : "/assets/extracted/icon-close-circle.png"}
@@ -488,7 +488,7 @@ export function QuizLevelOne() {
                 </div>
 
                 <div className="mt-6 flex justify-center">
-                  <div className="relative">
+                  <div className={`relative ${isCorrect ? "feedback-celebrate" : ""}`}>
                     {isCorrect ? (
                       <>
                         <Image
@@ -521,7 +521,7 @@ export function QuizLevelOne() {
               <button
                 type="button"
                 onClick={goNext}
-                className="pdf-button-green -mt-4 rounded-[1rem] px-5 py-2.5 text-3xl font-black text-white shadow-[0_18px_28px_rgba(35,28,15,0.2)] sm:-mt-5 sm:rounded-[1.2rem] sm:px-7 sm:py-3 sm:text-4xl"
+                className="pdf-button-green -mt-4 rounded-[1rem] px-5 py-2.5 text-[1.8rem] font-black text-white shadow-[0_18px_28px_rgba(35,28,15,0.2)] sm:-mt-5 sm:rounded-[1.2rem] sm:px-7 sm:py-3 sm:text-[2.35rem]"
               >
                 Lanjut
               </button>

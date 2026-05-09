@@ -63,7 +63,7 @@ export default function MembacaLevelOnePage() {
         Membaca Kata
       </header>
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[760px] flex-col items-center px-3 pb-5 pt-4 text-center sm:px-5 sm:pb-8 sm:pt-5">
+      <section className="screen-stage relative z-10 mx-auto flex w-full max-w-[760px] flex-col items-center px-3 text-center sm:px-5">
         {phase === "question" ? (
           <>
             <div className="flex w-full max-w-[540px] items-start justify-between gap-3">
@@ -75,7 +75,7 @@ export default function MembacaLevelOnePage() {
               </div>
             </div>
 
-            <div className="pdf-panel-cream mt-4 w-full max-w-[540px] rounded-[1.2rem] px-4 py-5 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:px-5">
+            <div className="pdf-panel-cream mt-3.5 w-full max-w-[540px] rounded-[1.2rem] px-4 py-4 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:px-5">
               <p className="text-lg font-black leading-[1.2] sm:text-[1.9rem]">
                 Baca kata aksara Sunda berikut!
               </p>
@@ -87,7 +87,7 @@ export default function MembacaLevelOnePage() {
               </div>
             </div>
 
-            <div className="pdf-panel-cream mt-4 w-full max-w-[540px] rounded-[1.2rem] px-4 py-5 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:px-5">
+            <div className="pdf-panel-cream mt-3.5 w-full max-w-[540px] rounded-[1.2rem] px-4 py-4 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:px-5">
               <p className="text-base font-black sm:text-xl">Tulis bacaan latin dibawah ini</p>
               <input
                 value={answer}

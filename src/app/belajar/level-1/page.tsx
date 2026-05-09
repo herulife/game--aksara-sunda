@@ -12,7 +12,7 @@ export default function BelajarLevelOnePage() {
         Belajar Level 1
       </header>
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[760px] flex-col items-center px-3 pb-5 pt-4 text-center sm:px-5 sm:pb-8 sm:pt-5">
+      <section className="screen-stage relative z-10 mx-auto flex w-full max-w-[760px] flex-col items-center px-3 text-center sm:px-5">
         <div className="flex w-full max-w-[620px] flex-wrap items-start justify-between gap-3">
           <div className="pdf-button-green rounded-[1rem] px-4 py-2.5 text-left text-xl font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:rounded-[1.3rem] sm:px-5 sm:py-3 sm:text-3xl">
             Huruf Dasar
@@ -36,7 +36,7 @@ export default function BelajarLevelOnePage() {
           </p>
         </div>
 
-        <div className="mt-4 grid w-full max-w-[620px] gap-3 sm:mt-5 sm:grid-cols-2">
+        <div className="mt-3.5 grid w-full max-w-[620px] gap-2.5 sm:mt-4 sm:grid-cols-2">
           <SpeakButton
             text={featuredItem.latin}
             audioSrc={featuredItem.audioSrc}
@@ -57,7 +57,7 @@ export default function BelajarLevelOnePage() {
           </Link>
         </div>
 
-        <div className="mt-4 grid w-full max-w-[620px] gap-3 sm:mt-5 sm:grid-cols-2">
+        <div className="mt-3.5 grid w-full max-w-[620px] gap-2.5 sm:mt-4 sm:grid-cols-2">
           {learningLevelOneItems.map((item, index) => (
             <div
               key={item.id}
@@ -76,7 +76,7 @@ export default function BelajarLevelOnePage() {
           ))}
         </div>
 
-        <div className="mt-5 flex w-full max-w-[620px] justify-start">
+        <div className="mt-4 flex w-full max-w-[620px] justify-start">
           <Link
             href="/dashboard"
             className="pdf-button-green rounded-[1rem] px-4 py-2.5 text-xl font-black text-white shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:rounded-[1.2rem] sm:px-5 sm:py-3 sm:text-2xl"

@@ -483,11 +483,23 @@ a[href][class*="mockup-pill"]:active {
 
 .mockup-screen {
   position: relative;
-  min-height: 100vh;
+  min-height: 100svh;
   overflow-x: hidden;
   background-image: url("/assets/backgrounds/village-background.png");
   background-position: center;
   background-size: cover;
+}
+
+.screen-stage {
+  min-height: calc(100svh - 62px);
+  padding-top: 0.85rem;
+  padding-bottom: 0.9rem;
+}
+
+.screen-stage-compact {
+  min-height: calc(100svh - 62px);
+  padding-top: 0.7rem;
+  padding-bottom: 0.8rem;
 }
 
 .mockup-screen::before {
@@ -662,6 +674,56 @@ a[href][class*="mockup-pill"]:active {
   line-height: 1.1;
 }
 
+@media (min-width: 640px) {
+  .screen-stage,
+  .screen-stage-compact {
+    min-height: calc(100svh - 74px);
+  }
+}
+
+@media (max-height: 860px) {
+  .mockup-header {
+    padding-top: 0.65rem !important;
+    padding-bottom: 0.65rem !important;
+    font-size: 1rem !important;
+  }
+
+  .screen-stage {
+    padding-top: 0.7rem;
+    padding-bottom: 0.75rem;
+  }
+
+  .screen-stage-compact {
+    padding-top: 0.55rem;
+    padding-bottom: 0.65rem;
+  }
+
+  .responsive-title {
+    font-size: clamp(1.55rem, 5.7vw, 2.8rem);
+  }
+
+  .responsive-card-title {
+    font-size: clamp(1.05rem, 3.8vw, 1.75rem);
+  }
+
+  .responsive-card-copy,
+  .responsive-button-text {
+    font-size: clamp(0.88rem, 2.8vw, 1rem);
+  }
+}
+
+@media (max-height: 760px) {
+  .mockup-header {
+    padding-top: 0.55rem !important;
+    padding-bottom: 0.55rem !important;
+  }
+
+  .screen-stage,
+  .screen-stage-compact {
+    min-height: calc(100svh - 56px);
+  }
+}
+
 @keyframes feedback-pop {
   0% {
     opacity: 0;
@@ -722,6 +784,35 @@ a[href][class*="mockup-pill"]:active {
 
 .feedback-figure {
   animation: feedback-float 0.45s ease-out both;
+}
+
+.feedback-celebrate {
+  position: relative;
+}
+
+.feedback-celebrate::before,
+.feedback-celebrate::after {
+  content: "";
+  position: absolute;
+  top: 18%;
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  background: radial-gradient(circle, rgba(255, 240, 148, 0.96), rgba(255, 203, 84, 0.2));
+  box-shadow:
+    0 0 0 5px rgba(255, 231, 140, 0.12),
+    16px 12px 0 -2px rgba(255, 214, 102, 0.72),
+    -14px 18px 0 -3px rgba(255, 238, 169, 0.82);
+  animation: feedback-pop 0.55s ease-out both;
+}
+
+.feedback-celebrate::before {
+  left: -8px;
+}
+
+.feedback-celebrate::after {
+  right: -8px;
+  animation-delay: 0.06s;
 }
 
 .game-over-stat {

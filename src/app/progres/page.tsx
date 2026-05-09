@@ -87,7 +87,7 @@ export default async function ProgresPage() {
         Progres Pembelajaran
       </header>
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[500px] flex-col items-center px-4 pb-6 pt-5 text-center sm:px-5 sm:pb-7 sm:pt-6">
+      <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[500px] flex-col items-center px-4 text-center sm:px-5">
         <div className="pdf-panel-cream w-full rounded-[0.95rem] px-4 py-4 text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:px-5">
           <div className="flex items-center justify-between gap-3">
             <div className="flex items-center gap-3">

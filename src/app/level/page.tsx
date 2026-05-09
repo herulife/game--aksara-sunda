@@ -67,16 +67,16 @@ export default async function LevelPage() {
         Tampilan Mulai Belajar
       </header>
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[500px] flex-col items-center px-4 pb-6 pt-5 text-center sm:px-5 sm:pb-7 sm:pt-6">
+      <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[480px] flex-col items-center px-4 text-center sm:px-5">
         <h1 className="responsive-title mockup-title">PILIH LEVEL</h1>
 
-        <div className="mt-4 grid w-full gap-3">
+        <div className="mt-3 grid w-full gap-2.5">
           {levelCards.map((card) =>
             card.unlocked ? (
               <Link
                 key={card.id}
                 href={card.href}
-                className="pdf-button-green block rounded-[0.9rem] px-4 py-3 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
+                className="pdf-button-green block rounded-[0.9rem] px-4 py-2.5 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
               >
                 <div className="flex items-center gap-3 text-left">
                   <Image
@@ -96,7 +96,7 @@ export default async function LevelPage() {
             ) : (
               <div
                 key={card.id}
-                className="pdf-panel-cream block rounded-[0.9rem] px-4 py-3 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
+                className="pdf-panel-cream block rounded-[0.9rem] px-4 py-2.5 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
               >
                 <div className="flex items-center gap-3 text-left">
                   <Image
@@ -116,18 +116,18 @@ export default async function LevelPage() {
           )}
         </div>
 
-        <div className="pdf-button-green mt-5 w-full rounded-[0.9rem] px-4 py-3 text-sm font-black leading-[1.3] text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-base">
+        <div className="pdf-button-green mt-4 w-full rounded-[0.9rem] px-4 py-2.5 text-sm font-black leading-[1.25] text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.95rem]">
           Selesaikan level sebelumnya untuk membuka level berikutnya.
         </div>
 
         <Link
           href="/angka"
-          className="pdf-button-yellow mt-3 w-full rounded-[0.9rem] px-4 py-3 text-sm font-black leading-[1.3] text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-base"
+          className="pdf-button-yellow mt-2.5 w-full rounded-[0.9rem] px-4 py-2.5 text-sm font-black leading-[1.25] text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.95rem]"
         >
           Buka menu Belajar Angka Sunda
         </Link>
 
-        <BottomNav active="/level" className="mt-5" />
+        <BottomNav active="/level" className="mt-4" />
       </section>
     </main>
   );
