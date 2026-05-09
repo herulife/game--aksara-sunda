@@ -37,7 +37,7 @@ export function QuizLevelOne() {
     phase === "feedback"
       ? isCorrect
         ? "Hebat, jawaban hidep leres."
-        : `Yu urang cobian deui. Jawaban anu leres nyaeta ${currentQuestion.answer}.`
+        : ""
       : phase === "result"
         ? passed
           ? `Alus. Nilai hidep ${score}. Hidep tiasa neraskeun ka level salajengna.`
@@ -49,6 +49,7 @@ export function QuizLevelOne() {
             : "";
 
   useRewardSpeech({
+    effect: phase === "feedback" && !isCorrect ? "error" : undefined,
     key: `${phase}-${currentIndex}-${selectedAnswer ?? "none"}-${score}`,
     message: rewardSpeechMessage,
     enabled: ["feedback", "result", "level-up", "complete"].includes(phase),
@@ -335,24 +336,16 @@ export function QuizLevelOne() {
               </div>
 
               <div className="mt-4 grid grid-cols-2 gap-3 sm:gap-4">
-                {currentQuestion.options.map((option, index) => {
-                  const isPrimary = index === 0;
-
-                  return (
-                    <button
-                      key={option}
-                      type="button"
-                      onClick={() => handleAnswer(option)}
-                      className={`rounded-[1rem] border px-3 py-3.5 text-2xl font-black leading-none shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:rounded-[1.2rem] sm:py-4 sm:text-4xl ${
-                        isPrimary
-                          ? "pdf-button-green border-[#d9efae] text-white"
-                          : "quiz-answer-secondary border-[rgba(164,136,74,0.34)] text-[#58411a]"
-                      }`}
-                    >
-                      {option}
-                    </button>
-                  );
-                })}
+                {currentQuestion.options.map((option) => (
+                  <button
+                    key={option}
+                    type="button"
+                    onClick={() => handleAnswer(option)}
+                    className="quiz-answer-secondary rounded-[1rem] border border-[rgba(164,136,74,0.34)] px-3 py-3.5 text-2xl font-black leading-none text-[#58411a] shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:rounded-[1.2rem] sm:py-4 sm:text-4xl"
+                  >
+                    {option}
+                  </button>
+                ))}
               </div>
 
               <div className="mt-5 flex justify-end">
