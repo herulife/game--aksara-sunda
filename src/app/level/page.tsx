@@ -120,6 +120,13 @@ export default async function LevelPage() {
           Selesaikan level sebelumnya untuk membuka level berikutnya.
         </div>
 
+        <Link
+          href="/angka"
+          className="pdf-button-yellow mt-3 w-full rounded-[0.9rem] px-4 py-3 text-sm font-black leading-[1.3] text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-base"
+        >
+          Buka menu Belajar Angka Sunda
+        </Link>
+
         <BottomNav active="/level" className="mt-5" />
       </section>
     </main>

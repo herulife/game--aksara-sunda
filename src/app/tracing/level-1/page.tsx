@@ -21,14 +21,14 @@ export default function TracingLevelOnePage() {
   const startedAtRef = useRef<number | null>(null);
 
   useRewardSpeech({
+    effect:
+      phase === "success" ? "success" : phase === "retry" ? "error" : undefined,
     key: `tracing-${phase}-${attemptCount}`,
     enabled: phase !== "practice",
     message:
-      phase === "success"
-        ? "Hebat, hidep nulis kalayan leres."
-        : phase === "retry"
-          ? "Yu urang cobian deui. Tengetan deui wangun hurupna."
-          : phase === "saved"
+      phase === "success" || phase === "retry"
+        ? ""
+        : phase === "saved"
             ? "Alus. Hasil latihan nulis parantos kasimpen."
             : "",
   });

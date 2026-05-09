@@ -24,6 +24,15 @@ const mainMenuItems = [
     iconHeight: 489,
   },
   {
+    href: "/angka",
+    title: "Belajar Angka",
+    className: "pdf-button-yellow text-black",
+    iconSrc: "/assets/icons/star-gold.png",
+    iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
+    iconWidth: 259,
+    iconHeight: 246,
+  },
+  {
     href: "/membaca/level-1",
     title: "Membaca",
     className: "pdf-button-purple text-black",

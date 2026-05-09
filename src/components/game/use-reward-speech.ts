@@ -22,27 +22,47 @@ export function useRewardSpeech({ enabled = true, effect, key, message }: Reward
     if (!AudioContextClass) return;
 
     const context = new AudioContextClass();
-    const oscillator = context.createOscillator();
     const gain = context.createGain();
-
-    oscillator.type = kind === "error" ? "triangle" : "sine";
-    oscillator.frequency.setValueAtTime(kind === "error" ? 330 : 620, context.currentTime);
-    oscillator.frequency.exponentialRampToValueAtTime(
-      kind === "error" ? 180 : 760,
-      context.currentTime + (kind === "error" ? 0.18 : 0.14),
-    );
-
-    gain.gain.setValueAtTime(0.0001, context.currentTime);
-    gain.gain.exponentialRampToValueAtTime(0.11, context.currentTime + 0.01);
-    gain.gain.exponentialRampToValueAtTime(0.0001, context.currentTime + (kind === "error" ? 0.22 : 0.18));
-
-    oscillator.connect(gain);
     gain.connect(context.destination);
-    oscillator.start();
-    oscillator.stop(context.currentTime + (kind === "error" ? 0.24 : 0.2));
-    oscillator.onended = () => {
+
+    const pulses =
+      kind === "success"
+        ? [
+            { time: 0, frequency: 740, duration: 0.1, type: "sine" as OscillatorType, volume: 0.08 },
+            { time: 0.11, frequency: 980, duration: 0.12, type: "triangle" as OscillatorType, volume: 0.09 },
+          ]
+        : [
+            { time: 0, frequency: 220, duration: 0.12, type: "triangle" as OscillatorType, volume: 0.1 },
+            { time: 0.08, frequency: 130, duration: 0.16, type: "sawtooth" as OscillatorType, volume: 0.08 },
+          ];
+
+    pulses.forEach((pulse) => {
+      const oscillator = context.createOscillator();
+      const pulseGain = context.createGain();
+      oscillator.type = pulse.type;
+      oscillator.frequency.setValueAtTime(pulse.frequency, context.currentTime + pulse.time);
+      oscillator.frequency.exponentialRampToValueAtTime(
+        Math.max(70, pulse.frequency * (kind === "success" ? 1.08 : 0.62)),
+        context.currentTime + pulse.time + pulse.duration,
+      );
+      pulseGain.gain.setValueAtTime(0.0001, context.currentTime + pulse.time);
+      pulseGain.gain.exponentialRampToValueAtTime(
+        pulse.volume,
+        context.currentTime + pulse.time + 0.01,
+      );
+      pulseGain.gain.exponentialRampToValueAtTime(
+        0.0001,
+        context.currentTime + pulse.time + pulse.duration,
+      );
+      oscillator.connect(pulseGain);
+      pulseGain.connect(gain);
+      oscillator.start(context.currentTime + pulse.time);
+      oscillator.stop(context.currentTime + pulse.time + pulse.duration);
+    });
+
+    window.setTimeout(() => {
       void context.close();
-    };
+    }, kind === "success" ? 320 : 360);
   }
 
   useEffect(() => {
@@ -74,8 +94,8 @@ export function useRewardSpeech({ enabled = true, effect, key, message }: Reward
         return;
       }
 
-      if (effect === "error" && !message) {
-        playEffectTone("error");
+      if (effect && !message) {
+        playEffectTone(effect);
         return;
       }
 
@@ -112,11 +132,6 @@ export function useRewardSpeech({ enabled = true, effect, key, message }: Reward
         return;
       } catch {
         if (isCancelled) return;
-      }
-
-      if (effect === "success" && !message) {
-        playEffectTone("success");
-        return;
       }
 
       if (!("speechSynthesis" in window) || !message) {

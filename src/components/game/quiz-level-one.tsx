@@ -35,9 +35,7 @@ export function QuizLevelOne() {
   const passed = score >= 40;
   const rewardSpeechMessage =
     phase === "feedback"
-      ? isCorrect
-        ? "Hebat, jawaban hidep leres."
-        : ""
+      ? ""
       : phase === "result"
         ? passed
           ? `Alus. Nilai hidep ${score}. Hidep tiasa neraskeun ka level salajengna.`
@@ -49,7 +47,7 @@ export function QuizLevelOne() {
             : "";
 
   useRewardSpeech({
-    effect: phase === "feedback" && !isCorrect ? "error" : undefined,
+    effect: phase === "feedback" ? (isCorrect ? "success" : "error") : undefined,
     key: `${phase}-${currentIndex}-${selectedAnswer ?? "none"}-${score}`,
     message: rewardSpeechMessage,
     enabled: ["feedback", "result", "level-up", "complete"].includes(phase),

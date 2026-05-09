@@ -19,14 +19,14 @@ export default function MembacaLevelOnePage() {
   const [isSaving, startSaving] = useTransition();
 
   useRewardSpeech({
+    effect:
+      phase === "correct" ? "success" : phase === "wrong" ? "error" : undefined,
     key: `membaca-${phase}-${answer.trim().toLowerCase() || "kosong"}`,
     enabled: phase !== "question",
     message:
-      phase === "correct"
-        ? "Hebat, hidep maca kalayan leres."
-        : phase === "wrong"
-          ? "Yu urang cobian deui. Dangukeun heula sorana tuluy baca deui."
-          : phase === "saved"
+      phase === "correct" || phase === "wrong"
+        ? ""
+        : phase === "saved"
             ? "Alus. Hasil latihan maca parantos kasimpen."
             : "",
   });

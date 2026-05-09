@@ -41,6 +41,44 @@ export const learningLevelOneItems = [
   },
 ] as const;
 
+export const learningNumberItems = [
+  {
+    id: "one",
+    aksara: "\u1BB1",
+    latin: "1",
+    title: "Angka Hiji",
+    note: "Ieu mangrupa angka hiji dina aksara Sunda.",
+  },
+  {
+    id: "three",
+    aksara: "\u1BB3",
+    latin: "3",
+    title: "Angka Tilu",
+    note: "Bisa dipaké pikeun latihan maca angka dasar.",
+  },
+  {
+    id: "five",
+    aksara: "\u1BB5",
+    latin: "5",
+    title: "Angka Lima",
+    note: "Wangun angka ieu alus pikeun dibiasakeun dina kuis.",
+  },
+  {
+    id: "seven",
+    aksara: "\u1BB7",
+    latin: "7",
+    title: "Angka Tujuh",
+    note: "Ngabantu ngenalkeun runtuyan angka Sunda leuwih jauh.",
+  },
+  {
+    id: "nine",
+    aksara: "\u1BB9",
+    latin: "9",
+    title: "Angka Salapan",
+    note: "Sok dipaké dina latihan campuran hurup jeung angka.",
+  },
+] as const;
+
 export const quizLevelOneQuestions = [
   {
     id: "q1",
