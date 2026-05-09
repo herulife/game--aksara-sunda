@@ -10,6 +10,7 @@ import { useRewardSpeech } from "@/components/game/use-reward-speech";
 type Phase =
   | "question"
   | "feedback"
+  | "game-over"
   | "result"
   | "level-up"
   | "final-choice"
@@ -59,6 +60,8 @@ export function QuizLevelOne() {
         ? passed
           ? `Alus. Nilai hidep ${score}. Hidep tiasa neraskeun ka level salajengna.`
           : `Tong hariwang. Nilai hidep ${score}. Cobian deui sangkan hasilna leuwih alus.`
+        : phase === "game-over"
+          ? `Nyawa hidep parantos beak. Skor ahirna ${score}. Cobian deui, nya.`
         : phase === "level-up"
           ? "Wilujeng, hidep naek level."
           : phase === "complete"
@@ -69,7 +72,7 @@ export function QuizLevelOne() {
     effect: phase === "feedback" ? (isCorrect ? "success" : "error") : undefined,
     key: `${phase}-${currentIndex}-${selectedAnswer ?? "none"}-${score}`,
     message: rewardSpeechMessage,
-    enabled: ["feedback", "result", "level-up", "complete"].includes(phase),
+    enabled: ["feedback", "game-over", "result", "level-up", "complete"].includes(phase),
   });
 
   function handleAnswer(option: string) {
@@ -108,6 +111,12 @@ export function QuizLevelOne() {
   }
 
   function goNext() {
+    if (phase === "feedback" && !isCorrect && heartsLeft === 0) {
+      persistQuizResult(score, correctCount, wrongCount);
+      setPhase("game-over");
+      return;
+    }
+
     if (isLastQuestion) {
       persistQuizResult(score, correctCount, wrongCount);
       setPhase("result");
@@ -133,7 +142,68 @@ export function QuizLevelOne() {
 
   return (
     <div className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[760px] flex-col px-3 pb-5 pt-4 sm:px-5 sm:pb-7 sm:pt-5">
-      {phase === "result" ? (
+      {phase === "game-over" ? (
+        <div className="mx-auto flex w-full max-w-[540px] flex-1 flex-col items-center text-center">
+          <div className="feedback-panel-error pdf-panel-cream w-full rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
+            <div className="feedback-badge inline-flex rounded-full bg-[#ffe1dd] px-5 py-2 text-base font-black text-[#d1000f] ring-2 ring-[#ee8a84] sm:text-xl">
+              NYAWA HABIS
+            </div>
+
+            <div className="mt-5 flex justify-center">
+              <Image
+                src="/assets/extracted/character-wrong.png"
+                alt="Karakter game over"
+                width={718}
+                height={1208}
+                className="feedback-figure h-auto w-[134px] sm:w-[176px]"
+              />
+            </div>
+
+            <p className="mt-4 text-lg font-black sm:text-2xl">Kesempatanmu habis di level ini.</p>
+            <p className="mt-2 text-sm font-black text-[#5a4521] sm:text-base">
+              Tenang, kamu bisa coba lagi dari awal level.
+            </p>
+
+            {isSaving ? (
+              <p className="mt-2 text-sm font-black text-[#2d5f1f]">Menyimpan hasil...</p>
+            ) : null}
+            {saveError ? (
+              <p className="mt-2 text-sm font-black text-[#bb4c35]">{saveError}</p>
+            ) : null}
+
+            <div className="mt-5 space-y-2 text-left text-sm font-black sm:text-base">
+              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
+                <span>Skor</span>
+                <span>:{score}</span>
+              </div>
+              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
+                <span>Benar</span>
+                <span>:{correctCount}</span>
+              </div>
+              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
+                <span>Salah</span>
+                <span>:{wrongCount}</span>
+              </div>
+            </div>
+          </div>
+
+          <div className="mt-4 grid w-full max-w-[540px] gap-3">
+            <button
+              type="button"
+              onClick={resetQuiz}
+              className="pdf-button-sky rounded-[1rem] px-5 py-3 text-lg font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
+            >
+              Coba Lagi
+            </button>
+            <Link
+              href="/dashboard"
+              className="pdf-button-beige rounded-[1rem] px-5 py-3 text-center text-lg font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
+            >
+              Kembali ke Menu
+            </Link>
+          </div>
+        </div>
+      ) : phase === "result" ? (
         <div className="mx-auto flex w-full max-w-[540px] flex-1 flex-col items-center text-center">
           <div className="pdf-panel-cream w-full rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
             <div className="inline-flex rounded-full bg-[#d6e79f] px-5 py-2 text-base font-black text-[#2d5f1f] sm:text-xl">
@@ -374,17 +444,17 @@ export function QuizLevelOne() {
             </>
           ) : (
             <div className="mx-auto mt-4 flex w-full max-w-[620px] flex-1 flex-col items-center">
-              <div className="pdf-panel-cream w-full rounded-[1rem] px-4 pb-6 pt-5 text-center text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:rounded-[1.2rem] sm:px-6 sm:pb-7 sm:pt-6">
+              <div className={`${isCorrect ? "feedback-panel-success" : "feedback-panel-error"} pdf-panel-cream w-full rounded-[1rem] px-4 pb-6 pt-5 text-center text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:rounded-[1.2rem] sm:px-6 sm:pb-7 sm:pt-6`}>
                 <div className="flex items-center justify-center gap-3 sm:gap-4">
                   <Image
                     src={isCorrect ? "/assets/extracted/icon-check-circle.png" : "/assets/extracted/icon-close-circle.png"}
                     alt=""
                     width={512}
                     height={512}
-                    className="h-16 w-16 sm:h-20 sm:w-20"
+                    className="feedback-badge h-16 w-16 sm:h-20 sm:w-20"
                   />
                   <div
-                    className={`text-4xl font-black leading-none drop-shadow-[0_3px_0_rgba(0,0,0,0.12)] sm:text-6xl ${
+                    className={`feedback-badge text-4xl font-black leading-none drop-shadow-[0_3px_0_rgba(0,0,0,0.12)] sm:text-6xl ${
                       isCorrect ? "text-[#2f8b34]" : "text-[#d1000f]"
                     }`}
                   >
@@ -409,17 +479,17 @@ export function QuizLevelOne() {
                           alt="Karakter pamaen bener"
                           width={524}
                           height={1192}
-                          className="h-auto w-[134px] drop-shadow-[0_14px_24px_rgba(39,30,14,0.18)] sm:w-[176px]"
+                          className="feedback-figure h-auto w-[134px] drop-shadow-[0_14px_24px_rgba(39,30,14,0.18)] sm:w-[176px]"
                         />
                       </>
                     ) : (
-                      <Image
-                        src="/assets/extracted/character-wrong.png"
-                        alt="Karakter pamaen mikir"
-                        width={718}
-                        height={1208}
-                        className="h-auto w-[146px] drop-shadow-[0_14px_24px_rgba(39,30,14,0.18)] sm:w-[190px]"
-                      />
+                        <Image
+                          src="/assets/extracted/character-wrong.png"
+                          alt="Karakter pamaen mikir"
+                          width={718}
+                          height={1208}
+                          className="feedback-figure h-auto w-[146px] drop-shadow-[0_14px_24px_rgba(39,30,14,0.18)] sm:w-[190px]"
+                        />
                     )}
                   </div>
                 </div>

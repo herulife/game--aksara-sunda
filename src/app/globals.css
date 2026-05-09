@@ -661,3 +661,65 @@ a[href][class*="mockup-pill"]:active {
   font-size: clamp(1rem, 3.8vw, 1.8rem);
   line-height: 1.1;
 }
+
+@keyframes feedback-pop {
+  0% {
+    opacity: 0;
+    transform: scale(0.82) translateY(10px);
+  }
+  55% {
+    opacity: 1;
+    transform: scale(1.06) translateY(-3px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes feedback-float {
+  0% {
+    transform: translateY(12px);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes feedback-glow-success {
+  0%,
+  100% {
+    box-shadow: 0 18px 34px rgba(35, 28, 15, 0.2);
+  }
+  50% {
+    box-shadow: 0 18px 34px rgba(35, 28, 15, 0.2), 0 0 0 6px rgba(102, 184, 84, 0.14);
+  }
+}
+
+@keyframes feedback-glow-error {
+  0%,
+  100% {
+    box-shadow: 0 18px 34px rgba(35, 28, 15, 0.2);
+  }
+  50% {
+    box-shadow: 0 18px 34px rgba(35, 28, 15, 0.2), 0 0 0 6px rgba(214, 84, 84, 0.12);
+  }
+}
+
+.feedback-panel-success {
+  animation: feedback-glow-success 1s ease-out;
+}
+
+.feedback-panel-error {
+  animation: feedback-glow-error 1s ease-out;
+}
+
+.feedback-badge {
+  animation: feedback-pop 0.4s ease-out both;
+}
+
+.feedback-figure {
+  animation: feedback-float 0.45s ease-out both;
+}
