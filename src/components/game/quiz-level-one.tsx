@@ -144,12 +144,27 @@ export function QuizLevelOne() {
     <div className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[760px] flex-col px-3 pb-5 pt-4 sm:px-5 sm:pb-7 sm:pt-5">
       {phase === "game-over" ? (
         <div className="mx-auto flex w-full max-w-[540px] flex-1 flex-col items-center text-center">
-          <div className="feedback-panel-error pdf-panel-cream w-full rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
-            <div className="feedback-badge inline-flex rounded-full bg-[#ffe1dd] px-5 py-2 text-base font-black text-[#d1000f] ring-2 ring-[#ee8a84] sm:text-xl">
+          <div className="feedback-panel-error pdf-panel-cream relative w-full overflow-hidden rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
+            <div className="absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(255,219,214,0.72),rgba(255,219,214,0))]" />
+
+            <div className="relative z-10 inline-flex rounded-full bg-[#ffe1dd] px-5 py-2 text-base font-black text-[#d1000f] ring-2 ring-[#ee8a84] sm:text-xl">
               NYAWA HABIS
             </div>
 
-            <div className="mt-5 flex justify-center">
+            <div className="relative z-10 mt-4 flex items-center justify-center gap-2">
+              {Array.from({ length: 3 }).map((_, index) => (
+                <Image
+                  key={index}
+                  src="/assets/extracted/heart-empty.png"
+                  alt=""
+                  width={512}
+                  height={512}
+                  className="h-9 w-9 opacity-90 sm:h-10 sm:w-10"
+                />
+              ))}
+            </div>
+
+            <div className="relative z-10 mt-4 flex justify-center">
               <Image
                 src="/assets/extracted/character-wrong.png"
                 alt="Karakter game over"
@@ -159,28 +174,30 @@ export function QuizLevelOne() {
               />
             </div>
 
-            <p className="mt-4 text-lg font-black sm:text-2xl">Kesempatanmu habis di level ini.</p>
-            <p className="mt-2 text-sm font-black text-[#5a4521] sm:text-base">
-              Tenang, kamu bisa coba lagi dari awal level.
+            <p className="relative z-10 mt-4 text-lg font-black sm:text-2xl">
+              Kesempatanmu habis di level ini.
+            </p>
+            <p className="relative z-10 mt-2 text-sm font-black text-[#5a4521] sm:text-base">
+              Tenang, kumpulkan lagi skor terbaikmu dari awal level.
             </p>
 
             {isSaving ? (
-              <p className="mt-2 text-sm font-black text-[#2d5f1f]">Menyimpan hasil...</p>
+              <p className="relative z-10 mt-2 text-sm font-black text-[#2d5f1f]">Menyimpan hasil...</p>
             ) : null}
             {saveError ? (
-              <p className="mt-2 text-sm font-black text-[#bb4c35]">{saveError}</p>
+              <p className="relative z-10 mt-2 text-sm font-black text-[#bb4c35]">{saveError}</p>
             ) : null}
 
-            <div className="mt-5 space-y-2 text-left text-sm font-black sm:text-base">
-              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
+            <div className="relative z-10 mt-5 space-y-2 text-left text-sm font-black sm:text-base">
+              <div className="game-over-stat flex justify-between rounded-[0.9rem] px-4 py-2.5">
                 <span>Skor</span>
                 <span>:{score}</span>
               </div>
-              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
+              <div className="game-over-stat flex justify-between rounded-[0.9rem] px-4 py-2.5">
                 <span>Benar</span>
                 <span>:{correctCount}</span>
               </div>
-              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
+              <div className="game-over-stat flex justify-between rounded-[0.9rem] px-4 py-2.5">
                 <span>Salah</span>
                 <span>:{wrongCount}</span>
               </div>
