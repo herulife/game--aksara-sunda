@@ -52,7 +52,7 @@ export default function AngkaPage() {
 
         <div className="mt-3.5 grid w-full max-w-[620px] gap-2.5 sm:mt-4 sm:grid-cols-2">
           <Link
-            href="/quiz/level-1"
+            href="/quiz/angka"
             className="pdf-button-green flex min-h-[62px] items-center justify-center gap-2.5 rounded-[1rem] px-4 py-3 text-white shadow-[0_16px_28px_rgba(35,28,15,0.18)] responsive-button-text font-black sm:min-h-[76px] sm:rounded-[1.2rem]"
           >
             <Image

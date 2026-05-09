@@ -3,9 +3,26 @@
 import { useRef, useState, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { quizLevelOneQuestions } from "@/lib/game-data";
 import { saveQuizResultAction } from "@/app/game-actions";
 import { useRewardSpeech } from "@/components/game/use-reward-speech";
+
+type QuizQuestion = {
+  id: string;
+  aksara: string;
+  prompt: string;
+  options: readonly string[];
+  answer: string;
+};
+
+type QuizLevelOneProps = {
+  questions: readonly QuizQuestion[];
+  title: string;
+  levelLabel?: string;
+  finalPrimaryHref?: string;
+  finalPrimaryLabel?: string;
+  finalSecondaryHref?: string;
+  finalSecondaryLabel?: string;
+};
 
 type Phase =
   | "question"
@@ -27,15 +44,23 @@ function shuffleArray<T>(items: T[]) {
   return cloned;
 }
 
-function createSessionQuestions() {
-  return shuffleArray([...quizLevelOneQuestions]).map((question) => ({
+function createSessionQuestions(questions: readonly QuizQuestion[]) {
+  return shuffleArray([...questions]).map((question) => ({
     ...question,
     options: shuffleArray([...question.options]),
   }));
 }
 
-export function QuizLevelOne() {
-  const [sessionQuestions, setSessionQuestions] = useState(() => createSessionQuestions());
+export function QuizLevelOne({
+  questions,
+  title,
+  levelLabel = "Level 1",
+  finalPrimaryHref = "/membaca/level-1",
+  finalPrimaryLabel = "Lanjut Membaca",
+  finalSecondaryHref = "/tracing/level-1",
+  finalSecondaryLabel = "Lanjut Menulis",
+}: QuizLevelOneProps) {
+  const [sessionQuestions, setSessionQuestions] = useState(() => createSessionQuestions(questions));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -129,7 +154,7 @@ export function QuizLevelOne() {
   }
 
   function resetQuiz() {
-    setSessionQuestions(createSessionQuestions());
+    setSessionQuestions(createSessionQuestions(questions));
     setCurrentIndex(0);
     setScore(0);
     setCorrectCount(0);
@@ -261,7 +286,7 @@ export function QuizLevelOne() {
               </div>
               <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
                 <span>Level</span>
-                <span>:1</span>
+                <span>:{levelLabel}</span>
               </div>
             </div>
           </div>
@@ -353,16 +378,16 @@ export function QuizLevelOne() {
                 Selesaikan Dulu
               </button>
               <Link
-                href="/membaca/level-1"
+                href={finalPrimaryHref}
                 className="pdf-button-green rounded-[1rem] px-5 py-3 text-lg font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Lanjut Membaca
+                {finalPrimaryLabel}
               </Link>
               <Link
-                href="/tracing/level-1"
+                href={finalSecondaryHref}
                 className="pdf-button-yellow rounded-[1rem] px-5 py-3 text-lg font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Lanjut Menulis
+                {finalSecondaryLabel}
               </Link>
               <Link
                 href="/progres"
@@ -414,7 +439,7 @@ export function QuizLevelOne() {
         <>
           <div className="quiz-shell flex w-full flex-wrap items-start justify-between gap-3 rounded-[1.35rem] px-3.5 py-3.5 sm:px-5 sm:py-4.5">
             <div className="pdf-button-green max-w-full rounded-[1rem] px-4 py-2.5 text-xl font-black leading-[1.05] text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:max-w-[70%] sm:rounded-[1.2rem] sm:px-5 sm:py-3 sm:text-3xl">
-              Level 1 - Huruf Dasar
+              {title}
             </div>
 
             <div className="flex flex-col items-end gap-2">

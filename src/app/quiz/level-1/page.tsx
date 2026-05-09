@@ -1,4 +1,5 @@
 import { QuizLevelOne } from "@/components/game/quiz-level-one";
+import { quizLetterLevelOneQuestions } from "@/lib/game-data";
 
 export default function QuizLevelOnePage() {
   return (
@@ -7,7 +8,15 @@ export default function QuizLevelOnePage() {
         Tampilan Level 1 Mulai Belajar
       </header>
 
-      <QuizLevelOne />
+      <QuizLevelOne
+        questions={quizLetterLevelOneQuestions}
+        title="Level 1 - Huruf Dasar"
+        levelLabel="1 Huruf"
+        finalPrimaryHref="/membaca/level-1"
+        finalPrimaryLabel="Lanjut Membaca"
+        finalSecondaryHref="/tracing/level-1"
+        finalSecondaryLabel="Lanjut Menulis"
+      />
     </main>
   );
 }

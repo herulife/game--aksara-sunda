@@ -164,3 +164,6 @@ export const quizLevelOneQuestions = [
     answer: "9",
   },
 ] as const;
+
+export const quizLetterLevelOneQuestions = quizLevelOneQuestions.slice(0, 5);
+export const quizNumberLevelOneQuestions = quizLevelOneQuestions.slice(5);
