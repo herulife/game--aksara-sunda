@@ -25,46 +25,46 @@ export function SplashHome({
 
   return (
     <main className="mockup-screen">
-      <header className="mockup-header px-4 py-3 text-[1.05rem] sm:py-4 sm:text-[1.75rem]">
+      <header className="mockup-header hidden px-4 py-3 text-[1.05rem] sm:block sm:py-4 sm:text-[1.75rem]">
         Halaman Awal
       </header>
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[400px] flex-col items-center px-4 pb-3 pt-1 text-center sm:max-w-[450px] sm:px-5 sm:pb-5 sm:pt-3">
-        <p className="mockup-title text-[1.8rem] leading-none sm:text-[2.4rem]">
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[390px] flex-col items-center px-4 pb-3 pt-3 text-center sm:min-h-[calc(100vh-66px)] sm:max-w-[450px] sm:px-5 sm:pb-5 sm:pt-3">
+        <p className="mockup-title text-[1.65rem] leading-none sm:text-[2.4rem]">
           Wilujeng Sumping
         </p>
-        <h1 className="mt-0.5 text-[2.7rem] font-black leading-[0.84] tracking-[0.02em] text-[#60431e] drop-shadow-[0_3px_0_rgba(255,255,255,0.22)] sm:text-[4rem]">
+        <h1 className="mt-0.5 text-[2.45rem] font-black leading-[0.84] tracking-[0.02em] text-[#60431e] drop-shadow-[0_3px_0_rgba(255,255,255,0.22)] sm:text-[4rem]">
           SUNDA
           <br />
           GAME
         </h1>
-        <p className="mt-1 text-[0.85rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1rem]">
+        <p className="mt-0.5 text-[0.78rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1rem]">
           Sundanese Educational Game
         </p>
 
-        <div className="mt-1 flex flex-1 items-end justify-center">
+        <div className="mt-0.5 flex flex-1 items-end justify-center">
           <Image
             src="/assets/characters/splash-characters.png"
             alt="Karakter pamaen Aksara Sunda"
             width={1383}
             height={922}
-            className="h-auto w-[196px] drop-shadow-[0_14px_22px_rgba(39,30,14,0.14)] sm:w-[278px]"
+            className="h-auto w-[186px] drop-shadow-[0_14px_22px_rgba(39,30,14,0.14)] sm:w-[278px]"
             priority
           />
         </div>
 
         <Link
           href={startHref}
-          className="pdf-button-green relative z-20 -mt-3 flex min-h-[54px] w-full max-w-[208px] touch-manipulation items-center justify-center rounded-[0.82rem] px-7 text-[1.52rem] font-black tracking-[0.04em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[66px] sm:max-w-[246px] sm:text-[2rem]"
+          className="pdf-button-green relative z-20 -mt-5 flex min-h-[50px] w-full max-w-[196px] touch-manipulation items-center justify-center rounded-[0.82rem] px-7 text-[1.4rem] font-black tracking-[0.04em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[66px] sm:max-w-[246px] sm:text-[2rem]"
         >
           MULAI
         </Link>
 
-        <div className="relative z-20 mt-2.5 grid w-full max-w-[304px] grid-cols-2 gap-2.5">
+        <div className="relative z-20 mt-2 grid w-full max-w-[294px] grid-cols-2 gap-2">
             <button
               type="button"
               onClick={() => setShowGuide(true)}
-              className="pdf-panel-cream flex min-h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[0.78rem] px-4 text-[0.9rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.02rem]"
+              className="pdf-panel-cream flex min-h-[50px] touch-manipulation items-center justify-center gap-2 rounded-[0.78rem] px-4 text-[0.84rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.02rem]"
             >
               <Image
                 src="/assets/icons/book-open.png"
@@ -78,7 +78,7 @@ export function SplashHome({
             <button
               type="button"
               onClick={() => void toggleMusic()}
-              className="pdf-panel-cream flex min-h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[0.78rem] px-4 text-[0.9rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.02rem]"
+              className="pdf-panel-cream flex min-h-[50px] touch-manipulation items-center justify-center gap-2 rounded-[0.78rem] px-4 text-[0.84rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.02rem]"
             >
               <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#3f8e41] text-white shadow-[0_6px_12px_rgba(39,30,14,0.16)] sm:h-6 sm:w-6">
                 <Image
@@ -96,7 +96,7 @@ export function SplashHome({
         {showRegisterLink ? (
           <Link
             href="/register"
-            className="relative z-20 mt-3 touch-manipulation text-xs font-bold text-[#fff8ec] underline underline-offset-4 drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)]"
+            className="relative z-20 mt-2.5 touch-manipulation text-[0.7rem] font-bold text-[#fff8ec] underline underline-offset-4 drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)]"
           >
             Daptar pamaen anyar
           </Link>
