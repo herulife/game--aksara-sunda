@@ -595,6 +595,30 @@ a[href][class*="mockup-pill"]:active {
   filter: brightness(1.03);
 }
 
+.pdf-button-green:hover {
+  background: #3aa441;
+}
+
+.pdf-button-yellow:hover {
+  background: #f2d986;
+}
+
+.pdf-button-purple:hover {
+  background: #c88be3;
+}
+
+.pdf-button-blue:hover {
+  background: #87bdf0;
+}
+
+.pdf-button-beige:hover {
+  background: #eee0b4;
+}
+
+.pdf-button-red:hover {
+  background: #e4979d;
+}
+
 .pdf-button-green:active,
 .pdf-button-sky:active,
 .pdf-button-muted:active,

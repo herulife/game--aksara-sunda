@@ -160,12 +160,12 @@ export default async function DashboardPage() {
           Sundanese Educational Game
         </p>
 
-        <div className="mt-2 grid w-full grid-cols-2 gap-1.5 sm:gap-2">
+        <div className="mt-3 grid w-full grid-cols-2 gap-2.5 sm:gap-3">
           {mainMenuItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`${item.className} flex min-h-[43px] items-center justify-center gap-1 rounded-[0.88rem] px-2 py-1.5 text-[0.72rem] font-black leading-none sm:min-h-[53px] sm:gap-2 sm:px-3 sm:text-[0.94rem]`}
+              className={`${item.className} flex min-h-[47px] items-center justify-center gap-1.5 rounded-[0.92rem] px-2.5 py-2 text-[0.74rem] font-black leading-none shadow-[0_5px_0_rgba(35,28,15,0.22),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[55px] sm:gap-2 sm:px-3 sm:text-[0.94rem]`}
             >
               <span className={item.iconWrapClassName ?? ""}>
                 <Image
@@ -183,7 +183,7 @@ export default async function DashboardPage() {
           <form action={signOutAction} className="col-span-2">
             <button
               type="submit"
-              className="pdf-button-red flex min-h-[42px] w-full items-center justify-center gap-1.5 rounded-[0.88rem] px-3 py-1.5 text-[0.82rem] font-black leading-none sm:min-h-[52px] sm:gap-2.5 sm:px-4 sm:text-[0.98rem]"
+              className="pdf-button-red flex min-h-[45px] w-full items-center justify-center gap-1.5 rounded-[0.92rem] px-3 py-2 text-[0.84rem] font-black leading-none shadow-[0_5px_0_rgba(110,48,55,0.26),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[54px] sm:gap-2.5 sm:px-4 sm:text-[0.98rem]"
             >
               <Image
                 src="/assets/icons/cross-red.png"
