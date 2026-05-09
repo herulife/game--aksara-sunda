@@ -47,7 +47,7 @@ export function SpeakButton({
           const resolvedAudioSrc = new URL(audioSrc, window.location.origin).toString();
           audioRef.current = new Audio(resolvedAudioSrc);
           audioRef.current.preload = "auto";
-          audioRef.current.playsInline = true;
+          audioRef.current.setAttribute("playsinline", "true");
           audioRef.current.load();
           audioRef.current.onended = () => setIsSpeaking(false);
           audioRef.current.onerror = () => setIsSpeaking(false);

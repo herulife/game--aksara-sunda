@@ -67,7 +67,7 @@ export function useRewardSpeech({ enabled = true, key, message }: RewardSpeechOp
 
         const audio = new Audio(objectUrl);
         audio.preload = "auto";
-        audio.playsInline = true;
+        audio.setAttribute("playsinline", "true");
         audioRef.current = audio;
         await audio.play();
         audio.onended = () => {

@@ -50,7 +50,7 @@ export function BackgroundMusicProvider({ children }: { children: ReactNode }) {
       audioRef.current.loop = true;
       audioRef.current.preload = "auto";
       audioRef.current.volume = musicVolume;
-      audioRef.current.playsInline = true;
+      audioRef.current.setAttribute("playsinline", "true");
     }
 
     return audioRef.current;

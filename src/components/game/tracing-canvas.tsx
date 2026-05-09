@@ -19,7 +19,7 @@ const GUIDE_BOUNDS = {
 };
 const GUIDE_FONT_SIZE = 220;
 const GUIDE_CELL_SIZE = 18;
-const GUIDE_SAMPLE_RADIUS = 12;
+const GUIDE_SAMPLE_RADIUS = 18;
 const GUIDE_ALPHA_THRESHOLD = 18;
 
 export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: TracingCanvasProps) {
@@ -68,7 +68,7 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
   function calculateTraceState(nextHasInk: boolean) {
     const stats = pointStatsRef.current;
 
-    if (!nextHasInk || stats.totalPoints < 20) {
+    if (!nextHasInk || stats.totalPoints < 16) {
       return { hasInk: nextHasInk, likelyCorrect: false };
     }
 
@@ -79,15 +79,15 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
     const guideCoverage =
       stats.guideCells.size / Math.max(1, guideMaskMetaRef.current.totalGuideCells);
     const staysWithinGuide =
-      stats.minX >= GUIDE_BOUNDS.left - 14 &&
-      stats.maxX <= GUIDE_BOUNDS.right + 14 &&
-      stats.minY >= GUIDE_BOUNDS.top - 14 &&
-      stats.maxY <= GUIDE_BOUNDS.bottom + 14;
-    const enoughShapeSpread = width >= 72 && width <= 188 && height >= 138 && height <= 252;
+      stats.minX >= GUIDE_BOUNDS.left - 26 &&
+      stats.maxX <= GUIDE_BOUNDS.right + 26 &&
+      stats.minY >= GUIDE_BOUNDS.top - 26 &&
+      stats.maxY <= GUIDE_BOUNDS.bottom + 26;
+    const enoughShapeSpread = width >= 52 && width <= 220 && height >= 96 && height <= 270;
     const likelyCorrect =
-      insideRatio >= 0.8 &&
-      onGuideRatio >= 0.62 &&
-      guideCoverage >= 0.12 &&
+      insideRatio >= 0.68 &&
+      onGuideRatio >= 0.44 &&
+      guideCoverage >= 0.06 &&
       staysWithinGuide &&
       enoughShapeSpread;
 
