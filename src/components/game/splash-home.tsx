@@ -25,11 +25,7 @@ export function SplashHome({
 
   return (
     <main className="mockup-screen">
-      <header className="mockup-header hidden px-4 py-3 text-[1.05rem] sm:block sm:py-4 sm:text-[1.75rem]">
-        Halaman Awal
-      </header>
-
-      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[390px] flex-col items-center px-4 pb-3 pt-3 text-center sm:min-h-[calc(100vh-66px)] sm:max-w-[450px] sm:px-5 sm:pb-5 sm:pt-3">
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[390px] flex-col items-center px-4 pb-4 pt-5 text-center sm:max-w-[450px] sm:px-5 sm:pb-6 sm:pt-6">
         <p className="mockup-title text-[1.65rem] leading-none sm:text-[2.4rem]">
           Wilujeng Sumping
         </p>
@@ -42,25 +38,25 @@ export function SplashHome({
           Sundanese Educational Game
         </p>
 
-        <div className="mt-0.5 flex flex-1 items-end justify-center">
+        <div className="mt-1 flex flex-1 items-end justify-center">
           <Image
             src="/assets/characters/splash-characters.png"
             alt="Karakter pamaen Aksara Sunda"
             width={1383}
             height={922}
-            className="h-auto w-[186px] drop-shadow-[0_14px_22px_rgba(39,30,14,0.14)] sm:w-[278px]"
+            className="h-auto w-[194px] drop-shadow-[0_14px_22px_rgba(39,30,14,0.14)] sm:w-[286px]"
             priority
           />
         </div>
 
         <Link
           href={startHref}
-          className="pdf-button-green relative z-20 -mt-5 flex min-h-[50px] w-full max-w-[196px] touch-manipulation items-center justify-center rounded-[0.82rem] px-7 text-[1.4rem] font-black tracking-[0.04em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[66px] sm:max-w-[246px] sm:text-[2rem]"
+          className="pdf-button-green relative z-20 -mt-7 flex min-h-[50px] w-full max-w-[198px] touch-manipulation items-center justify-center rounded-[0.82rem] px-7 text-[1.42rem] font-black tracking-[0.04em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:-mt-8 sm:min-h-[66px] sm:max-w-[246px] sm:text-[2rem]"
         >
           MULAI
         </Link>
 
-        <div className="relative z-20 mt-2 grid w-full max-w-[294px] grid-cols-2 gap-2">
+        <div className="relative z-20 mt-3 grid w-full max-w-[304px] grid-cols-2 gap-3">
             <button
               type="button"
               onClick={() => setShowGuide(true)}
@@ -96,7 +92,7 @@ export function SplashHome({
         {showRegisterLink ? (
           <Link
             href="/register"
-            className="relative z-20 mt-2.5 touch-manipulation text-[0.7rem] font-bold text-[#fff8ec] underline underline-offset-4 drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)]"
+            className="relative z-20 mt-3 touch-manipulation text-[0.7rem] font-bold text-[#fff8ec] underline underline-offset-4 drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)]"
           >
             Daptar pamaen anyar
           </Link>
