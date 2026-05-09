@@ -15,7 +15,26 @@ type Phase =
   | "final-choice"
   | "complete";
 
+function shuffleArray<T>(items: T[]) {
+  const cloned = [...items];
+
+  for (let index = cloned.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [cloned[index], cloned[randomIndex]] = [cloned[randomIndex], cloned[index]];
+  }
+
+  return cloned;
+}
+
+function createSessionQuestions() {
+  return shuffleArray([...quizLevelOneQuestions]).map((question) => ({
+    ...question,
+    options: shuffleArray([...question.options]),
+  }));
+}
+
 export function QuizLevelOne() {
+  const [sessionQuestions, setSessionQuestions] = useState(() => createSessionQuestions());
   const [currentIndex, setCurrentIndex] = useState(0);
   const [score, setScore] = useState(0);
   const [correctCount, setCorrectCount] = useState(0);
@@ -26,8 +45,8 @@ export function QuizLevelOne() {
   const [isSaving, startSaving] = useTransition();
   const hasSavedResultRef = useRef(false);
 
-  const currentQuestion = quizLevelOneQuestions[currentIndex];
-  const totalQuestions = quizLevelOneQuestions.length;
+  const currentQuestion = sessionQuestions[currentIndex];
+  const totalQuestions = sessionQuestions.length;
   const isLastQuestion = currentIndex === totalQuestions - 1;
   const isCorrect = selectedAnswer === currentQuestion.answer;
   const heartsLeft = Math.max(0, 3 - wrongCount);
@@ -101,6 +120,7 @@ export function QuizLevelOne() {
   }
 
   function resetQuiz() {
+    setSessionQuestions(createSessionQuestions());
     setCurrentIndex(0);
     setScore(0);
     setCorrectCount(0);

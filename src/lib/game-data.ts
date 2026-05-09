@@ -54,7 +54,7 @@ export const learningNumberItems = [
     aksara: "\u1BB3",
     latin: "3",
     title: "Angka Tilu",
-    note: "Bisa dipaké pikeun latihan maca angka dasar.",
+    note: "Bisa dipake pikeun latihan maca angka dasar.",
   },
   {
     id: "five",
@@ -75,7 +75,7 @@ export const learningNumberItems = [
     aksara: "\u1BB9",
     latin: "9",
     title: "Angka Salapan",
-    note: "Sok dipaké dina latihan campuran hurup jeung angka.",
+    note: "Sok dipake dina latihan campuran hurup jeung angka.",
   },
 ] as const;
 
@@ -126,7 +126,7 @@ export const quizLevelOneQuestions = [
     id: "q7",
     aksara: "\u1BB3",
     prompt: "Pilih angka latin yang sesuai.",
-    options: ["2", "4", "5", "7"],
+    options: ["2", "4", "3", "7"],
     answer: "3",
   },
   {
