@@ -356,6 +356,32 @@ a[href][class*="mockup-pill"]:active {
   box-shadow: 0 10px 22px rgba(40, 32, 15, 0.18);
 }
 
+.quiz-shell {
+  background: linear-gradient(180deg, rgba(255, 250, 239, 0.16), rgba(255, 244, 219, 0.08));
+  border: 1px solid rgba(255, 248, 228, 0.24);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.16);
+  backdrop-filter: blur(6px);
+}
+
+.quiz-main-panel {
+  background: linear-gradient(180deg, rgba(252, 244, 217, 0.96), rgba(245, 233, 193, 0.94));
+  border: 1px solid rgba(169, 137, 71, 0.2);
+}
+
+.quiz-answer-secondary {
+  background: linear-gradient(180deg, rgba(251, 241, 210, 0.97), rgba(240, 223, 176, 0.96));
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.34),
+    inset 0 -2px 0 rgba(185, 162, 92, 0.45),
+    0 4px 0 rgba(152, 130, 67, 0.24),
+    0 10px 20px rgba(92, 73, 25, 0.14);
+  text-shadow: 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+.quiz-answer-secondary:hover {
+  filter: brightness(1.02);
+}
+
 .pdf-button-green {
   background: #2f8b34;
   color: white;

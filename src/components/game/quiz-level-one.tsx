@@ -294,7 +294,7 @@ export function QuizLevelOne() {
         </div>
       ) : (
         <>
-          <div className="flex w-full flex-wrap items-start justify-between gap-3">
+          <div className="quiz-shell flex w-full flex-wrap items-start justify-between gap-3 rounded-[1.5rem] px-4 py-4 sm:px-5 sm:py-5">
             <div className="pdf-button-green max-w-full rounded-[1rem] px-4 py-2.5 text-xl font-black leading-[1.05] text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:max-w-[70%] sm:rounded-[1.2rem] sm:px-5 sm:py-3 sm:text-3xl">
               Level 1 - Huruf Dasar
             </div>
@@ -325,11 +325,11 @@ export function QuizLevelOne() {
 
           {phase === "question" ? (
             <>
-              <div className="pdf-panel-cream mt-4 w-full rounded-[1rem] px-4 py-4 text-center text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:rounded-[1.2rem] sm:px-6 sm:py-6">
-                <p className="text-xl font-black leading-[1.14] sm:text-3xl">
+              <div className="quiz-main-panel mt-4 w-full rounded-[1.15rem] px-4 py-4 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.2)] sm:rounded-[1.35rem] sm:px-6 sm:py-6">
+                <p className="text-xl font-black leading-[1.14] tracking-[-0.01em] sm:text-3xl">
                   {currentQuestion.prompt}
                 </p>
-                <div className="font-aksara mt-3 text-[3.6rem] leading-none text-black sm:mt-4 sm:text-[5.8rem] lg:text-[6.6rem]">
+                <div className="font-aksara mt-3 text-[3.6rem] leading-none text-[#1f1a10] drop-shadow-[0_2px_0_rgba(255,255,255,0.28)] sm:mt-4 sm:text-[5.8rem] lg:text-[6.6rem]">
                   {currentQuestion.aksara}
                 </div>
               </div>
@@ -343,10 +343,10 @@ export function QuizLevelOne() {
                       key={option}
                       type="button"
                       onClick={() => handleAnswer(option)}
-                      className={`rounded-[1rem] px-3 py-3.5 text-2xl font-black leading-none shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:rounded-[1.2rem] sm:py-4 sm:text-4xl ${
+                      className={`rounded-[1rem] border px-3 py-3.5 text-2xl font-black leading-none shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:rounded-[1.2rem] sm:py-4 sm:text-4xl ${
                         isPrimary
-                          ? "pdf-button-green text-white"
-                          : "pdf-panel-cream text-[#fffdf7] [text-shadow:0_2px_0_rgba(0,0,0,0.18)]"
+                          ? "pdf-button-green border-[#d9efae] text-white"
+                          : "quiz-answer-secondary border-[rgba(164,136,74,0.34)] text-[#58411a]"
                       }`}
                     >
                       {option}
