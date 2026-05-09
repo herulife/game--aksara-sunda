@@ -12,19 +12,9 @@ export function RegisterForm() {
     <form action={formAction} className="space-y-3.5 sm:space-y-4.5">
       <label className="block">
         <input
-          name="username"
-          type="text"
-          placeholder="Ketik username"
-          className="mockup-input text-base sm:text-xl"
-          required
-        />
-      </label>
-
-      <label className="block">
-        <input
           name="displayName"
           type="text"
-          placeholder="Ketik nami anjeuna"
+          placeholder="Ketik ngaran pamaen"
           className="mockup-input text-base sm:text-xl"
           required
         />
@@ -44,7 +34,7 @@ export function RegisterForm() {
         <input
           name="password"
           type="password"
-          placeholder="Ketik kata sandi"
+          placeholder="Ketik kata sandi (minimal 6)"
           className="mockup-input text-base sm:text-xl"
           required
         />

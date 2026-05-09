@@ -27,7 +27,31 @@ function mapSupabaseAuthError(message: string) {
 }
 
 function normalizeUsername(value: string) {
-  return value.trim().toLowerCase().replace(/\s+/g, "");
+  return value
+    .trim()
+    .toLowerCase()
+    .replace(/[^a-z0-9\s]/g, "")
+    .replace(/\s+/g, "");
+}
+
+async function findAvailableUsername(
+  supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
+  baseValue: string,
+) {
+  const fallbackBase = normalizeUsername(baseValue) || "pamaen";
+
+  for (let index = 0; index < 8; index += 1) {
+    const candidate = index === 0 ? fallbackBase : `${fallbackBase}${Math.floor(100 + Math.random() * 900)}`;
+    const { data: available, error } = await supabase.rpc("is_username_available", {
+      input_username: candidate,
+    });
+
+    if (!error && available) {
+      return candidate;
+    }
+  }
+
+  return `${fallbackBase}${Date.now().toString().slice(-4)}`;
 }
 
 export async function signUpAction(
@@ -36,30 +60,18 @@ export async function signUpAction(
 ): Promise<AuthFormState> {
   const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const password = String(formData.get("password") ?? "");
-  const username = normalizeUsername(String(formData.get("username") ?? ""));
   const displayName = String(formData.get("displayName") ?? "").trim();
 
-  if (!email || !password || !username || !displayName) {
+  if (!email || !password || !displayName) {
     return { error: "Semua field wajib diisi." };
   }
 
-  if (password.length < 8) {
-    return { error: "Password minimal 8 karakter." };
+  if (password.length < 6) {
+    return { error: "Password minimal 6 karakter." };
   }
 
   const supabase = await createSupabaseServerClient();
-  const { data: usernameAvailable, error: usernameCheckError } = await supabase.rpc(
-    "is_username_available",
-    { input_username: username },
-  );
-
-  if (usernameCheckError) {
-    return { error: "Gagal memeriksa username. Coba lagi." };
-  }
-
-  if (!usernameAvailable) {
-    return { error: "Username sudah dipakai. Pilih username lain." };
-  }
+  const username = await findAvailableUsername(supabase, displayName || email.split("@")[0] || "pamaen");
 
   const { error } = await supabase.auth.signUp({
     email,
