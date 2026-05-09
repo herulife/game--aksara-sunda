@@ -1,0 +1,80 @@
+export const learningLevelOneItems = [
+  {
+    id: "ha",
+    aksara: "\u1BA0",
+    latin: "ha",
+    title: "Huruf Ha",
+    note: "Huruf pembuka yang sering dikenalkan pertama.",
+    audioSrc: "/assets/audio/ha.wav",
+  },
+  {
+    id: "na",
+    aksara: "\u1B94",
+    latin: "na",
+    title: "Huruf Na",
+    note: "Bentuknya mudah dikenali dan cocok untuk latihan awal.",
+    audioSrc: "/assets/audio/na.wav",
+  },
+  {
+    id: "ca",
+    aksara: "\u1B8E",
+    latin: "ca",
+    title: "Huruf Ca",
+    note: "Latihan pengenalan bentuk dan sebutan.",
+    audioSrc: "/assets/audio/ca.wav",
+  },
+  {
+    id: "ra",
+    aksara: "\u1B9B",
+    latin: "ra",
+    title: "Huruf Ra",
+    note: "Mulai masuk ke variasi lengkung aksara.",
+    audioSrc: "/assets/audio/ra.wav",
+  },
+  {
+    id: "ka",
+    aksara: "\u1B8A",
+    latin: "ka",
+    title: "Huruf Ka",
+    note: "Cocok dipakai untuk latihan baca dan kuis awal.",
+    audioSrc: "/assets/audio/ka.wav",
+  },
+] as const;
+
+export const quizLevelOneQuestions = [
+  {
+    id: "q1",
+    aksara: "\u1B8A",
+    prompt: "Pilih jawaban yang sesuai dengan aksara Sunda berikut.",
+    options: ["ka", "pa", "sa", "ta"],
+    answer: "ka",
+  },
+  {
+    id: "q2",
+    aksara: "\u1BA0",
+    prompt: "Aksara ini dibaca apa?",
+    options: ["ha", "da", "ya", "ba"],
+    answer: "ha",
+  },
+  {
+    id: "q3",
+    aksara: "\u1B94",
+    prompt: "Pilih bacaan latin yang benar.",
+    options: ["ca", "ra", "na", "ga"],
+    answer: "na",
+  },
+  {
+    id: "q4",
+    aksara: "\u1B8E",
+    prompt: "Huruf ini mewakili bunyi apa?",
+    options: ["ja", "ca", "wa", "la"],
+    answer: "ca",
+  },
+  {
+    id: "q5",
+    aksara: "\u1B9B",
+    prompt: "Jawaban yang benar untuk aksara ini adalah...",
+    options: ["ra", "ma", "ta", "ka"],
+    answer: "ra",
+  },
+] as const;
