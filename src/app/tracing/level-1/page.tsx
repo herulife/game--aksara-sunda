@@ -6,12 +6,12 @@ import Link from "next/link";
 import { saveTracingResultAction } from "@/app/game-actions";
 import { TracingCanvas } from "@/components/game/tracing-canvas";
 import { useRewardSpeech } from "@/components/game/use-reward-speech";
+import { tracingLevelOneItems } from "@/lib/game-data";
 
 type Phase = "practice" | "success" | "retry" | "saved";
 
-const targetLetter = "\u1B8A";
-
 export default function TracingLevelOnePage() {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("practice");
   const [attemptCount, setAttemptCount] = useState(1);
   const [saveError, setSaveError] = useState<string | null>(null);
@@ -20,23 +20,36 @@ export default function TracingLevelOnePage() {
   const [isSaving, startSaving] = useTransition();
   const startedAtRef = useRef<number | null>(null);
 
+  const currentItem = tracingLevelOneItems[currentIndex];
+  const totalItems = tracingLevelOneItems.length;
+  const isLastItem = currentIndex === totalItems - 1;
+
   useRewardSpeech({
-    effect:
-      phase === "success" ? "success" : phase === "retry" ? "error" : undefined,
-    key: `tracing-${phase}-${attemptCount}`,
+    effect: phase === "success" ? "success" : phase === "retry" ? "error" : undefined,
+    key: `tracing-${currentItem.id}-${phase}-${attemptCount}`,
     enabled: phase !== "practice",
     message:
       phase === "success" || phase === "retry"
         ? ""
         : phase === "saved"
-            ? "Alus. Hasil latihan nulis parantos kasimpen."
-            : "",
+          ? "Alus. Sadaya latihan nulis parantos kasimpen."
+          : "",
   });
 
   function resetPractice() {
     setHasInk(false);
     setLikelyCorrect(false);
     startedAtRef.current = null;
+    setPhase("practice");
+  }
+
+  function moveToNextQuestion() {
+    setHasInk(false);
+    setLikelyCorrect(false);
+    startedAtRef.current = null;
+    setAttemptCount(1);
+    setSaveError(null);
+    setCurrentIndex((value) => value + 1);
     setPhase("practice");
   }
 
@@ -54,14 +67,16 @@ export default function TracingLevelOnePage() {
 
   function persistSuccess() {
     setSaveError(null);
+
     startSaving(async () => {
       const durationSeconds =
         startedAtRef.current === null
           ? 5
           : Math.max(5, Math.round((performance.now() - startedAtRef.current) / 1000));
+
       const result = await saveTracingResultAction({
         levelNumber: 1,
-        targetText: targetLetter,
+        targetText: currentItem.aksara,
         attemptCount,
         durationSeconds,
         completed: true,
@@ -69,7 +84,15 @@ export default function TracingLevelOnePage() {
 
       if (!result.ok) {
         setSaveError(result.error ?? "Gagal menyimpan latihan menulis.");
+        return;
       }
+
+      if (isLastItem) {
+        setPhase("saved");
+        return;
+      }
+
+      moveToNextQuestion();
     });
   }
 
@@ -87,7 +110,7 @@ export default function TracingLevelOnePage() {
                 Latihan Menulis
               </div>
               <div className="pdf-button-green rounded-[0.9rem] px-3 py-2 text-lg font-black text-white sm:text-2xl">
-                1/10
+                {currentIndex + 1}/{totalItems}
               </div>
             </div>
 
@@ -98,7 +121,7 @@ export default function TracingLevelOnePage() {
 
               <div className="mt-5 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner sm:px-5 sm:py-6">
                 <TracingCanvas
-                  guideLetter={targetLetter}
+                  guideLetter={currentItem.aksara}
                   onInkChange={markTraceStarted}
                   onTraceStateChange={handleTraceStateChange}
                 />
@@ -126,7 +149,7 @@ export default function TracingLevelOnePage() {
                   hasInk && likelyCorrect ? "pdf-button-green" : "pdf-button-muted"
                 }`}
               >
-                {hasInk && likelyCorrect ? "Selanjutnya" : "Ikuti Huruf Dulu"}
+                {hasInk && likelyCorrect ? (isLastItem ? "Simpan Hasil" : "Selanjutnya") : "Ikuti Huruf Dulu"}
               </button>
             </div>
             {!hasInk ? (
@@ -148,7 +171,7 @@ export default function TracingLevelOnePage() {
 
             <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner">
               <div className="mx-auto flex h-[165px] max-w-[230px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
-                <div className="font-aksara text-[4.6rem] leading-none sm:text-[5.8rem]">{targetLetter}</div>
+                <div className="font-aksara text-[4.6rem] leading-none sm:text-[5.8rem]">{currentItem.aksara}</div>
               </div>
             </div>
 
@@ -180,13 +203,10 @@ export default function TracingLevelOnePage() {
               </button>
               <button
                 type="button"
-                onClick={() => {
-                  persistSuccess();
-                  setPhase("saved");
-                }}
+                onClick={persistSuccess}
                 className="pdf-button-green rounded-[1rem] px-4 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
               >
-                Selanjutnya
+                {isLastItem ? "Simpan Hasil" : "Selanjutnya"}
               </button>
             </div>
           </div>
@@ -199,7 +219,9 @@ export default function TracingLevelOnePage() {
 
             <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner">
               <div className="mx-auto flex h-[165px] max-w-[230px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
-                <div className="font-aksara text-[4.6rem] leading-none text-black/18 sm:text-[5.8rem]">{targetLetter}</div>
+                <div className="font-aksara text-[4.6rem] leading-none text-black/18 sm:text-[5.8rem]">
+                  {currentItem.aksara}
+                </div>
               </div>
             </div>
 
@@ -239,7 +261,7 @@ export default function TracingLevelOnePage() {
           <div className="pdf-panel-cream w-full max-w-[540px] rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
             <p className="text-3xl font-black text-[#2f8b34] sm:text-5xl">Bagus!</p>
             <p className="mt-3 text-base font-black sm:text-xl">
-              Latihan menulismu berhasil disimpan.
+              Sadaya latihan menulismu berhasil disimpan.
             </p>
             {isSaving ? (
               <p className="mt-2 text-sm font-black text-[#2d5f1f]">Menyimpan hasil...</p>

@@ -6,33 +6,35 @@ import Link from "next/link";
 import { SpeakButton } from "@/components/game/speak-button";
 import { saveReadingResultAction } from "@/app/game-actions";
 import { useRewardSpeech } from "@/components/game/use-reward-speech";
+import { readingLevelOneItems } from "@/lib/game-data";
 
 type Phase = "question" | "correct" | "wrong" | "saved";
 
-const targetLetter = "\u1B8A";
-const expected = "ka";
-
 export default function MembacaLevelOnePage() {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const [answer, setAnswer] = useState("");
   const [phase, setPhase] = useState<Phase>("question");
   const [saveError, setSaveError] = useState<string | null>(null);
   const [isSaving, startSaving] = useTransition();
 
+  const currentItem = readingLevelOneItems[currentIndex];
+  const totalItems = readingLevelOneItems.length;
+  const isLastItem = currentIndex === totalItems - 1;
+
   useRewardSpeech({
-    effect:
-      phase === "correct" ? "success" : phase === "wrong" ? "error" : undefined,
-    key: `membaca-${phase}-${answer.trim().toLowerCase() || "kosong"}`,
+    effect: phase === "correct" ? "success" : phase === "wrong" ? "error" : undefined,
+    key: `membaca-${currentItem.id}-${phase}-${answer.trim().toLowerCase() || "kosong"}`,
     enabled: phase !== "question",
     message:
       phase === "correct" || phase === "wrong"
         ? ""
         : phase === "saved"
-            ? "Alus. Hasil latihan maca parantos kasimpen."
-            : "",
+          ? "Alus. Sadaya latihan maca parantos kasimpen."
+          : "",
   });
 
   function submitAnswer() {
-    if (answer.trim().toLowerCase() === expected) {
+    if (answer.trim().toLowerCase() === currentItem.expected) {
       setPhase("correct");
       return;
     }
@@ -40,20 +42,36 @@ export default function MembacaLevelOnePage() {
     setPhase("wrong");
   }
 
-  function persistReading(correctAnswer: string) {
+  function moveToNextQuestion() {
+    setAnswer("");
     setSaveError(null);
+    setCurrentIndex((value) => value + 1);
+    setPhase("question");
+  }
+
+  function persistReading() {
+    setSaveError(null);
+
     startSaving(async () => {
       const result = await saveReadingResultAction({
         levelNumber: 1,
-        promptText: targetLetter,
-        expectedText: expected,
-        answerText: correctAnswer,
+        promptText: currentItem.aksara,
+        expectedText: currentItem.expected,
+        answerText: currentItem.expected,
         isCorrect: true,
       });
 
       if (!result.ok) {
         setSaveError(result.error ?? "Gagal menyimpan latihan membaca.");
+        return;
       }
+
+      if (isLastItem) {
+        setPhase("saved");
+        return;
+      }
+
+      moveToNextQuestion();
     });
   }
 
@@ -71,7 +89,7 @@ export default function MembacaLevelOnePage() {
                 Membaca Kata
               </div>
               <div className="pdf-button-green rounded-[0.9rem] px-3 py-2 text-lg font-black text-white sm:text-2xl">
-                1/5
+                {currentIndex + 1}/{totalItems}
               </div>
             </div>
 
@@ -82,7 +100,9 @@ export default function MembacaLevelOnePage() {
 
               <div className="mt-5 rounded-[1rem] bg-white/82 px-4 py-6 shadow-inner">
                 <div className="mx-auto flex h-[150px] max-w-[240px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
-                  <div className="font-aksara text-[3.6rem] leading-none sm:text-[4.8rem]">{targetLetter}</div>
+                  <div className="font-aksara text-[3.6rem] leading-none sm:text-[4.8rem]">
+                    {currentItem.aksara}
+                  </div>
                 </div>
               </div>
             </div>
@@ -113,8 +133,10 @@ export default function MembacaLevelOnePage() {
 
             <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner">
               <div className="mx-auto flex h-[165px] max-w-[230px] flex-col items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
-                <div className="font-aksara text-[4.4rem] leading-none sm:text-[5.6rem]">{targetLetter}</div>
-                <div className="mt-2 text-3xl font-black sm:text-4xl">{expected}</div>
+                <div className="font-aksara text-[4.4rem] leading-none sm:text-[5.6rem]">
+                  {currentItem.aksara}
+                </div>
+                <div className="mt-2 text-3xl font-black sm:text-4xl">{currentItem.expected}</div>
               </div>
             </div>
 
@@ -135,20 +157,17 @@ export default function MembacaLevelOnePage() {
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <SpeakButton
-                text={expected}
-                audioSrc="/assets/audio/ka.wav"
+                text={currentItem.expected}
+                audioSrc={currentItem.audioSrc}
                 label="Dengar Lagi"
                 className="pdf-button-sky flex items-center justify-center gap-2.5 rounded-[0.9rem] px-4 py-3 text-base font-black text-white sm:text-lg"
               />
               <button
                 type="button"
-                onClick={() => {
-                  persistReading(answer.trim().toLowerCase());
-                  setPhase("saved");
-                }}
+                onClick={persistReading}
                 className="pdf-button-green rounded-[1rem] px-4 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
               >
-                Selanjutnya
+                {isLastItem ? "Simpan Hasil" : "Selanjutnya"}
               </button>
             </div>
           </div>
@@ -161,8 +180,10 @@ export default function MembacaLevelOnePage() {
 
             <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner">
               <div className="mx-auto flex h-[165px] max-w-[230px] flex-col items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
-                <div className="font-aksara text-[4.4rem] leading-none sm:text-[5.6rem]">{targetLetter}</div>
-                <div className="mt-2 text-3xl font-black sm:text-4xl">{expected}</div>
+                <div className="font-aksara text-[4.4rem] leading-none sm:text-[5.6rem]">
+                  {currentItem.aksara}
+                </div>
+                <div className="mt-2 text-3xl font-black sm:text-4xl">{currentItem.expected}</div>
               </div>
             </div>
 
@@ -183,8 +204,8 @@ export default function MembacaLevelOnePage() {
 
             <div className="mt-5 grid gap-3 sm:grid-cols-2">
               <SpeakButton
-                text={expected}
-                audioSrc="/assets/audio/ka.wav"
+                text={currentItem.expected}
+                audioSrc={currentItem.audioSrc}
                 label="Dengar Lagi"
                 className="pdf-button-sky flex items-center justify-center gap-2.5 rounded-[0.9rem] px-4 py-3 text-base font-black text-white sm:text-lg"
               />
@@ -204,7 +225,7 @@ export default function MembacaLevelOnePage() {
           <div className="pdf-panel-cream w-full max-w-[540px] rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
             <p className="text-3xl font-black text-[#2f8b34] sm:text-5xl">Bagus!</p>
             <p className="mt-3 text-base font-black sm:text-xl">
-              Latihan membacamu berhasil disimpan.
+              Sadaya latihan membacamu berhasil disimpan.
             </p>
             {isSaving ? (
               <p className="mt-2 text-sm font-black text-[#2d5f1f]">Menyimpan hasil...</p>

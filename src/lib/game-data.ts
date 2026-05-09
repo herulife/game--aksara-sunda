@@ -79,6 +79,19 @@ export const learningNumberItems = [
   },
 ] as const;
 
+export const readingLevelOneItems = learningLevelOneItems.map((item) => ({
+  id: item.id,
+  aksara: item.aksara,
+  expected: item.latin,
+  audioSrc: item.audioSrc,
+}));
+
+export const tracingLevelOneItems = learningLevelOneItems.map((item) => ({
+  id: item.id,
+  aksara: item.aksara,
+  latin: item.latin,
+}));
+
 export const quizLevelOneQuestions = [
   {
     id: "q1",
