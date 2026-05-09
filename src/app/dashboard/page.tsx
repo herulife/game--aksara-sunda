@@ -102,70 +102,70 @@ export default async function DashboardPage() {
         Menu Utama
       </header>
 
-      <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[440px] flex-col items-center px-4 pt-1 sm:max-w-[480px] sm:px-5 sm:pt-1.5">
+      <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[430px] flex-col items-center px-4 pt-0.5 sm:max-w-[480px] sm:px-5 sm:pt-1.5">
         <div className="flex w-full items-center justify-center">
-          <div className="relative flex w-full max-w-[320px] items-center pl-10 sm:max-w-[350px] sm:pl-14">
+          <div className="relative flex w-full max-w-[312px] items-center pl-9 sm:max-w-[350px] sm:pl-14">
             <div className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border-4 border-white bg-[#e8f0b7] p-1 shadow-[0_12px_20px_rgba(33,29,20,0.2)]">
               <Image
                 src="/assets/characters/avatar-boy.png"
                 alt="Avatar pemain"
                 width={377}
                 height={377}
-                className="h-[44px] w-[44px] rounded-full object-cover sm:h-[58px] sm:w-[58px]"
+                className="h-[40px] w-[40px] rounded-full object-cover sm:h-[58px] sm:w-[58px]"
               />
             </div>
-            <div className="mockup-card flex min-h-[54px] w-full items-center justify-center rounded-[0.95rem] px-3.5 py-2.5 pl-7 text-center text-base font-black text-black sm:min-h-[66px] sm:px-4 sm:py-3 sm:pl-9 sm:text-xl">
+            <div className="mockup-card flex min-h-[50px] w-full items-center justify-center rounded-[0.95rem] px-3 py-2 pl-6 text-center text-[0.95rem] font-black text-black sm:min-h-[66px] sm:px-4 sm:py-3 sm:pl-9 sm:text-xl">
               Halo, {profile?.display_name ?? "Pamaen"}!
             </div>
           </div>
         </div>
 
-        <div className="mt-2.5 grid w-full grid-cols-2 gap-2 sm:gap-2.5">
-          <div className="pdf-panel-cream rounded-[0.95rem] px-3 py-3 text-center text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)] sm:py-3.5">
-            <div className="text-lg font-black leading-none sm:text-2xl">Level</div>
-            <div className="mt-1.5 flex justify-center sm:mt-2">
+        <div className="mt-2 grid w-full grid-cols-2 gap-1.5 sm:gap-2.5">
+          <div className="pdf-panel-cream rounded-[0.95rem] px-3 py-2.5 text-center text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)] sm:py-3.5">
+            <div className="text-base font-black leading-none sm:text-2xl">Level</div>
+            <div className="mt-1 flex justify-center sm:mt-2">
               <Image
                 src="/assets/icons/star-gold.png"
                 alt=""
                 width={259}
                 height={246}
-                className="h-7 w-7 sm:h-8 sm:w-8"
+                className="h-6 w-6 sm:h-8 sm:w-8"
               />
             </div>
-            <div className="mt-1.5 text-xl font-black leading-none sm:text-3xl">
+            <div className="mt-1 text-lg font-black leading-none sm:text-3xl">
               {profile?.current_level ?? 1}
             </div>
           </div>
-          <div className="pdf-panel-cream rounded-[0.95rem] px-3 py-3 text-center text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)] sm:py-3.5">
-            <div className="text-lg font-black leading-none sm:text-2xl">Skor</div>
-            <div className="mt-1.5 flex justify-center sm:mt-2">
+          <div className="pdf-panel-cream rounded-[0.95rem] px-3 py-2.5 text-center text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)] sm:py-3.5">
+            <div className="text-base font-black leading-none sm:text-2xl">Skor</div>
+            <div className="mt-1 flex justify-center sm:mt-2">
               <Image
                 src="/assets/icons/star-gold.png"
                 alt=""
                 width={259}
                 height={246}
-                className="h-7 w-7 sm:h-8 sm:w-8"
+                className="h-6 w-6 sm:h-8 sm:w-8"
               />
             </div>
-            <div className="mt-1.5 text-xl font-black leading-none sm:text-3xl">
+            <div className="mt-1 text-lg font-black leading-none sm:text-3xl">
               {profile?.total_score ?? 0}
             </div>
           </div>
         </div>
 
-        <h1 className="mockup-title mt-2.5 text-center text-[2.05rem] font-black leading-[0.92] sm:mt-3 sm:text-[2.65rem]">
+        <h1 className="mockup-title mt-1.5 text-center text-[1.85rem] font-black leading-[0.92] sm:mt-3 sm:text-[2.65rem]">
           SUNDA GAME
         </h1>
-        <p className="mt-0.5 text-center text-[0.82rem] font-black text-black sm:text-[0.95rem]">
+        <p className="mt-0.5 text-center text-[0.72rem] font-black text-black sm:text-[0.95rem]">
           Sundanese Educational Game
         </p>
 
-        <div className="mt-2.5 grid w-full grid-cols-2 gap-1.5 sm:gap-2">
+        <div className="mt-2 grid w-full grid-cols-2 gap-1.5 sm:gap-2">
           {mainMenuItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`${item.className} flex min-h-[49px] items-center justify-center gap-1.5 rounded-[0.9rem] px-2.5 py-1.5 text-[0.84rem] font-black leading-none sm:min-h-[53px] sm:gap-2 sm:px-3 sm:text-[0.94rem]`}
+              className={`${item.className} flex min-h-[43px] items-center justify-center gap-1 rounded-[0.88rem] px-2 py-1.5 text-[0.72rem] font-black leading-none sm:min-h-[53px] sm:gap-2 sm:px-3 sm:text-[0.94rem]`}
             >
               <span className={item.iconWrapClassName ?? ""}>
                 <Image
@@ -173,7 +173,7 @@ export default async function DashboardPage() {
                   alt=""
                   width={item.iconWidth}
                   height={item.iconHeight}
-                  className={item.iconClassName.replace("h-7 w-7 sm:h-9 sm:w-9", "h-5 w-5 sm:h-6 sm:w-6").replace("h-6 w-6 sm:h-8 sm:w-8", "h-4.5 w-4.5 sm:h-5.5 sm:w-5.5")}
+                  className={item.iconClassName.replace("h-7 w-7 sm:h-9 sm:w-9", "h-4 w-4 sm:h-6 sm:w-6").replace("h-6 w-6 sm:h-8 sm:w-8", "h-4 w-4 sm:h-5.5 sm:w-5.5")}
                 />
               </span>
               <span className="truncate text-center">{item.title}</span>
@@ -183,7 +183,7 @@ export default async function DashboardPage() {
           <form action={signOutAction} className="col-span-2">
             <button
               type="submit"
-              className="pdf-button-red flex min-h-[46px] w-full items-center justify-center gap-2 rounded-[0.9rem] px-3 py-1.5 text-[0.92rem] font-black leading-none sm:min-h-[52px] sm:gap-2.5 sm:px-4 sm:text-[0.98rem]"
+              className="pdf-button-red flex min-h-[42px] w-full items-center justify-center gap-1.5 rounded-[0.88rem] px-3 py-1.5 text-[0.82rem] font-black leading-none sm:min-h-[52px] sm:gap-2.5 sm:px-4 sm:text-[0.98rem]"
             >
               <Image
                 src="/assets/icons/cross-red.png"

@@ -24,7 +24,7 @@ type BottomNavProps = {
 export function BottomNav({ active, className = "" }: BottomNavProps) {
   return (
     <div
-      className={`grid w-full max-w-[460px] grid-cols-4 gap-2 rounded-[0.95rem] bg-[#7ba861]/95 px-2.5 py-2.5 text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] ${className}`}
+      className={`grid w-full max-w-[460px] grid-cols-4 gap-1.5 rounded-[0.9rem] bg-[#7ba861]/95 px-2 py-2 text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] ${className}`}
     >
       {items.map((item) => {
         const isActive = active === item.href;
@@ -33,10 +33,10 @@ export function BottomNav({ active, className = "" }: BottomNavProps) {
           <Link
             key={item.href}
             href={item.href}
-            className="flex flex-col items-center gap-1 text-center"
+            className="flex flex-col items-center gap-0.5 text-center"
           >
             <span
-              className={`flex h-8.5 w-8.5 items-center justify-center rounded-full ${
+              className={`flex h-7.5 w-7.5 items-center justify-center rounded-full ${
                 isActive ? "bg-white/30 ring-2 ring-white/65" : "bg-white/18"
               }`}
             >
@@ -45,10 +45,10 @@ export function BottomNav({ active, className = "" }: BottomNavProps) {
                 alt=""
                 width={item.width}
                 height={item.height}
-                className="h-4.5 w-4.5"
+                className="h-4 w-4"
               />
             </span>
-            <span className="text-[0.62rem] font-black leading-tight sm:text-[0.68rem]">{item.label}</span>
+            <span className="text-[0.56rem] font-black leading-tight sm:text-[0.66rem]">{item.label}</span>
           </Link>
         );
       })}

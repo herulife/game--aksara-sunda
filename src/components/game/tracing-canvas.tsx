@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 
 type TracingCanvasProps = {
   guideLetter: string;
@@ -29,6 +29,7 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
   const guideMaskRef = useRef<Uint8ClampedArray | null>(null);
   const guideMaskMetaRef = useRef({ width: 0, height: 0, totalGuideCells: 1 });
   const [hasInk, setHasInk] = useState(false);
+  const [canvasSize, setCanvasSize] = useState({ width: 320, height: 320 });
   const pointStatsRef = useRef({
     totalPoints: 0,
     insidePoints: 0,
@@ -40,7 +41,19 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
     guideCells: new Set<string>(),
   });
 
-  const canvasSize = useMemo(() => ({ width: 320, height: 320 }), []);
+  useEffect(() => {
+    function updateCanvasSize() {
+      if (typeof window === "undefined") return;
+
+      const compact = window.innerWidth <= 430 || window.innerHeight <= 820;
+      setCanvasSize(compact ? { width: 280, height: 280 } : { width: 320, height: 320 });
+    }
+
+    updateCanvasSize();
+    window.addEventListener("resize", updateCanvasSize);
+
+    return () => window.removeEventListener("resize", updateCanvasSize);
+  }, []);
 
   function resetPointStats() {
     pointStatsRef.current = {
@@ -165,7 +178,8 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
     if (typeof document === "undefined") return;
 
     try {
-      await document.fonts.load(`${GUIDE_FONT_SIZE}px "Noto Sans Sundanese"`, guideLetter);
+      const guideFontSize = canvasSize.width <= 280 ? 190 : GUIDE_FONT_SIZE;
+      await document.fonts.load(`${guideFontSize}px "Noto Sans Sundanese"`, guideLetter);
       await document.fonts.ready;
     } catch {
       // Keep going even if the font loading API is unavailable.
@@ -181,7 +195,8 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
     context.fillStyle = "#000";
     context.textAlign = "center";
     context.textBaseline = "middle";
-    context.font = `${GUIDE_FONT_SIZE}px "Noto Sans Sundanese"`;
+    const guideFontSize = canvasSize.width <= 280 ? 190 : GUIDE_FONT_SIZE;
+    context.font = `${guideFontSize}px "Noto Sans Sundanese"`;
     context.fillText(guideLetter, canvasSize.width / 2, canvasSize.height / 2 + 6);
 
     const imageData = context.getImageData(0, 0, canvasSize.width, canvasSize.height);
@@ -343,10 +358,16 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
   }, [guideLetter]);
 
   return (
-    <div className="flex flex-col items-center gap-3">
-      <div className="relative h-[320px] w-full max-w-[320px] overflow-hidden rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0] shadow-inner">
+    <div className="flex flex-col items-center gap-2.5">
+      <div
+        className="relative w-full overflow-hidden rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0] shadow-inner"
+        style={{ width: `${canvasSize.width}px`, height: `${canvasSize.height}px`, maxWidth: "100%" }}
+      >
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
-          <span className="font-aksara text-[10rem] leading-none text-black/18">
+          <span
+            className="font-aksara leading-none text-black/18"
+            style={{ fontSize: canvasSize.width <= 280 ? "8rem" : "10rem" }}
+          >
             {guideLetter}
           </span>
         </div>
@@ -396,8 +417,11 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
           style={{ touchAction: "none" }}
         />
       </div>
-      <div className="flex w-full max-w-[320px] items-center justify-between gap-3">
-        <p className="text-left text-xs font-black text-[#665534] sm:text-sm">
+      <div
+        className="flex items-center justify-between gap-3"
+        style={{ width: `${canvasSize.width}px`, maxWidth: "100%" }}
+      >
+        <p className="text-left text-[0.68rem] font-black text-[#665534] sm:text-sm">
           Tulis di area ini dengan jari atau mouse.
         </p>
         <button
