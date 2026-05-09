@@ -70,13 +70,13 @@ export default async function LevelPage() {
       <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[480px] flex-col items-center px-4 text-center sm:px-5">
         <h1 className="responsive-title mockup-title">PILIH LEVEL</h1>
 
-        <div className="mt-3 grid w-full gap-2.5">
+        <div className="mt-2.5 grid w-full gap-2">
           {levelCards.map((card) =>
             card.unlocked ? (
               <Link
                 key={card.id}
                 href={card.href}
-                className="pdf-button-green block rounded-[0.9rem] px-4 py-2.5 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
+                className="pdf-button-green block rounded-[0.9rem] px-4 py-2 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
               >
                 <div className="flex items-center gap-3 text-left">
                   <Image
@@ -87,16 +87,16 @@ export default async function LevelPage() {
                     className="h-8 w-8 flex-none"
                   />
                   <div className="min-w-0 flex-1">
-                    <div className="text-lg font-black leading-tight sm:text-xl">{card.title}</div>
-                    <div className="mt-0.5 text-lg font-black leading-tight sm:text-xl">{card.desc}</div>
+                    <div className="text-base font-black leading-tight sm:text-lg">{card.title}</div>
+                    <div className="mt-0.5 text-base font-black leading-tight sm:text-lg">{card.desc}</div>
                   </div>
-                  <div className="flex-none self-end text-base font-black sm:text-lg">{card.meta}</div>
+                  <div className="flex-none self-end text-sm font-black sm:text-base">{card.meta}</div>
                 </div>
               </Link>
             ) : (
               <div
                 key={card.id}
-                className="pdf-panel-cream block rounded-[0.9rem] px-4 py-2.5 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
+                className="pdf-panel-cream block rounded-[0.9rem] px-4 py-2 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
               >
                 <div className="flex items-center gap-3 text-left">
                   <Image
@@ -107,8 +107,8 @@ export default async function LevelPage() {
                     className="h-8 w-8 flex-none"
                   />
                   <div className="min-w-0">
-                    <div className="text-lg font-black leading-tight sm:text-xl">{card.title}</div>
-                    <div className="mt-0.5 text-lg font-black leading-tight sm:text-xl">{card.desc}</div>
+                    <div className="text-base font-black leading-tight sm:text-lg">{card.title}</div>
+                    <div className="mt-0.5 text-base font-black leading-tight sm:text-lg">{card.desc}</div>
                   </div>
                 </div>
               </div>
@@ -116,18 +116,18 @@ export default async function LevelPage() {
           )}
         </div>
 
-        <div className="pdf-button-green mt-4 w-full rounded-[0.9rem] px-4 py-2.5 text-sm font-black leading-[1.25] text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.95rem]">
+        <div className="pdf-button-green mt-3 w-full rounded-[0.9rem] px-4 py-2 text-xs font-black leading-[1.25] text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.9rem]">
           Selesaikan level sebelumnya untuk membuka level berikutnya.
         </div>
 
         <Link
           href="/angka"
-          className="pdf-button-yellow mt-2.5 w-full rounded-[0.9rem] px-4 py-2.5 text-sm font-black leading-[1.25] text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.95rem]"
+          className="pdf-button-yellow mt-2 w-full rounded-[0.9rem] px-4 py-2 text-xs font-black leading-[1.25] text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.9rem]"
         >
           Buka menu Belajar Angka Sunda
         </Link>
 
-        <BottomNav active="/level" className="mt-4" />
+        <BottomNav active="/level" className="mt-3" />
       </section>
     </main>
   );

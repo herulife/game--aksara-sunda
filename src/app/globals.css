@@ -501,16 +501,16 @@ a[href][class*="mockup-pill"]:active {
 .screen-stage {
   min-height: calc(100svh - 62px);
   height: calc(100svh - 62px);
-  padding-top: 0.85rem;
-  padding-bottom: 0.9rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.65rem;
   overflow: hidden;
 }
 
 .screen-stage-compact {
   min-height: calc(100svh - 62px);
   height: calc(100svh - 62px);
-  padding-top: 0.7rem;
-  padding-bottom: 0.8rem;
+  padding-top: 0.4rem;
+  padding-bottom: 0.55rem;
   overflow: hidden;
 }
 
@@ -702,13 +702,13 @@ a[href][class*="mockup-pill"]:active {
   }
 
   .screen-stage {
-    padding-top: 0.7rem;
-    padding-bottom: 0.75rem;
+    padding-top: 0.45rem;
+    padding-bottom: 0.55rem;
   }
 
   .screen-stage-compact {
-    padding-top: 0.55rem;
-    padding-bottom: 0.65rem;
+    padding-top: 0.35rem;
+    padding-bottom: 0.45rem;
   }
 
   .responsive-title {

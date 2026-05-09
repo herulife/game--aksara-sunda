@@ -137,24 +137,24 @@ export default function TracingLevelOnePage() {
               </div>
             </div>
 
-            <div className="pdf-panel-cream mt-3.5 w-full max-w-[540px] rounded-[1.2rem] px-4 py-4 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:px-5">
+            <div className="pdf-panel-cream mt-3 w-full max-w-[540px] rounded-[1.1rem] px-4 py-3.5 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:px-5">
               <p className="text-lg font-black leading-[1.2] sm:text-[1.9rem]">
                 Tebalkan aksara Sunda berikut!
               </p>
 
-              <div className="mt-5 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner sm:px-5 sm:py-6">
+              <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-4 shadow-inner sm:px-5 sm:py-5">
                 <TracingCanvas
                   guideLetter={currentItem.aksara}
                   onInkChange={markTraceStarted}
                   onTraceStateChange={handleTraceStateChange}
                 />
-                <p className="mt-3 text-sm font-black text-[#70592b] sm:text-base">
+                <p className="mt-2.5 text-xs font-black text-[#70592b] sm:text-sm">
                   Ikuti bentuk huruf tipisnya sampai terasa pas.
                 </p>
               </div>
             </div>
 
-            <div className="mt-3.5 grid w-full max-w-[540px] grid-cols-2 gap-2.5">
+            <div className="mt-3 grid w-full max-w-[540px] grid-cols-2 gap-2">
               <button
                 type="button"
                 onClick={() => {
@@ -190,30 +190,30 @@ export default function TracingLevelOnePage() {
             <div className="mx-auto inline-flex rounded-full bg-[#edf6d8] px-5 py-2 text-xl font-black text-[#2f8b34] ring-2 ring-[#8cc46a] sm:text-3xl">
               LERES!
             </div>
-            <p className="mt-4 text-lg font-black sm:text-2xl">Jawabanmu benar!</p>
+            <p className="mt-3 text-lg font-black sm:text-2xl">Jawabanmu benar!</p>
 
-            <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner">
-              <div className="mx-auto flex h-[165px] max-w-[230px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
-                <div className="font-aksara text-[4.6rem] leading-none sm:text-[5.8rem]">{currentItem.aksara}</div>
+            <div className="mt-3 rounded-[1rem] bg-white/82 px-4 py-4 shadow-inner">
+              <div className="mx-auto flex h-[146px] max-w-[220px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
+                <div className="font-aksara text-[4rem] leading-none sm:text-[5.1rem]">{currentItem.aksara}</div>
               </div>
             </div>
 
-            <div className="mt-4 flex items-end justify-center gap-4">
+            <div className="mt-3 flex items-end justify-center gap-3">
               <Image
                 src="/assets/characters/boy-correct.png"
                 alt="Karakter benar"
                 width={717}
                 height={1076}
-                className="h-auto w-[105px] sm:w-[140px]"
+                className="h-auto w-[90px] sm:w-[126px]"
               />
-              <div className="rounded-[1rem] bg-[#efe5b9] px-4 py-3 text-left text-sm font-black text-[#3d351e] shadow-[0_10px_18px_rgba(35,28,15,0.15)] sm:text-base">
+              <div className="rounded-[1rem] bg-[#efe5b9] px-3.5 py-2.5 text-left text-xs font-black text-[#3d351e] shadow-[0_10px_18px_rgba(35,28,15,0.15)] sm:text-sm">
                 Hebat! Kamu sudah
                 <br />
                 menulis dengan benar.
               </div>
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
               <button
                 type="button"
                 onClick={() => {
@@ -238,32 +238,32 @@ export default function TracingLevelOnePage() {
             <div className="mx-auto inline-flex rounded-full bg-[#ffe1dd] px-5 py-2 text-xl font-black text-[#d1000f] ring-2 ring-[#ee8a84] sm:text-3xl">
               SALAH!
             </div>
-            <p className="mt-4 text-lg font-black sm:text-2xl">Yuk coba lagi!</p>
+            <p className="mt-3 text-lg font-black sm:text-2xl">Yuk coba lagi!</p>
 
-            <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner">
-              <div className="mx-auto flex h-[165px] max-w-[230px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
-                <div className="font-aksara text-[4.6rem] leading-none text-black/18 sm:text-[5.8rem]">
+            <div className="mt-3 rounded-[1rem] bg-white/82 px-4 py-4 shadow-inner">
+              <div className="mx-auto flex h-[146px] max-w-[220px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
+                <div className="font-aksara text-[4rem] leading-none text-black/18 sm:text-[5.1rem]">
                   {currentItem.aksara}
                 </div>
               </div>
             </div>
 
-            <div className="mt-4 flex items-end justify-center gap-4">
+            <div className="mt-3 flex items-end justify-center gap-3">
               <Image
                 src="/assets/characters/boy-thinking.png"
                 alt="Karakter mencoba lagi"
                 width={717}
                 height={1076}
-                className="h-auto w-[105px] sm:w-[140px]"
+                className="h-auto w-[90px] sm:w-[126px]"
               />
-              <div className="rounded-[1rem] bg-[#efe5b9] px-4 py-3 text-left text-sm font-black text-[#3d351e] shadow-[0_10px_18px_rgba(35,28,15,0.15)] sm:text-base">
+              <div className="rounded-[1rem] bg-[#efe5b9] px-3.5 py-2.5 text-left text-xs font-black text-[#3d351e] shadow-[0_10px_18px_rgba(35,28,15,0.15)] sm:text-sm">
                 Perhatikan lagi hurufnya,
                 <br />
                 lalu coba lagi ya.
               </div>
             </div>
 
-            <div className="mt-5 grid gap-3 sm:grid-cols-2">
+            <div className="mt-4 grid gap-2.5 sm:grid-cols-2">
               <button
                 type="button"
                 onClick={resetPractice}
@@ -283,7 +283,7 @@ export default function TracingLevelOnePage() {
         ) : (
           <div className="pdf-panel-cream w-full max-w-[540px] rounded-[1.2rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
             <p className="text-3xl font-black text-[#2f8b34] sm:text-5xl">Bagus!</p>
-            <p className="mt-3 text-base font-black sm:text-xl">
+            <p className="mt-2.5 text-sm font-black sm:text-lg">
               Sadaya latihan menulismu berhasil disimpan.
             </p>
             {isSaving ? (
@@ -292,23 +292,23 @@ export default function TracingLevelOnePage() {
             {saveError ? (
               <p className="mt-2 text-sm font-black text-[#bb4c35]">{saveError}</p>
             ) : null}
-            <div className="mt-5 flex items-end justify-center gap-4">
+            <div className="mt-4 flex items-end justify-center gap-3">
               <Image
                 src="/assets/characters/boy-correct.png"
                 alt="Karakter"
                 width={717}
                 height={1076}
-                className="h-auto w-[96px] sm:w-[120px]"
+                className="h-auto w-[82px] sm:w-[108px]"
               />
               <Image
                 src="/assets/ui/trophy.png"
                 alt="Hasil"
                 width={1211}
                 height={1139}
-                className="h-auto w-[90px] sm:w-[115px]"
+                className="h-auto w-[82px] sm:w-[108px]"
               />
             </div>
-            <p className="mt-4 text-sm font-black leading-[1.35] sm:text-base">
+            <p className="mt-3 text-xs font-black leading-[1.35] sm:text-sm">
               Terus berlatih setiap hari supaya makin hebat!
             </p>
             <Link

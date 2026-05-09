@@ -32,7 +32,7 @@ export default async function PengaturanPage() {
 
       <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[500px] flex-col items-center px-4 text-center sm:px-5">
         <h1 className="responsive-title mockup-title">PENGATURAN</h1>
-        <p className="responsive-subtitle mockup-white-title mt-2">
+        <p className="responsive-subtitle mockup-white-title mt-1">
           Atur sora jeung pangalaman maen supaya leuwih merenah.
         </p>
 
@@ -41,7 +41,7 @@ export default async function PengaturanPage() {
           musicEnabled={profile?.music_enabled ?? true}
         />
 
-        <BottomNav active="/pengaturan" className="mt-4" />
+        <BottomNav active="/pengaturan" className="mt-3" />
       </section>
     </main>
   );
