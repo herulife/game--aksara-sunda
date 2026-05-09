@@ -341,7 +341,7 @@ export function QuizLevelOne() {
                     key={option}
                     type="button"
                     onClick={() => handleAnswer(option)}
-                    className="quiz-answer-secondary rounded-[1rem] border border-[rgba(164,136,74,0.34)] px-3 py-3.5 text-2xl font-black leading-none text-[#58411a] shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:rounded-[1.2rem] sm:py-4 sm:text-4xl"
+                    className="quiz-answer-secondary quiz-answer-primary-hover rounded-[1rem] border border-[rgba(164,136,74,0.34)] px-3 py-3.5 text-2xl font-black leading-none text-[#58411a] shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition sm:rounded-[1.2rem] sm:py-4 sm:text-4xl"
                   >
                     {option}
                   </button>

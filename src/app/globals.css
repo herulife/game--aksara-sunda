@@ -379,7 +379,23 @@ a[href][class*="mockup-pill"]:active {
 }
 
 .quiz-answer-secondary:hover {
-  filter: brightness(1.02);
+  transform: translateY(-3px);
+  filter: brightness(1.04);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.38),
+    inset 0 -2px 0 rgba(185, 162, 92, 0.52),
+    0 6px 0 rgba(152, 130, 67, 0.28),
+    0 16px 26px rgba(92, 73, 25, 0.18);
+}
+
+.quiz-answer-primary-hover:hover {
+  transform: translateY(-3px);
+  filter: brightness(1.05);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.24),
+    inset 0 -2px 0 rgba(28, 87, 31, 0.6),
+    0 6px 0 rgba(26, 76, 27, 0.36),
+    0 16px 26px rgba(44, 101, 36, 0.2);
 }
 
 .pdf-button-green {
