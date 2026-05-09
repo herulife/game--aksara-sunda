@@ -217,12 +217,12 @@ export function TracingCanvas({ guideLetter, onInkChange, onTraceStateChange }: 
   }, [canvasSize.height, canvasSize.width, guideLetter, hasInk, onTraceStateChange]);
 
   useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-
     let cancelled = false;
 
     async function setupCanvas() {
+      const canvas = canvasRef.current;
+      if (!canvas) return;
+
       const ratio = Math.max(window.devicePixelRatio || 1, 1);
       canvas.width = canvasSize.width * ratio;
       canvas.height = canvasSize.height * ratio;
