@@ -10,6 +10,11 @@ type RewardSpeechOptions = {
   message: string;
 };
 
+const EFFECT_AUDIO_MAP = {
+  success: "/assets/audio/benar.mp3",
+  error: "/assets/audio/salah.mp3",
+} as const;
+
 export function useRewardSpeech({ enabled = true, effect, key, message }: RewardSpeechOptions) {
   const lastSpokenKeyRef = useRef<string | null>(null);
   const audioRef = useRef<HTMLAudioElement | null>(null);
@@ -95,8 +100,21 @@ export function useRewardSpeech({ enabled = true, effect, key, message }: Reward
       }
 
       if (effect && !message) {
-        playEffectTone(effect);
-        return;
+        try {
+          if (audioRef.current) {
+            audioRef.current.pause();
+          }
+
+          const effectAudio = new Audio(new URL(EFFECT_AUDIO_MAP[effect], window.location.origin).toString());
+          effectAudio.preload = "auto";
+          effectAudio.setAttribute("playsinline", "true");
+          audioRef.current = effectAudio;
+          await effectAudio.play();
+          return;
+        } catch {
+          playEffectTone(effect);
+          return;
+        }
       }
 
       try {
