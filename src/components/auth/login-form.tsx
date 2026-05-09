@@ -14,14 +14,14 @@ export function LoginForm() {
         <input
           name="email"
           type="email"
-          placeholder="Ketik email akun"
+          placeholder="Ketik email"
           className="mockup-input text-base sm:text-xl"
           required
         />
       </label>
 
       <p className="-mt-1 text-left text-xs font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-sm">
-        Pakai email yang dipakai saat daftar.
+        Pakai email nu dipake waktu daptar.
       </p>
 
       <label className="block">

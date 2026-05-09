@@ -29,7 +29,7 @@ export function SplashHome({
         Halaman Awal
       </header>
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[410px] flex-col items-center px-4 pb-5 pt-5 text-center sm:max-w-[450px] sm:px-5 sm:pb-6 sm:pt-6">
+      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[410px] flex-col items-center px-4 pb-4 pt-2 text-center sm:max-w-[450px] sm:px-5 sm:pb-5 sm:pt-3">
         <p className="mockup-title text-[1.95rem] leading-none sm:text-[2.4rem]">
           Wilujeng Sumping
         </p>
@@ -38,29 +38,29 @@ export function SplashHome({
           <br />
           GAME
         </h1>
-        <p className="mt-2 text-[0.92rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1rem]">
+        <p className="mt-1.5 text-[0.92rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1rem]">
           Sundanese Educational Game
         </p>
 
-        <div className="mt-3 flex flex-1 items-end justify-center">
+        <div className="mt-1.5 flex flex-1 items-end justify-center">
           <Image
             src="/assets/characters/splash-characters.png"
             alt="Karakter pamaen Aksara Sunda"
             width={1383}
             height={922}
-            className="h-auto w-[224px] drop-shadow-[0_14px_22px_rgba(39,30,14,0.14)] sm:w-[286px]"
+            className="h-auto w-[218px] drop-shadow-[0_14px_22px_rgba(39,30,14,0.14)] sm:w-[278px]"
             priority
           />
         </div>
 
         <Link
           href={startHref}
-          className="pdf-button-green relative z-20 -mt-1 flex min-h-[60px] w-full max-w-[224px] touch-manipulation items-center justify-center rounded-[0.82rem] px-7 text-[1.72rem] font-black tracking-[0.04em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[70px] sm:max-w-[252px] sm:text-[2.1rem]"
+          className="pdf-button-green relative z-20 -mt-2 flex min-h-[58px] w-full max-w-[220px] touch-manipulation items-center justify-center rounded-[0.82rem] px-7 text-[1.68rem] font-black tracking-[0.04em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[66px] sm:max-w-[246px] sm:text-[2rem]"
         >
           MULAI
         </Link>
 
-        <div className="relative z-20 mt-4 grid w-full max-w-[320px] grid-cols-2 gap-3">
+        <div className="relative z-20 mt-3 grid w-full max-w-[316px] grid-cols-2 gap-3">
             <button
               type="button"
               onClick={() => setShowGuide(true)}

@@ -24,7 +24,7 @@ export function RegisterForm() {
         <input
           name="email"
           type="email"
-          placeholder="Ketik email akun"
+          placeholder="Ketik email"
           className="mockup-input text-base sm:text-xl"
           required
         />

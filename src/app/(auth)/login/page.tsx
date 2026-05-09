@@ -16,8 +16,8 @@ export default async function LoginPage() {
   return (
     <AuthShell
       headerTitle="Asup Kaulinan"
-      title="Asup Ka Akun Aksara Sunda"
-      description="Lebetkeun email akun jeung kata sandi supaya bisa langsung neraskeun maen."
+      title="Asup Ka Aksara Sunda"
+      description="Lebetkeun email jeung kata sandi supaya bisa langsung neraskeun maen."
       footerText="Can boga akun?"
       footerLinkLabel="Daptar di dieu"
       footerLinkHref="/register"

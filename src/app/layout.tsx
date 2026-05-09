@@ -22,7 +22,7 @@ const notoSansSundanese = Noto_Sans_Sundanese({
 
 export const metadata: Metadata = {
   title: "Aksara Sunda",
-  description: "Game edukasi Aksara Sunda berbasis Next.js dan Supabase",
+  description: "Game edukasi untuk diajar aksara Sunda ku cara nu pikaresepeun.",
 };
 
 export default function RootLayout({

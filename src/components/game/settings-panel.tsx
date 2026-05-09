@@ -76,11 +76,11 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
       if (!result.ok) {
         setSound(sound);
         setMusic(music);
-        setMessage(result.error ?? "Gagal menyimpan.");
+        setMessage(result.error ?? "Can hasil nyimpen.");
         return;
       }
 
-      setMessage("Pengaturan berhasil disimpan.");
+      setMessage("Parobahan geus kasimpen.");
     });
   }
 
@@ -114,13 +114,13 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
           <p className="mt-2.5 text-base font-black sm:text-lg">Tema Belajar</p>
           <p className="mt-1.5 text-xl font-black sm:text-2xl">Lembut</p>
           <p className="mt-1.5 text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#5e4d31] sm:text-xs">
-            Siap dipakai
+            Geus hurung
           </p>
         </div>
       </div>
 
       <div className="mt-4 w-full max-w-[460px] rounded-[0.9rem] bg-white/80 px-4 py-3 text-sm font-black text-[#2d5f1f] shadow-[0_12px_20px_rgba(35,28,15,0.1)] sm:text-base">
-        {message ?? "Ubah musik dan suara sesuai kenyamanan bermainmu."}
+        {message ?? "Atur musik jeung sora supaya maenna leuwih merenah."}
       </div>
     </>
   );
