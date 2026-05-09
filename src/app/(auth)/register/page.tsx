@@ -17,7 +17,7 @@ export default async function RegisterPage() {
     <AuthShell
       headerTitle="Daptar Pamaen Anyar"
       title="Jieun Akun Aksara Sunda"
-      description="Eusian ngaran, email, jeung kata sandi pikeun ngamimitian diajar."
+      description="Eusian ngaran pamaen, email akun, jeung kata sandi. Username bakal dijieun otomatis."
       footerText="Geus boga akun?"
       footerLinkLabel="Asup di dieu"
       footerLinkHref="/login"
