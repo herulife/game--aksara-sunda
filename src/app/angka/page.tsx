@@ -1,9 +1,24 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { learningNumberItems } from "@/lib/game-data";
 
+function shuffleItems<T>(items: readonly T[]) {
+  const cloned = [...items];
+
+  for (let index = cloned.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [cloned[index], cloned[randomIndex]] = [cloned[randomIndex], cloned[index]];
+  }
+
+  return cloned;
+}
+
 export default function AngkaPage() {
-  const featuredItem = learningNumberItems[0];
+  const [sessionItems] = useState(() => shuffleItems(learningNumberItems));
+  const featuredItem = sessionItems[0];
 
   return (
     <main className="mockup-screen">
@@ -17,7 +32,7 @@ export default function AngkaPage() {
             Angka Sunda
           </div>
           <div className="pdf-button-green rounded-[0.9rem] px-3 py-2 text-xl font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:rounded-[1rem] sm:px-4 sm:py-2.5 sm:text-2xl">
-            {learningNumberItems.length} angka
+            {sessionItems.length} angka
           </div>
         </div>
 
@@ -58,7 +73,7 @@ export default function AngkaPage() {
         </div>
 
         <div className="mt-3.5 grid w-full max-w-[620px] gap-2.5 sm:mt-4 sm:grid-cols-2">
-          {learningNumberItems.map((item, index) => (
+          {sessionItems.map((item, index) => (
             <div
               key={item.id}
               className={`rounded-[1rem] px-4 py-3.5 text-left shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:rounded-[1.2rem] ${

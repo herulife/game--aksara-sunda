@@ -10,15 +10,27 @@ import { readingLevelOneItems } from "@/lib/game-data";
 
 type Phase = "question" | "correct" | "wrong" | "saved";
 
+function shuffleItems<T>(items: readonly T[]) {
+  const cloned = [...items];
+
+  for (let index = cloned.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [cloned[index], cloned[randomIndex]] = [cloned[randomIndex], cloned[index]];
+  }
+
+  return cloned;
+}
+
 export default function MembacaLevelOnePage() {
+  const [sessionItems, setSessionItems] = useState(() => shuffleItems(readingLevelOneItems));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [answer, setAnswer] = useState("");
   const [phase, setPhase] = useState<Phase>("question");
   const [saveError, setSaveError] = useState<string | null>(null);
   const [isSaving, startSaving] = useTransition();
 
-  const currentItem = readingLevelOneItems[currentIndex];
-  const totalItems = readingLevelOneItems.length;
+  const currentItem = sessionItems[currentIndex];
+  const totalItems = sessionItems.length;
   const isLastItem = currentIndex === totalItems - 1;
 
   useRewardSpeech({
@@ -46,6 +58,14 @@ export default function MembacaLevelOnePage() {
     setAnswer("");
     setSaveError(null);
     setCurrentIndex((value) => value + 1);
+    setPhase("question");
+  }
+
+  function resetSession() {
+    setSessionItems(shuffleItems(readingLevelOneItems));
+    setCurrentIndex(0);
+    setAnswer("");
+    setSaveError(null);
     setPhase("question");
   }
 
@@ -258,6 +278,13 @@ export default function MembacaLevelOnePage() {
             >
               Kembali Ke Menu
             </Link>
+            <button
+              type="button"
+              onClick={resetSession}
+              className="pdf-button-sky mt-3 inline-flex rounded-[1rem] px-6 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
+            >
+              Main Acak Lagi
+            </button>
           </div>
         )}
       </section>

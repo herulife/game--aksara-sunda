@@ -1,10 +1,25 @@
+"use client";
+
+import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SpeakButton } from "@/components/game/speak-button";
 import { learningLevelOneItems } from "@/lib/game-data";
 
+function shuffleItems<T>(items: readonly T[]) {
+  const cloned = [...items];
+
+  for (let index = cloned.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [cloned[index], cloned[randomIndex]] = [cloned[randomIndex], cloned[index]];
+  }
+
+  return cloned;
+}
+
 export default function BelajarLevelOnePage() {
-  const featuredItem = learningLevelOneItems[0];
+  const [sessionItems] = useState(() => shuffleItems(learningLevelOneItems));
+  const featuredItem = sessionItems[0];
 
   return (
     <main className="mockup-screen">
@@ -18,7 +33,7 @@ export default function BelajarLevelOnePage() {
             Huruf Dasar
           </div>
           <div className="pdf-button-green rounded-[0.9rem] px-3 py-2 text-xl font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:rounded-[1rem] sm:px-4 sm:py-2.5 sm:text-2xl">
-            1/{learningLevelOneItems.length}
+            1/{sessionItems.length}
           </div>
         </div>
 
@@ -58,7 +73,7 @@ export default function BelajarLevelOnePage() {
         </div>
 
         <div className="mt-3.5 grid w-full max-w-[620px] gap-2.5 sm:mt-4 sm:grid-cols-2">
-          {learningLevelOneItems.map((item, index) => (
+          {sessionItems.map((item, index) => (
             <div
               key={item.id}
               className={`rounded-[1rem] px-4 py-3.5 text-left shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:rounded-[1.2rem] ${

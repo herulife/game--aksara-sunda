@@ -10,7 +10,19 @@ import { tracingLevelOneItems } from "@/lib/game-data";
 
 type Phase = "practice" | "success" | "retry" | "saved";
 
+function shuffleItems<T>(items: readonly T[]) {
+  const cloned = [...items];
+
+  for (let index = cloned.length - 1; index > 0; index -= 1) {
+    const randomIndex = Math.floor(Math.random() * (index + 1));
+    [cloned[index], cloned[randomIndex]] = [cloned[randomIndex], cloned[index]];
+  }
+
+  return cloned;
+}
+
 export default function TracingLevelOnePage() {
+  const [sessionItems, setSessionItems] = useState(() => shuffleItems(tracingLevelOneItems));
   const [currentIndex, setCurrentIndex] = useState(0);
   const [phase, setPhase] = useState<Phase>("practice");
   const [attemptCount, setAttemptCount] = useState(1);
@@ -20,8 +32,8 @@ export default function TracingLevelOnePage() {
   const [isSaving, startSaving] = useTransition();
   const startedAtRef = useRef<number | null>(null);
 
-  const currentItem = tracingLevelOneItems[currentIndex];
-  const totalItems = tracingLevelOneItems.length;
+  const currentItem = sessionItems[currentIndex];
+  const totalItems = sessionItems.length;
   const isLastItem = currentIndex === totalItems - 1;
 
   useRewardSpeech({
@@ -50,6 +62,17 @@ export default function TracingLevelOnePage() {
     setAttemptCount(1);
     setSaveError(null);
     setCurrentIndex((value) => value + 1);
+    setPhase("practice");
+  }
+
+  function resetSession() {
+    setSessionItems(shuffleItems(tracingLevelOneItems));
+    setCurrentIndex(0);
+    setHasInk(false);
+    setLikelyCorrect(false);
+    startedAtRef.current = null;
+    setAttemptCount(1);
+    setSaveError(null);
     setPhase("practice");
   }
 
@@ -294,6 +317,13 @@ export default function TracingLevelOnePage() {
             >
               Kembali Ke Menu
             </Link>
+            <button
+              type="button"
+              onClick={resetSession}
+              className="pdf-button-sky mt-3 inline-flex rounded-[1rem] px-6 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
+            >
+              Main Acak Lagi
+            </button>
           </div>
         )}
       </section>
