@@ -12,15 +12,15 @@ function mapSupabaseAuthError(message: string) {
   const normalized = message.toLowerCase();
 
   if (normalized.includes("email not confirmed")) {
-    return "Email belum dikonfirmasi. Cek inbox Gmail kamu atau matikan email confirmation di Supabase saat testing.";
+    return "Akun can siap dipake. Pariksa email heula, tuluy cobian deui.";
   }
 
   if (normalized.includes("invalid login credentials")) {
-    return "Email atau password tidak cocok.";
+    return "Email atawa kata sandi can luyu.";
   }
 
   if (normalized.includes("user already registered")) {
-    return "Email ini sudah terdaftar. Silakan login saja.";
+    return "Email ieu geus kadaptar. Mangga langsung asup wae.";
   }
 
   return message;
@@ -89,8 +89,7 @@ export async function signUpAction(
   }
 
   return {
-    success:
-      "Akun berhasil dibuat. Kalau login masih ditolak, kemungkinan email confirmation di Supabase masih aktif dan kamu perlu cek inbox Gmail dulu.",
+    success: "Akun hasil dijieun. Ayeuna mangga asup nganggo email jeung kata sandi.",
   };
 }
 
@@ -102,7 +101,7 @@ export async function signInAction(
   const password = String(formData.get("password") ?? "");
 
   if (!email || !password) {
-    return { error: "Email dan password wajib diisi." };
+    return { error: "Email jeung kata sandi wajib dieusian." };
   }
 
   const supabase = await createSupabaseServerClient();

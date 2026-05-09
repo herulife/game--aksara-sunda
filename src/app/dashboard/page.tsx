@@ -16,7 +16,7 @@ const mainMenuItems = [
   },
   {
     href: "/tracing/level-1",
-    title: "Latihan Menulis",
+    title: "Menulis",
     className: "pdf-button-yellow text-black",
     iconSrc: "/assets/icons/pencil.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -62,7 +62,7 @@ const mainMenuItems = [
   },
   {
     href: "/progres",
-    title: "Lihat Progres",
+    title: "Progres",
     className: "pdf-button-blue text-black",
     iconSrc: "/assets/icons/progress-bars.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -160,12 +160,12 @@ export default async function DashboardPage() {
           Sundanese Educational Game
         </p>
 
-        <div className="mt-3.5 grid w-full gap-2 sm:gap-2.5">
+        <div className="mt-3.5 grid w-full grid-cols-2 gap-2 sm:gap-2.5">
           {mainMenuItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
-              className={`${item.className} flex min-h-[48px] items-center justify-center gap-2 rounded-[0.9rem] px-3 py-2 text-[0.95rem] font-black leading-none sm:min-h-[56px] sm:gap-2.5 sm:px-4 sm:text-[1.02rem]`}
+              className={`${item.className} flex min-h-[52px] items-center justify-center gap-1.5 rounded-[0.9rem] px-2.5 py-2 text-[0.88rem] font-black leading-none sm:min-h-[56px] sm:gap-2 sm:px-3 sm:text-[0.98rem]`}
             >
               <span className={item.iconWrapClassName ?? ""}>
                 <Image
@@ -176,11 +176,11 @@ export default async function DashboardPage() {
                   className={item.iconClassName.replace("h-7 w-7 sm:h-9 sm:w-9", "h-5 w-5 sm:h-6 sm:w-6").replace("h-6 w-6 sm:h-8 sm:w-8", "h-4.5 w-4.5 sm:h-5.5 sm:w-5.5")}
                 />
               </span>
-              <span className="truncate">{item.title}</span>
+              <span className="truncate text-center">{item.title}</span>
             </Link>
           ))}
 
-          <form action={signOutAction}>
+          <form action={signOutAction} className="col-span-2">
             <button
               type="submit"
               className="pdf-button-red flex min-h-[48px] w-full items-center justify-center gap-2 rounded-[0.9rem] px-3 py-2 text-[0.95rem] font-black leading-none sm:min-h-[56px] sm:gap-2.5 sm:px-4 sm:text-[1.02rem]"

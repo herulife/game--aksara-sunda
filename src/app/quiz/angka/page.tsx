@@ -5,7 +5,7 @@ export default function QuizAngkaPage() {
   return (
     <main className="mockup-screen">
       <header className="mockup-header px-4 py-3 text-lg sm:py-4 sm:text-2xl">
-        Tampilan Kuis Angka
+        Kuis Angka
       </header>
 
       <QuizLevelOne

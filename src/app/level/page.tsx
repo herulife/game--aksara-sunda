@@ -64,7 +64,7 @@ export default async function LevelPage() {
   return (
     <main className="mockup-screen">
       <header className="mockup-header px-4 py-3 text-lg sm:py-4 sm:text-2xl">
-        Tampilan Mulai Belajar
+        Pilih Level
       </header>
 
       <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[480px] flex-col items-center px-4 text-center sm:px-5">

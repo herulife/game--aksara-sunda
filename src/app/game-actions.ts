@@ -78,7 +78,7 @@ async function getAuthedContext(mode: "quiz" | "tracing" | "reading", levelNumbe
   if (levelError || !level) {
     return {
       error:
-        `Level ${mode} belum ada di database. Jalankan seed level Supabase dulu supaya progres bisa disimpan.`,
+        `Level ieu can siap dipake. Cobian deui engke.`,
     };
   }
 
