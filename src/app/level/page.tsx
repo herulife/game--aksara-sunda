@@ -49,7 +49,7 @@ export default async function LevelPage() {
     levels?.map((level) => {
       const progress = progressMap.get(level.id);
       const unlocked = progress?.is_unlocked ?? level.level_number === 1;
-      const href = unlocked && level.level_number === 1 ? "/quiz/level-1" : "/level";
+      const href = unlocked && level.level_number === 1 ? "/belajar/level-1" : "/level";
 
       return {
         id: level.id,

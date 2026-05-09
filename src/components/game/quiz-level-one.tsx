@@ -280,7 +280,7 @@ export function QuizLevelOne() {
                 onClick={() => setPhase("level-up")}
                 className="pdf-button-green rounded-[1rem] px-5 py-3 text-lg font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Lanjut Level
+                Lanjut Belajar
               </button>
             ) : (
               <Link
@@ -316,7 +316,7 @@ export function QuizLevelOne() {
               onClick={() => setPhase("final-choice")}
               className="pdf-button-green mt-6 rounded-[1rem] px-5 py-3 text-lg font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
             >
-              Naik Ke Level Berikutnya
+              Lanjutkan Siklus Belajar
             </button>
           </div>
         </div>
@@ -350,8 +350,20 @@ export function QuizLevelOne() {
                 onClick={() => setPhase("complete")}
                 className="pdf-button-green rounded-[1rem] px-5 py-3 text-lg font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Lanjut Level
+                Selesaikan Dulu
               </button>
+              <Link
+                href="/membaca/level-1"
+                className="pdf-button-green rounded-[1rem] px-5 py-3 text-lg font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
+              >
+                Lanjut Membaca
+              </Link>
+              <Link
+                href="/tracing/level-1"
+                className="pdf-button-yellow rounded-[1rem] px-5 py-3 text-lg font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
+              >
+                Lanjut Menulis
+              </Link>
               <Link
                 href="/progres"
                 className="pdf-button-beige rounded-[1rem] px-5 py-3 text-lg font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
