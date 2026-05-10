@@ -1,7 +1,6 @@
 import Image from "next/image";
 import Link from "next/link";
 import { redirect } from "next/navigation";
-import { BottomNav } from "@/components/game/bottom-nav";
 import { createSupabaseServerClient } from "@/lib/supabase/server";
 
 type LevelRow = {
@@ -49,85 +48,94 @@ export default async function LevelPage() {
     levels?.map((level) => {
       const progress = progressMap.get(level.id);
       const unlocked = progress?.is_unlocked ?? level.level_number === 1;
-      const href = unlocked && level.level_number === 1 ? "/belajar/level-1" : "/level";
 
       return {
         id: level.id,
-        title: `Level ${level.level_number}`,
-        desc: level.title,
-        meta: `${Math.min(10, progress?.best_score ?? 0)}/10`,
-        href,
+        number: level.level_number,
+        title: level.title,
         unlocked,
+        href: unlocked && level.level_number === 1 ? "/belajar/level-1" : "/level",
       };
     }) ?? [];
 
   return (
     <main className="mockup-screen">
-      <header className="mockup-header px-4 py-3 text-lg sm:py-4 sm:text-2xl">
-        Pilih Level
-      </header>
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[760px] flex-col items-center justify-center px-4 py-6 sm:px-6 sm:py-8">
+        <div className="w-full max-w-[620px]">
+          <div className="mx-auto w-fit rounded-[0.95rem] bg-[#2f7f33] px-5 py-2 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl">
+            PILIH LEVEL
+          </div>
 
-      <section className="screen-stage-scroll relative z-10 mx-auto flex w-full max-w-[480px] flex-col items-center px-4 text-center sm:px-5">
-        <h1 className="responsive-title mockup-title">PILIH LEVEL</h1>
-
-        <div className="mt-2.5 grid w-full gap-2">
-          {levelCards.map((card) =>
-            card.unlocked ? (
-              <Link
-                key={card.id}
-                href={card.href}
-                className="pdf-button-green block rounded-[0.9rem] px-4 py-2 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
-              >
-                <div className="flex items-center gap-3 text-left">
-                  <Image
-                    src="/assets/icons/star-gold.png"
-                    alt=""
-                    width={259}
-                    height={246}
-                    className="h-8 w-8 flex-none"
-                  />
-                  <div className="min-w-0 flex-1">
-                    <div className="text-base font-black leading-tight sm:text-lg">{card.title}</div>
-                    <div className="mt-0.5 text-base font-black leading-tight sm:text-lg">{card.desc}</div>
+          <div className="mt-5 grid gap-3">
+            {levelCards.map((card) =>
+              card.unlocked ? (
+                <Link
+                  key={card.id}
+                  href={card.href}
+                  className="pdf-panel-cream block rounded-[1rem] px-4 py-4 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:px-5 sm:py-4.5"
+                >
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src="/assets/icons/star-gold.png"
+                      alt=""
+                      width={259}
+                      height={246}
+                      className="h-9 w-9 flex-none sm:h-11 sm:w-11"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-lg font-black leading-tight sm:text-2xl">Level {card.number}</p>
+                      <p className="mt-0.5 text-sm font-bold text-[#5e4a2c] sm:text-base">{card.title}</p>
+                    </div>
+                    <span className="rounded-full bg-[#2f8b34] px-3 py-1 text-xs font-black text-white shadow-[0_8px_16px_rgba(44,101,36,0.18)] sm:text-sm">
+                      Buka
+                    </span>
                   </div>
-                  <div className="flex-none self-end text-sm font-black sm:text-base">{card.meta}</div>
-                </div>
-              </Link>
-            ) : (
-              <div
-                key={card.id}
-                className="pdf-panel-cream block rounded-[0.9rem] px-4 py-2 text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)]"
-              >
-                <div className="flex items-center gap-3 text-left">
-                  <Image
-                    src="/assets/icons/star-gray.png"
-                    alt=""
-                    width={259}
-                    height={246}
-                    className="h-8 w-8 flex-none"
-                  />
-                  <div className="min-w-0">
-                    <div className="text-base font-black leading-tight sm:text-lg">{card.title}</div>
-                    <div className="mt-0.5 text-base font-black leading-tight sm:text-lg">{card.desc}</div>
+                </Link>
+              ) : (
+                <div
+                  key={card.id}
+                  className="pdf-panel-cream rounded-[1rem] px-4 py-4 text-black opacity-75 shadow-[0_16px_28px_rgba(35,28,15,0.15)] sm:px-5 sm:py-4.5"
+                >
+                  <div className="flex items-center gap-4">
+                    <Image
+                      src="/assets/icons/star-gray.png"
+                      alt=""
+                      width={259}
+                      height={246}
+                      className="h-9 w-9 flex-none sm:h-11 sm:w-11"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <p className="text-lg font-black leading-tight sm:text-2xl">Level {card.number}</p>
+                      <p className="mt-0.5 text-sm font-bold text-[#5e4a2c] sm:text-base">{card.title}</p>
+                    </div>
+                    <span className="rounded-full bg-[#c8bc95] px-3 py-1 text-xs font-black text-[#6b5b34] sm:text-sm">
+                      Terkunci
+                    </span>
                   </div>
                 </div>
-              </div>
-            ),
-          )}
+              ),
+            )}
+          </div>
+
+          <div className="mt-4 rounded-[1rem] bg-[rgba(248,240,210,0.9)] px-4 py-3 text-center text-sm font-bold text-[#5b4a2d] shadow-[0_16px_28px_rgba(35,28,15,0.15)] sm:text-base">
+            Selesaikan level sebelumnya terlebih dahulu agar level berikutnya terbuka.
+          </div>
+
+          <div className="mt-4 flex gap-3">
+            <Link
+              href="/dashboard"
+              className="pdf-button-beige flex-1 rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
+            >
+              Kembali ke Menu
+            </Link>
+            <Link
+              href="/angka"
+              className="pdf-button-yellow flex-1 rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
+            >
+              Belajar Angka
+            </Link>
+          </div>
         </div>
-
-        <div className="pdf-button-green mt-3 w-full rounded-[0.9rem] px-4 py-2 text-xs font-black leading-[1.25] text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.9rem]">
-          Réngsékeun heula level saméméhna sangkan level satuluyna kabuka.
-        </div>
-
-        <Link
-          href="/angka"
-          className="pdf-button-yellow mt-2 w-full rounded-[0.9rem] px-4 py-2 text-xs font-black leading-[1.25] text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.9rem]"
-        >
-          Buka ménu diajar angka Sunda
-        </Link>
-
-        <BottomNav active="/level" className="mt-3" />
       </section>
     </main>
   );

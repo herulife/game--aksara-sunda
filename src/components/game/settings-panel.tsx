@@ -33,7 +33,7 @@ function SettingToggleCard({
       type="button"
       onClick={onToggle}
       disabled={disabled}
-      className="pdf-panel-cream rounded-[0.9rem] px-3.5 py-3.5 text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)] transition hover:-translate-y-0.5 disabled:opacity-70"
+      className="pdf-panel-cream rounded-[0.95rem] px-4 py-4 text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] transition hover:-translate-y-0.5 disabled:opacity-70"
     >
       <div className="flex justify-center">
         <span className="rounded-full bg-[#3f8e41] p-2.5">
@@ -86,7 +86,7 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
 
   return (
     <>
-      <div className="mt-4 grid w-full max-w-[460px] gap-3 sm:grid-cols-3">
+      <div className="mt-5 grid w-full max-w-[620px] gap-3 sm:grid-cols-3">
         <SettingToggleCard
           title="Musik"
           value={music}
@@ -105,7 +105,7 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
           onToggle={() => persist(!sound, music)}
           disabled={isPending}
         />
-        <div className="pdf-panel-cream rounded-[0.9rem] px-3.5 py-3.5 text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)]">
+        <div className="pdf-panel-cream rounded-[0.95rem] px-4 py-4 text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)]">
           <div className="flex justify-center">
             <span className="rounded-full bg-[#3f8e41] p-2.5">
               <Image src="/assets/icons/star-gold.png" alt="" width={259} height={246} className="h-5 w-5 sm:h-6 sm:w-6" />
@@ -119,7 +119,7 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
         </div>
       </div>
 
-      <div className="mt-4 w-full max-w-[460px] rounded-[0.9rem] bg-white/80 px-4 py-3 text-sm font-black text-[#2d5f1f] shadow-[0_12px_20px_rgba(35,28,15,0.1)] sm:text-base">
+      <div className="mt-4 w-full max-w-[620px] rounded-[0.95rem] bg-white/80 px-4 py-3 text-sm font-black text-[#2d5f1f] shadow-[0_12px_20px_rgba(35,28,15,0.1)] sm:text-base">
         {message ?? "Atur musik dan suara supaya bermain terasa lebih nyaman."}
       </div>
     </>

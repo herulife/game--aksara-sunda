@@ -57,14 +57,14 @@ export function RegisterForm() {
 
       {state.success ? (
         <p className="rounded-[1.4rem] bg-[#dcefd3] px-5 py-4 text-left text-base font-semibold text-primary-strong shadow-[0_12px_22px_rgba(39,79,42,0.12)]">
-          {state.success} Nama pemainmu langsung disimpan, sebentar lagi kamu dipindahkan ke halaman masuk.
+          {state.success} Sebentar lagi kamu dipindahkan ke halaman masuk.
         </p>
       ) : null}
 
       <button
         type="submit"
         disabled={pending}
-        className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.35rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[62px] sm:max-w-[240px] sm:text-[1.55rem]"
+        className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.3rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[60px] sm:max-w-[234px] sm:text-[1.5rem]"
       >
         {pending ? "MEMPROSES..." : "DAFTAR"}
       </button>

@@ -1,4 +1,4 @@
-"use client";
+﻿"use client";
 
 import { useRef, useState, useTransition } from "react";
 import Image from "next/image";
@@ -56,9 +56,9 @@ export function QuizLevelOne({
   title,
   levelLabel = "Level 1",
   finalPrimaryHref = "/membaca/level-1",
-  finalPrimaryLabel = "Teraskeun ka Maca",
+  finalPrimaryLabel = "Lanjut Membaca",
   finalSecondaryHref = "/tracing/level-1",
-  finalSecondaryLabel = "Teraskeun ka Nulis",
+  finalSecondaryLabel = "Lanjut Menulis",
 }: QuizLevelOneProps) {
   const [sessionQuestions, setSessionQuestions] = useState(() => createSessionQuestions(questions));
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -83,14 +83,14 @@ export function QuizLevelOne({
       ? ""
       : phase === "result"
         ? passed
-          ? `Alus. Nilai hidep ${score}. Hidep tiasa neraskeun ka level salajengna.`
-          : `Tong hariwang. Nilai hidep ${score}. Cobian deui sangkan hasilna leuwih alus.`
+          ? `Bagus. Nilaimu ${score}, dan kamu bisa lanjut ke tahap berikutnya.`
+          : `Jangan khawatir. Nilaimu ${score} belum cukup. Coba lagi agar hasilnya lebih baik.`
         : phase === "game-over"
-          ? `Nyawa hidep parantos beak. Skor ahirna ${score}. Cobian deui, nya.`
+          ? `Nyawamu sudah habis. Skor akhirnya ${score}. Coba lagi, ya.`
         : phase === "level-up"
-          ? "Wilujeng, hidep naek level."
+          ? "Selamat, kamu naik level."
           : phase === "complete"
-            ? "Wilujeng. Hidep parantos ngarengsekeun ieu kaulinan."
+            ? "Selamat. Kamu sudah menyelesaikan permainan ini."
             : "";
 
   useRewardSpeech({
@@ -130,7 +130,7 @@ export function QuizLevelOne({
 
       if (!result.ok) {
         hasSavedResultRef.current = false;
-        setSaveError(result.error ?? "Hasil kuis teu tiasa kasimpen.");
+        setSaveError(result.error ?? "Hasil kuis belum bisa disimpan.");
       }
     });
   }
@@ -173,7 +173,7 @@ export function QuizLevelOne({
             <div className="absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(255,219,214,0.72),rgba(255,219,214,0))]" />
 
             <div className="relative z-10 inline-flex rounded-full bg-[#ffe1dd] px-5 py-2 text-base font-black text-[#d1000f] ring-2 ring-[#ee8a84] sm:text-xl">
-              NYAWA BEAK
+              NYAWA HABIS
             </div>
 
             <div className="relative z-10 mt-3 flex items-center justify-center gap-1.5">
@@ -200,14 +200,14 @@ export function QuizLevelOne({
             </div>
 
             <p className="relative z-10 mt-3 text-base font-black sm:text-2xl">
-              Kasempetan hidep di ieu level parantos béak.
+              Kesempatanmu di level ini sudah habis.
             </p>
             <p className="relative z-10 mt-1.5 text-xs font-black text-[#5a4521] sm:text-base">
-              Teu kunanaon, mangga kumpulkeun deui peunteun panghadéna ti mimiti.
+              Tidak apa-apa, coba kumpulkan lagi skor terbaikmu dari awal.
             </p>
 
             {isSaving ? (
-              <p className="relative z-10 mt-2 text-sm font-black text-[#2d5f1f]">Nuju nyimpen hasil...</p>
+              <p className="relative z-10 mt-2 text-sm font-black text-[#2d5f1f]">Sedang menyimpan hasil...</p>
             ) : null}
             {saveError ? (
               <p className="relative z-10 mt-2 text-sm font-black text-[#bb4c35]">{saveError}</p>
@@ -215,15 +215,15 @@ export function QuizLevelOne({
 
             <div className="relative z-10 mt-4 space-y-1.5 text-left text-xs font-black sm:text-base">
               <div className="game-over-stat flex justify-between rounded-[0.9rem] px-4 py-2.5">
-                <span>Peunteun</span>
+                <span>Skor</span>
                 <span>:{score}</span>
               </div>
               <div className="game-over-stat flex justify-between rounded-[0.9rem] px-4 py-2.5">
-                <span>Leres</span>
+                <span>Benar</span>
                 <span>:{correctCount}</span>
               </div>
               <div className="game-over-stat flex justify-between rounded-[0.9rem] px-4 py-2.5">
-                <span>Lepat</span>
+                <span>Salah</span>
                 <span>:{wrongCount}</span>
               </div>
             </div>
@@ -235,13 +235,13 @@ export function QuizLevelOne({
               onClick={resetQuiz}
               className="pdf-button-sky rounded-[0.95rem] px-5 py-2.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
             >
-              Cobian Deui
+              Coba Lagi
             </button>
             <Link
               href="/dashboard"
               className="pdf-button-beige rounded-[0.95rem] px-5 py-2.5 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
             >
-              Balik ka Ménu
+              Kembali ke Menu
             </Link>
           </div>
         </div>
@@ -249,7 +249,7 @@ export function QuizLevelOne({
         <div className="mx-auto flex w-full max-w-[520px] flex-1 flex-col items-center text-center">
           <div className="pdf-panel-cream w-full rounded-[1.1rem] px-4 py-4 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-6">
             <div className="inline-flex rounded-full bg-[#d6e79f] px-5 py-2 text-base font-black text-[#2d5f1f] sm:text-xl">
-              HASIL KAULINAN
+              HASIL PERMAINAN
             </div>
 
             <h2 className="mt-3 text-6xl font-black leading-none text-[#2d5f1f] sm:text-[6.5rem]">
@@ -262,10 +262,10 @@ export function QuizLevelOne({
             </div>
 
             <p className="mt-3 text-base font-black sm:text-2xl">
-              {passed ? "Saé Kacida!" : "Tiasa Ditingkatkeun Deui"}
+              {passed ? "Bagus Sekali!" : "Masih Bisa Ditingkatkan"}
             </p>
             {isSaving ? (
-              <p className="mt-2 text-sm font-black text-[#2d5f1f]">Nuju nyimpen hasil...</p>
+              <p className="mt-2 text-sm font-black text-[#2d5f1f]">Sedang menyimpan hasil...</p>
             ) : null}
             {saveError ? (
               <p className="mt-2 text-sm font-black text-[#bb4c35]">{saveError}</p>
@@ -273,11 +273,11 @@ export function QuizLevelOne({
 
             <div className="mt-4 space-y-1.5 text-left text-xs font-black sm:text-base">
               <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
-                <span>Leres</span>
+                <span>Benar</span>
                 <span>:{correctCount}</span>
               </div>
               <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
-                <span>Lepat</span>
+                <span>Salah</span>
                 <span>:{wrongCount}</span>
               </div>
               <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
@@ -297,7 +297,7 @@ export function QuizLevelOne({
               onClick={resetQuiz}
               className="rounded-[0.95rem] bg-[#7db5e8] px-5 py-2.5 text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
             >
-              Maén Deui
+              Main Lagi
             </button>
             {passed ? (
               <button
@@ -305,14 +305,14 @@ export function QuizLevelOne({
                 onClick={() => setPhase("level-up")}
                 className="pdf-button-green rounded-[0.95rem] px-5 py-2.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Teraskeun Diajar
+                Lanjut Belajar
               </button>
             ) : (
               <Link
                 href="/dashboard"
                 className="pdf-button-beige rounded-[0.95rem] px-5 py-2.5 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Ménu Utama
+                Menu Utama
               </Link>
             )}
           </div>
@@ -320,12 +320,12 @@ export function QuizLevelOne({
       ) : phase === "level-up" ? (
         <div className="mx-auto flex w-full max-w-[520px] flex-1 flex-col items-center justify-center text-center">
           <div className="pdf-panel-cream w-full rounded-[1.1rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-8">
-            <p className="text-base font-black sm:text-2xl">Peunteun Ahir</p>
+            <p className="text-base font-black sm:text-2xl">Skor Ahir</p>
             <h2 className="mt-2.5 text-6xl font-black leading-none text-[#2d7f33] sm:text-[6.5rem]">
               {score}
             </h2>
             <p className="mt-3 text-sm font-black leading-[1.25] sm:text-xl">
-              Peunteun parantos nyumponan sarat kanggo naék level!
+              Skor sudah memenuhi syarat untuk naik level!
             </p>
             <div className="mt-4 flex justify-center">
               <Image
@@ -341,7 +341,7 @@ export function QuizLevelOne({
               onClick={() => setPhase("final-choice")}
               className="pdf-button-green mt-5 rounded-[0.95rem] px-5 py-2.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
             >
-              Teraskeun Siklus Diajar
+              Lanjutkan Belajar
             </button>
           </div>
         </div>
@@ -349,13 +349,13 @@ export function QuizLevelOne({
         <div className="mx-auto flex w-full max-w-[520px] flex-1 flex-col items-center justify-center text-center">
           <div className="w-full rounded-[1.1rem] bg-[rgba(248,240,210,0.92)] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-7">
             <p className="text-[1.7rem] font-black leading-none text-[#2d5f1f] sm:text-4xl">
-              PILIHAN AHIR
+              PILIHAN AKHIR
             </p>
 
             <div className="mt-4 flex justify-center">
               <Image
                 src="/assets/extracted/character-boy-full.png"
-                alt="Karakter pilihan ahir"
+                alt="Karakter pilihan akhir"
                 width={565}
                 height={1335}
                 className="h-auto w-[86px] sm:w-[136px]"
@@ -368,14 +368,14 @@ export function QuizLevelOne({
                 onClick={resetQuiz}
                 className="pdf-button-blue rounded-[0.95rem] px-5 py-2.5 text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-              Maén Deui
+              Main Lagi
               </button>
               <button
                 type="button"
                 onClick={() => setPhase("complete")}
                 className="pdf-button-green rounded-[0.95rem] px-5 py-2.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Réngsékeun Heula
+                Selesaikan Dulu
               </button>
               <Link
                 href={finalPrimaryHref}
@@ -393,13 +393,13 @@ export function QuizLevelOne({
                 href="/progres"
                 className="pdf-button-beige rounded-[0.95rem] px-5 py-2.5 text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Tingali Kamajuan
+                Lihat Progres
               </Link>
               <Link
                 href="/dashboard"
                 className="rounded-[0.95rem] bg-white/78 px-5 py-2.5 text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Balik ka Ménu
+                Kembali ke Menu
               </Link>
             </div>
           </div>
@@ -407,21 +407,21 @@ export function QuizLevelOne({
       ) : phase === "complete" ? (
         <div className="mx-auto flex w-full max-w-[520px] flex-1 flex-col items-center justify-center text-center">
           <div className="w-full rounded-[1.1rem] bg-[rgba(248,240,210,0.92)] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-7">
-            <p className="text-[1.7rem] font-black text-[#2d5f1f] sm:text-4xl">WILUJENG!</p>
+            <p className="text-[1.7rem] font-black text-[#2d5f1f] sm:text-4xl">SELAMAT!</p>
             <p className="mt-3 text-sm font-black leading-[1.35] sm:text-lg">
-              Hidep parantos ngaréngsékeun ieu kaulinan.
+              Kamu sudah menyelesaikan permainan ini.
             </p>
             <div className="mt-4 flex justify-center gap-3">
               <Image
                 src="/assets/extracted/character-boy-full.png"
-                alt="Karakter lalaki"
+                alt="Karakter laki-laki"
                 width={565}
                 height={1335}
                 className="h-auto w-[64px] sm:w-[94px]"
               />
               <Image
                 src="/assets/extracted/character-girl-full.png"
-                alt="Karakter awéwé"
+                alt="Karakter perempuan"
                 width={637}
                 height={1547}
                 className="h-auto w-[64px] sm:w-[94px]"
@@ -431,7 +431,7 @@ export function QuizLevelOne({
               href="/dashboard"
               className="pdf-button-green mt-5 inline-flex rounded-[0.95rem] px-6 py-2.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
             >
-              Réngsé
+              Selesai
             </Link>
           </div>
         </div>
@@ -495,7 +495,7 @@ export function QuizLevelOne({
                   href="/dashboard"
                   className="pdf-button-beige rounded-[0.85rem] px-3 py-1.5 text-sm font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:px-4 sm:py-2 sm:rounded-[0.95rem] sm:text-base"
                 >
-                  Ménu Utama
+                  Menu Utama
                 </Link>
                 <div className="pdf-button-green rounded-[0.85rem] px-3 py-1.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:px-4 sm:py-2.5 sm:text-2xl">
                   {currentIndex + 1}/{totalQuestions}
@@ -518,12 +518,12 @@ export function QuizLevelOne({
                       isCorrect ? "text-[#2f8b34]" : "text-[#d1000f]"
                     }`}
                   >
-                    {isCorrect ? "LERES!" : "LEPAT!"}
+                    {isCorrect ? "BENAR!" : "SALAH!"}
                   </div>
                 </div>
 
                 <p className="mt-3 text-lg font-black leading-[1.15] sm:text-3xl">
-                  {isCorrect ? "Waleran hidep leres!" : "Waleran anu leres nyaéta:"}
+                  {isCorrect ? "Jawabanmu benar!" : "Jawaban yang benar adalah:"}
                 </p>
 
                 <div className="mt-2.5 text-[1.9rem] font-black leading-none sm:text-5xl">
@@ -536,7 +536,7 @@ export function QuizLevelOne({
                       <>
                         <Image
                           src="/assets/extracted/character-correct.png"
-                          alt="Karakter pamaén leres"
+                          alt="Karakter jawaban benar"
                           width={524}
                           height={1192}
                           className="feedback-figure h-auto w-[104px] drop-shadow-[0_14px_24px_rgba(39,30,14,0.18)] sm:w-[176px]"
@@ -545,7 +545,7 @@ export function QuizLevelOne({
                     ) : (
                         <Image
                           src="/assets/extracted/character-wrong.png"
-                          alt="Karakter pamaén nuju mikir"
+                          alt="Karakter jawaban salah"
                           width={718}
                           height={1208}
                           className="feedback-figure h-auto w-[112px] drop-shadow-[0_14px_24px_rgba(39,30,14,0.18)] sm:w-[190px]"
@@ -556,8 +556,8 @@ export function QuizLevelOne({
 
                 <p className="mx-auto mt-2.5 max-w-[500px] text-sm font-black leading-[1.25] sm:text-xl">
                   {isCorrect
-                    ? `${selectedAnswer} mangrupa jawaban anu leres.`
-                    : `Anjeun milih ${selectedAnswer}. Jawaban anu leres nyaeta ${currentQuestion.answer}.`}
+                    ? `${selectedAnswer} adalah jawaban yang benar.`
+                    : `Kamu memilih ${selectedAnswer}. Jawaban yang benar adalah ${currentQuestion.answer}.`}
                 </p>
               </div>
 
@@ -566,14 +566,14 @@ export function QuizLevelOne({
                   href="/dashboard"
                   className="pdf-button-beige rounded-[0.95rem] px-4 py-2 text-sm font-black text-black shadow-[0_18px_28px_rgba(35,28,15,0.2)] sm:rounded-[1.1rem] sm:px-5 sm:py-2.5 sm:text-base"
                 >
-                  Ménu Utama
+                  Menu Utama
                 </Link>
                 <button
                   type="button"
                   onClick={goNext}
                   className="pdf-button-green rounded-[0.95rem] px-5 py-2 text-[1.45rem] font-black text-white shadow-[0_18px_28px_rgba(35,28,15,0.2)] sm:rounded-[1.2rem] sm:px-7 sm:py-3 sm:text-[2.35rem]"
                 >
-                  Teras
+                  Lanjut
                 </button>
               </div>
             </div>
@@ -583,3 +583,4 @@ export function QuizLevelOne({
     </div>
   );
 }
+

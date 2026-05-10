@@ -15,11 +15,11 @@ export default async function RegisterPage() {
 
   return (
     <AuthShell
-      headerTitle="Daftar Pemain Baru"
-      title="Buat Akun Aksara Sunda"
+      headerTitle="Nama Pemain Baru"
+      title="Masukkan Nama Pemain"
       description="Isi nama pemain dan kata sandi untuk mulai bermain."
-      footerText="Sudah punya akun?"
-      footerLinkLabel="Masuk di sini"
+      footerText="Sudah pernah mendaftar?"
+      footerLinkLabel="Masuk sekarang"
       footerLinkHref="/login"
     >
       <RegisterForm />

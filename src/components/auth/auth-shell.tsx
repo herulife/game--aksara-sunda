@@ -22,26 +22,30 @@ export function AuthShell({
 }: AuthShellProps) {
   return (
     <main className="mockup-screen">
-      <header className="mockup-header px-4 py-3 text-[1.05rem] leading-tight sm:py-4 sm:text-[1.85rem]">
-        {headerTitle}
-      </header>
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[820px] items-center justify-center px-4 py-6 sm:px-6">
+        <div className="w-full max-w-[560px]">
+          <div className="mb-4 text-center text-[0.95rem] font-black uppercase tracking-[0.04em] text-[#fff5dd] drop-shadow-[0_4px_12px_rgba(46,38,18,0.22)] sm:text-[1.2rem]">
+            {headerTitle}
+          </div>
 
-      <section className="relative z-10 mx-auto flex min-h-[calc(100vh-66px)] w-full max-w-[760px] flex-col items-center px-3 pb-6 pt-4 text-center sm:px-5 sm:pb-8 sm:pt-5">
-        <h1 className="mockup-title max-w-[680px] text-[2rem] leading-[1.02] sm:text-[3.1rem] lg:text-[3.8rem]">
-          {title}
-        </h1>
-        <p className="mockup-white-title mt-2.5 max-w-[620px] text-sm leading-[1.3] sm:mt-4 sm:text-lg">
-          {description}
-        </p>
+          <div className="mockup-card rounded-[1.35rem] px-5 py-6 text-center shadow-[0_18px_30px_rgba(35,28,15,0.2)] sm:px-7 sm:py-8">
+            <h1 className="text-[1.7rem] font-black leading-[1.05] text-[#2c2517] sm:text-[2.25rem]">
+              {title}
+            </h1>
+            <p className="mx-auto mt-2 max-w-[410px] text-sm font-bold leading-[1.4] text-[#665337] sm:text-base">
+              {description}
+            </p>
 
-        <div className="mt-5 w-full max-w-[620px] sm:mt-6">{children}</div>
+            <div className="mt-5 sm:mt-6">{children}</div>
 
-        <p className="mockup-white-title mt-4 text-xs font-bold sm:mt-6 sm:text-base">
-          {footerText}{" "}
-          <Link href={footerLinkHref} className="underline underline-offset-4">
-            {footerLinkLabel}
-          </Link>
-        </p>
+            <p className="mt-5 text-xs font-bold text-[#5c4a2f] sm:text-sm">
+              {footerText}{" "}
+              <Link href={footerLinkHref} className="text-[#2f7f33] underline underline-offset-4">
+                {footerLinkLabel}
+              </Link>
+            </p>
+          </div>
+        </div>
       </section>
     </main>
   );
