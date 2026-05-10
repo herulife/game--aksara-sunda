@@ -25,42 +25,42 @@ export function SplashHome({
 
   return (
     <main className="mockup-screen">
-      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[430px] flex-col items-center justify-center px-4 py-6 text-center sm:max-w-[520px] sm:px-6 sm:py-8">
-        <p className="mockup-title text-[1.75rem] leading-none sm:text-[2.45rem]">
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[430px] flex-col items-center justify-center px-4 py-6 text-center sm:max-w-[540px] sm:px-6 sm:py-8">
+        <p className="mockup-title text-[1.95rem] font-semibold leading-none sm:text-[2.7rem]">
           Selamat Datang
         </p>
-        <h1 className="mt-1 text-[2.75rem] font-black leading-[0.82] tracking-[0.02em] text-[#60431e] drop-shadow-[0_3px_0_rgba(255,255,255,0.22)] sm:text-[4.2rem]">
+        <h1 className="mt-1 text-[3.15rem] font-black leading-[0.82] tracking-[0.02em] text-[#60431e] drop-shadow-[0_3px_0_rgba(255,255,255,0.22)] sm:text-[4.85rem]">
           SUNDA
           <br />
           GAME
         </h1>
-        <p className="mt-1 text-[0.8rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[0.98rem]">
+        <p className="mt-1 text-[0.84rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1.02rem]">
           Permainan Edukasi Bahasa Sunda
         </p>
 
-        <div className="mt-5 flex items-end justify-center">
+        <div className="mt-4 flex items-end justify-center">
           <Image
             src="/assets/characters/splash-characters.png"
             alt="Karakter pemain Aksara Sunda"
             width={1383}
             height={922}
-            className="h-auto w-[224px] drop-shadow-[0_14px_22px_rgba(39,30,14,0.14)] sm:w-[314px]"
+            className="h-auto w-[248px] drop-shadow-[0_16px_24px_rgba(39,30,14,0.16)] sm:w-[344px]"
             priority
           />
         </div>
 
         <Link
           href={startHref}
-          className="pdf-button-green relative z-20 mt-4 flex min-h-[56px] w-full max-w-[214px] touch-manipulation items-center justify-center rounded-[0.9rem] px-7 text-[1.5rem] font-black tracking-[0.04em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[68px] sm:max-w-[252px] sm:text-[2rem]"
+          className="pdf-button-green relative z-20 mt-3 flex min-h-[58px] w-full max-w-[228px] touch-manipulation items-center justify-center rounded-[1rem] px-7 text-[1.58rem] font-black tracking-[0.05em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[70px] sm:max-w-[270px] sm:text-[2.1rem]"
         >
           MULAI
         </Link>
 
-        <div className="relative z-20 mt-5 grid w-full max-w-[320px] grid-cols-2 gap-4">
+        <div className="relative z-20 mt-5 grid w-full max-w-[334px] grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => setShowGuide(true)}
-            className="pdf-panel-cream flex min-h-[52px] touch-manipulation items-center justify-center gap-2 rounded-[0.85rem] px-4 text-[0.84rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.02rem]"
+            className="pdf-panel-cream flex min-h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[0.95rem] px-4 text-[0.88rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[66px] sm:text-[1.04rem]"
           >
             <Image
               src="/assets/icons/book-open.png"
@@ -74,7 +74,7 @@ export function SplashHome({
           <button
             type="button"
             onClick={() => void toggleMusic()}
-            className="pdf-panel-cream flex min-h-[52px] touch-manipulation items-center justify-center gap-2 rounded-[0.85rem] px-4 text-[0.84rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.02rem]"
+            className="pdf-panel-cream flex min-h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[0.95rem] px-4 text-[0.88rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[66px] sm:text-[1.04rem]"
           >
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#3f8e41] text-white shadow-[0_6px_12px_rgba(39,30,14,0.16)] sm:h-6 sm:w-6">
               <Image
@@ -92,7 +92,7 @@ export function SplashHome({
         {showRegisterLink ? (
           <Link
             href="/login"
-            className="relative z-20 mt-4 touch-manipulation text-[0.78rem] font-bold text-[#fff8ec] underline underline-offset-4 drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)]"
+            className="relative z-20 mt-4 touch-manipulation text-[0.8rem] font-bold text-[#fff8ec] underline underline-offset-4 drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)]"
           >
             Sudah punya akun? Masuk di sini
           </Link>

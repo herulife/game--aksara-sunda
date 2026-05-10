@@ -98,7 +98,7 @@ export default async function DashboardPage() {
 
   return (
     <main className="mockup-screen">
-      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[470px] flex-col px-4 py-6 sm:max-w-[540px] sm:px-6 sm:py-8">
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[470px] flex-col px-4 py-6 sm:max-w-[560px] sm:px-6 sm:py-8">
         <div className="flex h-full flex-col">
           <div className="flex items-start justify-between gap-3">
             <div className="relative flex w-full max-w-[290px] items-center pl-10 sm:max-w-[340px] sm:pl-14">
@@ -133,19 +133,19 @@ export default async function DashboardPage() {
           </div>
 
           <div className="mt-5 flex flex-1 flex-col items-center text-center">
-            <h1 className="text-[2.65rem] font-black leading-[0.84] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[4rem]">
+            <h1 className="text-[2.8rem] font-black leading-[0.84] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[4.25rem]">
               SUNDA GAME
             </h1>
-            <p className="mt-1.5 text-[0.84rem] font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[0.96rem]">
+            <p className="mt-2 text-[0.86rem] font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[0.98rem]">
               Pilih kegiatan belajar yang ingin dimainkan
             </p>
 
-            <div className="mt-6 flex w-full max-w-[360px] flex-col gap-4 sm:max-w-[420px]">
+            <div className="mt-7 flex w-full max-w-[370px] flex-col gap-4 sm:max-w-[440px]">
               {mainMenuItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`${item.className} flex min-h-[58px] items-center justify-center gap-3 rounded-[0.95rem] px-4 py-3 text-[0.98rem] font-black leading-none shadow-[0_5px_0_rgba(35,28,15,0.22),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.06rem]`}
+                  className={`${item.className} flex min-h-[60px] items-center justify-center gap-3 rounded-[1rem] px-4 py-3 text-[1rem] font-black leading-none shadow-[0_5px_0_rgba(35,28,15,0.22),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[66px] sm:text-[1.08rem]`}
                 >
                   <span className={item.iconWrapClassName ?? ""}>
                     <Image
@@ -161,10 +161,10 @@ export default async function DashboardPage() {
               ))}
             </div>
 
-            <form action={signOutAction} className="mt-5 w-full max-w-[360px] sm:max-w-[420px]">
+            <form action={signOutAction} className="mt-5 w-full max-w-[370px] sm:max-w-[440px]">
               <button
                 type="submit"
-                className="pdf-button-red flex min-h-[54px] w-full items-center justify-center gap-2 rounded-[0.95rem] px-4 py-3 text-[1rem] font-black leading-none shadow-[0_5px_0_rgba(110,48,55,0.26),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[60px] sm:text-[1.05rem]"
+                className="pdf-button-red flex min-h-[56px] w-full items-center justify-center gap-2 rounded-[1rem] px-4 py-3 text-[1rem] font-black leading-none shadow-[0_5px_0_rgba(110,48,55,0.26),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[62px] sm:text-[1.05rem]"
               >
                 <Image
                   src="/assets/icons/cross-red.png"

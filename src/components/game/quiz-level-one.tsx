@@ -51,6 +51,15 @@ function createSessionQuestions(questions: readonly QuizQuestion[]) {
   }));
 }
 
+function QuizStatRow({ label, value }: { label: string; value: string | number }) {
+  return (
+    <div className="flex items-center justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5 text-left text-xs font-black shadow-[0_8px_16px_rgba(35,28,15,0.1)] sm:text-base">
+      <span>{label}</span>
+      <span>:{value}</span>
+    </div>
+  );
+}
+
 export function QuizLevelOne({
   questions,
   title,
@@ -271,23 +280,11 @@ export function QuizLevelOne({
               <p className="mt-2 text-sm font-black text-[#bb4c35]">{saveError}</p>
             ) : null}
 
-            <div className="mt-4 space-y-1.5 text-left text-xs font-black sm:text-base">
-              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
-                <span>Benar</span>
-                <span>:{correctCount}</span>
-              </div>
-              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
-                <span>Salah</span>
-                <span>:{wrongCount}</span>
-              </div>
-              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
-                <span>Jumlah Soal</span>
-                <span>:{totalQuestions}</span>
-              </div>
-              <div className="flex justify-between rounded-[0.9rem] bg-white/82 px-4 py-2.5">
-                <span>Level</span>
-                <span>:{levelLabel}</span>
-              </div>
+            <div className="mt-4 grid gap-1.5 text-left sm:grid-cols-2">
+              <QuizStatRow label="Benar" value={correctCount} />
+              <QuizStatRow label="Salah" value={wrongCount} />
+              <QuizStatRow label="Jumlah Soal" value={totalQuestions} />
+              <QuizStatRow label="Level" value={levelLabel} />
             </div>
           </div>
 
@@ -320,7 +317,7 @@ export function QuizLevelOne({
       ) : phase === "level-up" ? (
         <div className="mx-auto flex w-full max-w-[520px] flex-1 flex-col items-center justify-center text-center">
           <div className="pdf-panel-cream w-full rounded-[1.1rem] px-4 py-5 text-black shadow-[0_18px_34px_rgba(35,28,15,0.2)] sm:px-5 sm:py-8">
-            <p className="text-base font-black sm:text-2xl">Skor Ahir</p>
+            <p className="text-base font-black sm:text-2xl">Skor Akhir</p>
             <h2 className="mt-2.5 text-6xl font-black leading-none text-[#2d7f33] sm:text-[6.5rem]">
               {score}
             </h2>
@@ -341,7 +338,7 @@ export function QuizLevelOne({
               onClick={() => setPhase("final-choice")}
               className="pdf-button-green mt-5 rounded-[0.95rem] px-5 py-2.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
             >
-              Lanjutkan Belajar
+              Lihat Pilihan
             </button>
           </div>
         </div>
@@ -368,14 +365,14 @@ export function QuizLevelOne({
                 onClick={resetQuiz}
                 className="pdf-button-blue rounded-[0.95rem] px-5 py-2.5 text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-              Main Lagi
+                Main Lagi
               </button>
               <button
                 type="button"
                 onClick={() => setPhase("complete")}
                 className="pdf-button-green rounded-[0.95rem] px-5 py-2.5 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl"
               >
-                Selesaikan Dulu
+                Selesaikan Game
               </button>
               <Link
                 href={finalPrimaryHref}
