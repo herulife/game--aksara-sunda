@@ -105,7 +105,7 @@ export default async function DashboardPage() {
       <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[430px] flex-col px-4 pt-1 sm:max-w-[480px] sm:px-5 sm:pt-2">
         <div className="flex h-full flex-col justify-between">
           <div>
-            <div className="flex w-full items-center justify-center">
+            <div className="mt-[15px] flex w-full items-center justify-center">
               <div className="relative flex w-full max-w-[312px] items-center pl-9 sm:max-w-[350px] sm:pl-14">
                 <div className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border-4 border-white bg-[#e8f0b7] p-1 shadow-[0_12px_20px_rgba(33,29,20,0.2)]">
                   <Image
