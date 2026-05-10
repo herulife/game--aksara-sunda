@@ -496,6 +496,7 @@ a[href][class*="mockup-pill"]:active {
   background-image: url("/assets/backgrounds/village-background.png");
   background-position: center;
   background-size: cover;
+  background-repeat: no-repeat;
 }
 
 .screen-stage {
@@ -528,8 +529,16 @@ a[href][class*="mockup-pill"]:active {
   content: "";
   position: absolute;
   inset: 0;
-  background: rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(1.5px);
+  background:
+    linear-gradient(180deg, rgba(20, 73, 43, 0.18) 0%, rgba(20, 73, 43, 0.03) 26%, rgba(18, 52, 34, 0.26) 100%);
+  pointer-events: none;
+}
+
+.mockup-screen::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  box-shadow: inset 0 0 0 12px rgba(20, 58, 36, 0.64);
   pointer-events: none;
 }
 
@@ -558,9 +567,9 @@ a[href][class*="mockup-pill"]:active {
 }
 
 .mockup-card {
-  background: rgba(255, 250, 241, 0.96);
-  border: 4px solid rgba(39, 28, 10, 0.9);
-  box-shadow: 0 16px 30px rgba(35, 28, 15, 0.2);
+  background: rgba(249, 240, 210, 0.96);
+  border: 2px solid rgba(20, 58, 36, 0.78);
+  box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.5);
 }
 
 .mockup-soft-card {

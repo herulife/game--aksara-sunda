@@ -26,16 +26,16 @@ const mainMenuItems = [
   {
     href: "/membaca/level-1",
     title: "Latihan Membaca",
-    className: "pdf-button-purple text-black",
+    className: "pdf-button-yellow text-black",
     iconSrc: "/assets/icons/speaker-white.png",
     iconClassName: "h-5 w-5 sm:h-6 sm:w-6",
     iconWidth: 469,
     iconHeight: 396,
-    iconWrapClassName: "rounded-full bg-[#8d5bb9] p-2",
+    iconWrapClassName: "rounded-full bg-[#6d8e3b] p-2",
   },
   {
     href: "/quiz/level-1",
-    title: "Kuis Huruf",
+    title: "Kuis",
     className: "pdf-button-yellow text-black",
     iconSrc: "/assets/icons/star-gold.png",
     iconClassName: "h-6 w-6 sm:h-7 sm:w-7",
@@ -45,7 +45,7 @@ const mainMenuItems = [
   {
     href: "/angka",
     title: "Belajar Angka",
-    className: "pdf-button-green text-white",
+    className: "pdf-button-beige text-black",
     iconSrc: "/assets/icons/book-open.png",
     iconClassName: "h-6 w-6 sm:h-7 sm:w-7",
     iconWidth: 544,
@@ -54,7 +54,7 @@ const mainMenuItems = [
   {
     href: "/quiz/angka",
     title: "Kuis Angka",
-    className: "pdf-button-blue text-black",
+    className: "pdf-button-beige text-black",
     iconSrc: "/assets/icons/progress-bars.png",
     iconClassName: "h-6 w-6 sm:h-7 sm:w-7",
     iconWidth: 448,
@@ -98,10 +98,10 @@ export default async function DashboardPage() {
 
   return (
     <main className="mockup-screen">
-      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[470px] flex-col px-4 py-6 sm:max-w-[560px] sm:px-6 sm:py-8">
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[980px] flex-col px-4 py-6 sm:px-6 sm:py-10">
         <div className="flex h-full flex-col">
           <div className="flex items-start justify-between gap-3">
-            <div className="relative flex w-full max-w-[290px] items-center pl-10 sm:max-w-[340px] sm:pl-14">
+            <div className="relative flex w-full max-w-[290px] items-center pl-10 sm:max-w-[360px] sm:pl-14">
               <div className="absolute left-0 top-1/2 z-10 -translate-y-1/2 rounded-full border-4 border-white bg-[#e8f0b7] p-1 shadow-[0_12px_20px_rgba(33,29,20,0.2)]">
                 <Image
                   src="/assets/characters/avatar-boy.png"
@@ -132,20 +132,20 @@ export default async function DashboardPage() {
             </div>
           </div>
 
-          <div className="mt-5 flex flex-1 flex-col items-center text-center">
-            <h1 className="text-[2.8rem] font-black leading-[0.84] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[4.25rem]">
+          <div className="mt-6 flex flex-1 flex-col items-center justify-center text-center">
+            <h1 className="text-[3rem] font-black leading-[0.84] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[4.8rem]">
               SUNDA GAME
             </h1>
-            <p className="mt-2 text-[0.86rem] font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[0.98rem]">
+            <p className="mt-2 text-[0.86rem] font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1rem]">
               Permainan Edukasi Bahasa Sunda
             </p>
 
-            <div className="mt-7 flex w-full max-w-[370px] flex-col gap-4 sm:max-w-[440px]">
-              {mainMenuItems.map((item) => (
+            <div className="mt-8 flex w-full max-w-[380px] flex-col gap-3.5 sm:max-w-[430px]">
+              {mainMenuItems.slice(0, 6).map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  className={`${item.className} flex min-h-[60px] items-center justify-center gap-3 rounded-[1rem] px-4 py-3 text-[1rem] font-black leading-none shadow-[0_5px_0_rgba(35,28,15,0.22),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[66px] sm:text-[1.08rem]`}
+                  className={`${item.className} flex min-h-[58px] items-center justify-center gap-3 rounded-[1rem] px-4 py-3 text-[1rem] font-black leading-none shadow-[0_5px_0_rgba(35,28,15,0.22),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[64px] sm:text-[1.06rem]`}
                 >
                   <span className={item.iconWrapClassName ?? ""}>
                     <Image
@@ -161,10 +161,29 @@ export default async function DashboardPage() {
               ))}
             </div>
 
-            <form action={signOutAction} className="mt-5 w-full max-w-[370px] sm:max-w-[440px]">
+            <div className="mt-5 grid w-full max-w-[380px] grid-cols-2 gap-3 sm:max-w-[430px]">
+              {mainMenuItems.slice(6).map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className={`${item.className} flex min-h-[54px] items-center justify-center gap-2 rounded-[1rem] px-3 py-3 text-[0.92rem] font-black leading-none shadow-[0_5px_0_rgba(35,28,15,0.18),0_12px_18px_rgba(35,28,15,0.1)] sm:min-h-[58px] sm:text-[0.98rem]`}
+                >
+                  <Image
+                    src={item.iconSrc}
+                    alt=""
+                    width={item.iconWidth}
+                    height={item.iconHeight}
+                    className="h-5 w-5 sm:h-6 sm:w-6"
+                  />
+                  <span>{item.title}</span>
+                </Link>
+              ))}
+            </div>
+
+            <form action={signOutAction} className="mt-5 w-full max-w-[380px] sm:max-w-[430px]">
               <button
                 type="submit"
-                className="pdf-button-red flex min-h-[56px] w-full items-center justify-center gap-2 rounded-[1rem] px-4 py-3 text-[1rem] font-black leading-none shadow-[0_5px_0_rgba(110,48,55,0.26),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[62px] sm:text-[1.05rem]"
+                className="pdf-button-red flex min-h-[56px] w-full items-center justify-center gap-2 rounded-[1rem] px-4 py-3 text-[1rem] font-black leading-none shadow-[0_5px_0_rgba(110,48,55,0.26),0_14px_20px_rgba(35,28,15,0.12)] sm:min-h-[60px] sm:text-[1.02rem]"
               >
                 <Image
                   src="/assets/icons/cross-red.png"
