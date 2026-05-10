@@ -4,31 +4,39 @@ import { useActionState, useState } from "react";
 import { signInAction, type AuthFormState } from "@/app/(auth)/actions";
 
 const initialState: AuthFormState = {};
-const LAST_EMAIL_KEY = "aksara-sunda-last-email";
+const LAST_PLAYER_NAME_KEY = "aksara-sunda-last-player-name";
 
 export function LoginForm() {
   const [state, formAction, pending] = useActionState(signInAction, initialState);
-  const [email, setEmail] = useState(() =>
-    typeof window === "undefined" ? "" : window.localStorage.getItem(LAST_EMAIL_KEY) ?? "",
+  const [playerName, setPlayerName] = useState(() =>
+    typeof window === "undefined" ? "" : window.localStorage.getItem(LAST_PLAYER_NAME_KEY) ?? "",
   );
 
   return (
-    <form action={formAction} className="space-y-3.5 sm:space-y-5">
+    <form
+      action={formAction}
+      className="space-y-3.5 sm:space-y-5"
+      onSubmit={() => {
+        if (typeof window !== "undefined" && playerName.trim()) {
+          window.localStorage.setItem(LAST_PLAYER_NAME_KEY, playerName.trim());
+        }
+      }}
+    >
       <label className="block">
         <input
-          name="email"
-          type="email"
-          value={email}
-          onChange={(event) => setEmail(event.target.value)}
-          placeholder="Ketik email"
+          name="playerName"
+          type="text"
+          value={playerName}
+          onChange={(event) => setPlayerName(event.target.value)}
+          placeholder="Ketik nami pamaén"
           className="mockup-input text-base sm:text-xl"
-          autoComplete="email"
+          autoComplete="username"
           required
         />
       </label>
 
       <p className="-mt-1 text-left text-xs font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-sm">
-        Anggo email anu dianggo waktos ngadaptar.
+        Anggo nami pamaén anu didamel waktos daptar.
       </p>
 
       <label className="block">

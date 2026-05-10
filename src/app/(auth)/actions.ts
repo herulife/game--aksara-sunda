@@ -12,15 +12,15 @@ function mapSupabaseAuthError(message: string) {
   const normalized = message.toLowerCase();
 
   if (normalized.includes("email not confirmed")) {
-    return "Akun tacan tiasa dipake. Mangga parios email heula, teras cobian deui.";
+    return "Akun tacan tiasa dipake acan. Mangga antosan heula sakedap, teras cobian deui.";
   }
 
   if (normalized.includes("invalid login credentials")) {
-    return "Email atanapi kecap konci tacan merenah.";
+    return "Nami pamaén atanapi kecap konci tacan merenah.";
   }
 
   if (normalized.includes("user already registered")) {
-    return "Email ieu tos kadaptar. Mangga langsung lebet wae.";
+    return "Nami pamaén ieu tos kadaptar. Mangga langsung lebet waé.";
   }
 
   if (normalized.includes("email rate limit exceeded") || normalized.includes("rate limit")) {
@@ -38,36 +38,24 @@ function normalizeUsername(value: string) {
     .replace(/\s+/g, "");
 }
 
-async function findAvailableUsername(
-  supabase: Awaited<ReturnType<typeof createSupabaseServerClient>>,
-  baseValue: string,
-) {
-  const fallbackBase = normalizeUsername(baseValue) || "pamaen";
-
-  for (let index = 0; index < 8; index += 1) {
-    const candidate = index === 0 ? fallbackBase : `${fallbackBase}${Math.floor(100 + Math.random() * 900)}`;
-    const { data: available, error } = await supabase.rpc("is_username_available", {
-      input_username: candidate,
-    });
-
-    if (!error && available) {
-      return candidate;
-    }
-  }
-
-  return `${fallbackBase}${Date.now().toString().slice(-4)}`;
+function createPlayerEmail(playerKey: string) {
+  return `${playerKey}@aksarasunda.local`;
 }
 
 export async function signUpAction(
   _prevState: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
   const password = String(formData.get("password") ?? "");
   const displayName = String(formData.get("displayName") ?? "").trim();
+  const playerKey = normalizeUsername(displayName);
 
-  if (!email || !password || !displayName) {
+  if (!password || !displayName) {
     return { error: "Sadaya kolom wajib dieusian." };
+  }
+
+  if (playerKey.length < 3) {
+    return { error: "Nami pamaén kedah sahenteuna 3 huruf atanapi angka." };
   }
 
   if (password.length < 6) {
@@ -75,14 +63,24 @@ export async function signUpAction(
   }
 
   const supabase = await createSupabaseServerClient();
-  const username = await findAvailableUsername(supabase, displayName || email.split("@")[0] || "pamaen");
+  const { data: available, error: availabilityError } = await supabase.rpc("is_username_available", {
+    input_username: playerKey,
+  });
+
+  if (availabilityError) {
+    return { error: "Aya gangguan alit. Mangga cobian deui sawatara waktos deui." };
+  }
+
+  if (!available) {
+    return { error: "Nami pamaén ieu parantos dianggo. Mangga anggo nami séjén." };
+  }
 
   const { error } = await supabase.auth.signUp({
-    email,
+    email: createPlayerEmail(playerKey),
     password,
     options: {
       data: {
-        username,
+        username: playerKey,
         display_name: displayName,
       },
     },
@@ -93,7 +91,7 @@ export async function signUpAction(
   }
 
   return {
-    success: "Daptar parantos hasil. Ayeuna kantun lebet wae.",
+    success: "Daptar parantos hasil. Ayeuna tinggal lebet waé.",
   };
 }
 
@@ -101,12 +99,16 @@ export async function signInAction(
   _prevState: AuthFormState,
   formData: FormData,
 ): Promise<AuthFormState> {
-  const email = String(formData.get("email") ?? "").trim().toLowerCase();
+  const playerName = String(formData.get("playerName") ?? "").trim();
   const password = String(formData.get("password") ?? "");
 
-  if (!email || !password) {
-    return { error: "Email sareng kecap konci wajib dieusian." };
+  if (!playerName || !password) {
+    return { error: "Nami pamaén sareng kecap konci wajib dieusian." };
   }
+
+  const email = playerName.includes("@")
+    ? playerName.toLowerCase()
+    : createPlayerEmail(normalizeUsername(playerName));
 
   const supabase = await createSupabaseServerClient();
   const { error } = await supabase.auth.signInWithPassword({
