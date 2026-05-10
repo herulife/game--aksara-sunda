@@ -202,18 +202,18 @@ export default function MembacaLevelOnePage() {
               </div>
 
               <div className="pdf-panel-cream mt-4 rounded-[1.1rem] px-4 py-4 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.18)] sm:px-6">
-                <input
-                  value={answer}
-                  onChange={(event) => setAnswer(event.target.value)}
-                  placeholder="Ketik jawaban..."
-                  className="mockup-input text-base sm:text-lg"
-                />
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+                  <input
+                    value={answer}
+                    onChange={(event) => setAnswer(event.target.value)}
+                    placeholder="Ketik atau ucapkan jawaban..."
+                    className="mockup-input min-w-0 flex-1 text-base sm:text-lg"
+                  />
                   <button
                     type="button"
                     onClick={startVoiceInput}
                     disabled={!speechSupported || isListening}
-                    className={`rounded-[0.95rem] px-6 py-3 text-base font-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg ${
+                    className={`flex min-h-[56px] shrink-0 items-center justify-center rounded-[0.95rem] px-5 py-3 text-base font-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:min-h-0 sm:w-[170px] sm:text-lg ${
                       speechSupported
                         ? "pdf-button-blue text-black disabled:opacity-70"
                         : "pdf-button-muted text-white opacity-75"
@@ -221,6 +221,8 @@ export default function MembacaLevelOnePage() {
                   >
                     {isListening ? "Mendengarkan..." : "Mikrofon"}
                   </button>
+                </div>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <button
                     type="button"
                     onClick={submitAnswer}
