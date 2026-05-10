@@ -66,49 +66,49 @@ export default async function LevelPage() {
             PILIH LEVEL
           </div>
 
-          <div className="mt-5 grid gap-3">
+          <div className="mt-5 grid grid-cols-2 gap-3 sm:grid-cols-4">
             {levelCards.map((card) =>
               card.unlocked ? (
                 <Link
                   key={card.id}
                   href={card.href}
-                  className="pdf-panel-cream block rounded-[1rem] px-4 py-4 text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:px-5 sm:py-4.5"
+                  className="pdf-panel-cream block rounded-[1rem] px-3 py-4 text-center text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] transition hover:-translate-y-1 sm:px-4 sm:py-4.5"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-col items-center">
+                    <p className="text-base font-black leading-tight sm:text-xl">Level {card.number}</p>
+                    <p className="mt-1 min-h-[32px] text-[0.7rem] font-bold leading-tight text-[#5e4a2c] sm:min-h-[38px] sm:text-xs">
+                      {card.title}
+                    </p>
                     <Image
                       src="/assets/icons/star-gold.png"
                       alt=""
                       width={259}
                       height={246}
-                      className="h-9 w-9 flex-none sm:h-11 sm:w-11"
+                      className="mt-3 h-10 w-10 flex-none sm:h-12 sm:w-12"
                     />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-lg font-black leading-tight sm:text-2xl">Level {card.number}</p>
-                      <p className="mt-0.5 text-sm font-bold text-[#5e4a2c] sm:text-base">{card.title}</p>
-                    </div>
-                    <span className="rounded-full bg-[#2f8b34] px-3 py-1 text-xs font-black text-white shadow-[0_8px_16px_rgba(44,101,36,0.18)] sm:text-sm">
-                      Buka
+                    <span className="mt-3 rounded-full bg-[#2f8b34] px-3 py-1 text-[0.68rem] font-black text-white shadow-[0_8px_16px_rgba(44,101,36,0.18)] sm:text-xs">
+                      {card.number === 1 ? "0/30" : "Tersedia"}
                     </span>
                   </div>
                 </Link>
               ) : (
                 <div
                   key={card.id}
-                  className="pdf-panel-cream rounded-[1rem] px-4 py-4 text-black opacity-75 shadow-[0_16px_28px_rgba(35,28,15,0.15)] sm:px-5 sm:py-4.5"
+                  className="pdf-panel-cream rounded-[1rem] px-3 py-4 text-center text-black opacity-70 shadow-[0_16px_28px_rgba(35,28,15,0.15)] sm:px-4 sm:py-4.5"
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex flex-col items-center">
+                    <p className="text-base font-black leading-tight sm:text-xl">Level {card.number}</p>
+                    <p className="mt-1 min-h-[32px] text-[0.7rem] font-bold leading-tight text-[#5e4a2c] sm:min-h-[38px] sm:text-xs">
+                      {card.title}
+                    </p>
                     <Image
                       src="/assets/icons/star-gray.png"
                       alt=""
                       width={259}
                       height={246}
-                      className="h-9 w-9 flex-none sm:h-11 sm:w-11"
+                      className="mt-3 h-10 w-10 flex-none sm:h-12 sm:w-12"
                     />
-                    <div className="min-w-0 flex-1">
-                      <p className="text-lg font-black leading-tight sm:text-2xl">Level {card.number}</p>
-                      <p className="mt-0.5 text-sm font-bold text-[#5e4a2c] sm:text-base">{card.title}</p>
-                    </div>
-                    <span className="rounded-full bg-[#c8bc95] px-3 py-1 text-xs font-black text-[#6b5b34] sm:text-sm">
+                    <span className="mt-3 rounded-full bg-[#c8bc95] px-3 py-1 text-[0.68rem] font-black text-[#6b5b34] sm:text-xs">
                       Terkunci
                     </span>
                   </div>
@@ -126,7 +126,7 @@ export default async function LevelPage() {
               href="/dashboard"
               className="pdf-button-beige flex-1 rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
             >
-              Kembali ke Menu
+              Kembali
             </Link>
             <Link
               href="/angka"

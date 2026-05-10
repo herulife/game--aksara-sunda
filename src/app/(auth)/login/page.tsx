@@ -17,7 +17,7 @@ export default async function LoginPage() {
     <AuthShell
       headerTitle="Masuk Pemain"
       title="Masukkan Nama Pemain"
-      description="Masukkan nama pemain dan kata sandi untuk melanjutkan permainan."
+      description="Tulis nama pemain dan kata sandi untuk melanjutkan permainan."
       footerText="Belum punya akun?"
       footerLinkLabel="Daftar sekarang"
       footerLinkHref="/register"

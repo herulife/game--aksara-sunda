@@ -32,9 +32,6 @@ export default async function PengaturanPage() {
           <div className="mx-auto w-fit rounded-[0.95rem] bg-[#2f7f33] px-5 py-2 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-xl">
             PENGATURAN
           </div>
-          <p className="mx-auto mt-3 max-w-[480px] text-sm font-semibold leading-[1.45] text-white drop-shadow-[0_2px_4px_rgba(0,0,0,0.25)] sm:text-base">
-            Atur musik dan suara agar pengalaman bermain terasa nyaman.
-          </p>
 
           <SettingsPanel
             soundEnabled={profile?.sound_enabled ?? true}
@@ -46,7 +43,7 @@ export default async function PengaturanPage() {
               href="/dashboard"
               className="pdf-button-beige rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
             >
-              Kembali ke Menu
+              Menu Utama
             </Link>
             <Link
               href="/progres"

@@ -171,13 +171,13 @@ export default function TracingLevelOnePage() {
                   href="/dashboard"
                   className="pdf-button-beige flex-1 rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
                 >
-                  Kembali ke Menu
+                  Menu Utama
                 </Link>
                 <Link
                   href="/membaca/level-1"
                   className="pdf-button-yellow flex-1 rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
                 >
-                  Latihan Membaca
+                  Membaca
                 </Link>
               </div>
 
@@ -322,7 +322,7 @@ export default function TracingLevelOnePage() {
                   href="/dashboard"
                   className="pdf-button-green rounded-[0.95rem] px-6 py-3 text-center text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
                 >
-                  Kembali ke Menu
+                  Menu Utama
                 </Link>
                 <button
                   type="button"

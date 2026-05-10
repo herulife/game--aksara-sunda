@@ -15,15 +15,6 @@ const mainMenuItems = [
     iconHeight: 544,
   },
   {
-    href: "/quiz/level-1",
-    title: "Kuis Huruf",
-    className: "pdf-button-yellow text-black",
-    iconSrc: "/assets/icons/star-gold.png",
-    iconClassName: "h-6 w-6 sm:h-7 sm:w-7",
-    iconWidth: 259,
-    iconHeight: 246,
-  },
-  {
     href: "/tracing/level-1",
     title: "Latihan Menulis",
     className: "pdf-button-yellow text-black",
@@ -41,6 +32,15 @@ const mainMenuItems = [
     iconWidth: 469,
     iconHeight: 396,
     iconWrapClassName: "rounded-full bg-[#8d5bb9] p-2",
+  },
+  {
+    href: "/quiz/level-1",
+    title: "Kuis Huruf",
+    className: "pdf-button-yellow text-black",
+    iconSrc: "/assets/icons/star-gold.png",
+    iconClassName: "h-6 w-6 sm:h-7 sm:w-7",
+    iconWidth: 259,
+    iconHeight: 246,
   },
   {
     href: "/angka",
@@ -137,7 +137,7 @@ export default async function DashboardPage() {
               SUNDA GAME
             </h1>
             <p className="mt-2 text-[0.86rem] font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[0.98rem]">
-              Pilih kegiatan belajar yang ingin dimainkan
+              Permainan Edukasi Bahasa Sunda
             </p>
 
             <div className="mt-7 flex w-full max-w-[370px] flex-col gap-4 sm:max-w-[440px]">

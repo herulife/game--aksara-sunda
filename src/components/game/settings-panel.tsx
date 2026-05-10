@@ -112,15 +112,15 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
             </span>
           </div>
           <p className="mt-2.5 text-base font-black sm:text-lg">Mode Belajar</p>
-          <p className="mt-1.5 text-xl font-black sm:text-2xl">Santai</p>
+          <p className="mt-1.5 text-xl font-black sm:text-2xl">Aktif</p>
           <p className="mt-1.5 text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#5e4d31] sm:text-xs">
-            Sudah aktif
+            Siap digunakan
           </p>
         </div>
       </div>
 
       <div className="mt-4 w-full max-w-[620px] rounded-[0.95rem] bg-white/80 px-4 py-3 text-sm font-black text-[#2d5f1f] shadow-[0_12px_20px_rgba(35,28,15,0.1)] sm:text-base">
-        {message ?? "Atur musik dan suara supaya bermain terasa lebih nyaman."}
+        {message ?? "Atur musik dan suara agar permainan terasa nyaman."}
       </div>
     </>
   );

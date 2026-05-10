@@ -112,7 +112,7 @@ export default async function ProgresPage() {
               </div>
             </div>
 
-            <div className="mt-4 space-y-2">
+            <div className="mt-4 grid gap-2 sm:grid-cols-2">
               {summaryRows.map((row) => (
                 <div
                   key={row.label}
@@ -126,7 +126,7 @@ export default async function ProgresPage() {
 
             <div className="mt-4 rounded-[0.95rem] bg-[#efe4b9] px-4 py-3 text-left shadow-[0_8px_16px_rgba(35,28,15,0.1)]">
               <p className="text-sm font-black sm:text-base">Status Mode</p>
-              <div className="mt-2.5 grid gap-1.5 text-xs font-black sm:text-sm">
+              <div className="mt-2.5 grid gap-1.5 text-xs font-black sm:grid-cols-3 sm:text-sm">
                 <div className="flex items-center justify-between rounded-[0.8rem] bg-white/82 px-3 py-2">
                   <span>Kuis</span>
                   <span>{completedModes.has("quiz") ? "Selesai" : "Belum"}</span>
@@ -171,7 +171,7 @@ export default async function ProgresPage() {
               href="/dashboard"
               className="pdf-button-beige rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
             >
-              Kembali ke Menu
+              Menu Utama
             </Link>
             <Link
               href="/level"

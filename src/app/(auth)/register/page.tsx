@@ -15,9 +15,9 @@ export default async function RegisterPage() {
 
   return (
     <AuthShell
-      headerTitle="Nama Pemain Baru"
+      headerTitle="Nama Pemain"
       title="Masukkan Nama Pemain"
-      description="Isi nama pemain dan kata sandi untuk mulai bermain."
+      description="Tulis nama pemain dan kata sandi untuk mulai bermain."
       footerText="Sudah pernah mendaftar?"
       footerLinkLabel="Masuk sekarang"
       footerLinkHref="/login"

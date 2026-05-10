@@ -35,31 +35,39 @@ export default function BelajarLevelOnePage() {
             </div>
           </div>
 
-          <div className="pdf-panel-cream mt-4 rounded-[1.1rem] px-4 py-5 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.2)] sm:px-6 sm:py-6">
-            <p className="text-lg font-black sm:text-3xl">Kenali aksara Sunda berikut ini.</p>
-            <div className="font-aksara mt-4 text-[5.2rem] leading-none sm:text-[8rem]">
+          <div className="pdf-panel-cream relative mt-4 rounded-[1.1rem] px-4 py-6 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.2)] sm:px-6 sm:py-8">
+            <div className="absolute right-4 top-4 sm:right-5 sm:top-5">
+              <SpeakButton
+                text={currentItem.latin}
+                audioSrc={currentItem.audioSrc}
+                label="Dengar"
+                className="pdf-button-green flex h-12 min-h-0 w-12 items-center justify-center rounded-full p-0 text-[0] shadow-[0_14px_24px_rgba(35,28,15,0.18)]"
+              />
+            </div>
+            <div className="font-aksara mt-2 text-[6rem] leading-none sm:text-[9.5rem]">
               {currentItem.aksara}
             </div>
-            <p className="mt-4 text-xs font-black uppercase tracking-[0.18em] text-[#2d5f1f] sm:text-sm">
-              Bacaan Latin
-            </p>
-            <p className="mt-1 text-2xl font-black sm:text-4xl">{currentItem.latin}</p>
-            <p className="mt-3 text-sm font-semibold leading-[1.45] text-[#5f4d31] sm:text-base">
-              {currentItem.note}
+            <div className="mt-5 text-2xl sm:text-3xl">
+              Bacaan: <span className="font-black text-[#2f7f33]">{currentItem.latin}</span>
+            </div>
+            <p className="mt-2 text-sm font-semibold leading-[1.45] text-[#5f4d31] sm:text-base">
+              Dengarkan suaranya, lalu ulangi bacanya dengan lantang.
             </p>
           </div>
 
-          <div className="mt-4 grid gap-3 sm:grid-cols-2">
-            <SpeakButton
-              text={currentItem.latin}
-              audioSrc={currentItem.audioSrc}
-              className="pdf-panel-cream flex min-h-[58px] items-center justify-center gap-2 rounded-[0.95rem] px-4 py-3 text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:min-h-[66px] sm:text-xl"
-            />
-
+          <div className="mt-4 flex items-center justify-between gap-3">
+            <button
+              type="button"
+              onClick={() => (currentIndex === 0 ? null : setCurrentIndex((value) => value - 1))}
+              className="pdf-button-beige min-w-[138px] rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] disabled:opacity-60 sm:text-lg"
+              disabled={currentIndex === 0}
+            >
+              Sebelumnya
+            </button>
             {isLastItem ? (
               <Link
                 href="/quiz/level-1"
-                className="pdf-button-green flex min-h-[58px] items-center justify-center rounded-[0.95rem] px-4 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:min-h-[66px] sm:text-xl"
+                className="pdf-button-green min-w-[150px] rounded-[0.95rem] px-5 py-3 text-center text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
               >
                 Mulai Kuis
               </Link>
@@ -67,32 +75,20 @@ export default function BelajarLevelOnePage() {
               <button
                 type="button"
                 onClick={() => setCurrentIndex((value) => value + 1)}
-                className="pdf-button-green flex min-h-[58px] items-center justify-center rounded-[0.95rem] px-4 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:min-h-[66px] sm:text-xl"
+                className="pdf-button-green min-w-[150px] rounded-[0.95rem] px-5 py-3 text-center text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
               >
                 Selanjutnya
               </button>
             )}
           </div>
 
-          <div className="mt-4 flex gap-3">
+          <div className="mt-4 flex justify-center">
             <Link
               href="/level"
-              className="pdf-button-beige flex-1 rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
+              className="pdf-button-yellow min-w-[180px] rounded-[0.95rem] px-5 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
             >
-              Kembali
+              Kembali ke Level
             </Link>
-
-            {currentIndex > 0 ? (
-              <button
-                type="button"
-                onClick={() => setCurrentIndex((value) => value - 1)}
-                className="pdf-button-yellow flex-1 rounded-[0.95rem] px-4 py-3 text-center text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
-              >
-                Sebelumnya
-              </button>
-            ) : (
-              <div className="flex-1" />
-            )}
           </div>
         </div>
       </section>
