@@ -12,7 +12,7 @@ function mapSupabaseAuthError(message: string) {
   const normalized = message.toLowerCase();
 
   if (normalized.includes("email not confirmed")) {
-    return "Akun tacan tiasa dipaké. Mangga parios email heula, teras cobian deui.";
+    return "Akun tacan tiasa dipake. Mangga parios email heula, teras cobian deui.";
   }
 
   if (normalized.includes("invalid login credentials")) {
@@ -20,7 +20,11 @@ function mapSupabaseAuthError(message: string) {
   }
 
   if (normalized.includes("user already registered")) {
-    return "Email ieu tos kadaptar. Mangga langsung lebet waé.";
+    return "Email ieu tos kadaptar. Mangga langsung lebet wae.";
+  }
+
+  if (normalized.includes("email rate limit exceeded") || normalized.includes("rate limit")) {
+    return "Kacida seringna ngadaptar dina waktos caket. Antosan heula sawatara menit, teras cobian deui.";
   }
 
   return message;
@@ -89,7 +93,7 @@ export async function signUpAction(
   }
 
   return {
-    success: "Daptar parantos hasil. Ayeuna kantun lebet waé.",
+    success: "Daptar parantos hasil. Ayeuna kantun lebet wae.",
   };
 }
 
