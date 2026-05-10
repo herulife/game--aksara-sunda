@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useTransition } from "react";
+import { useEffect, useRef, useState, useTransition } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SpeakButton } from "@/components/game/speak-button";
@@ -9,6 +9,27 @@ import { useRewardSpeech } from "@/components/game/use-reward-speech";
 import { readingLevelOneItems } from "@/lib/game-data";
 
 type Phase = "question" | "correct" | "wrong" | "saved";
+
+type BrowserSpeechRecognition = {
+  continuous: boolean;
+  interimResults: boolean;
+  lang: string;
+  maxAlternatives: number;
+  onend: null | (() => void);
+  onerror: null | ((event: { error?: string }) => void);
+  onresult: null | ((event: { results: ArrayLike<ArrayLike<{ transcript: string }>> }) => void);
+  start: () => void;
+  stop: () => void;
+};
+
+type BrowserSpeechRecognitionCtor = new () => BrowserSpeechRecognition;
+
+declare global {
+  interface Window {
+    SpeechRecognition?: BrowserSpeechRecognitionCtor;
+    webkitSpeechRecognition?: BrowserSpeechRecognitionCtor;
+  }
+}
 
 function shuffleItems<T>(items: readonly T[]) {
   const cloned = [...items];
@@ -27,10 +48,16 @@ export default function MembacaLevelOnePage() {
   const [answer, setAnswer] = useState("");
   const [phase, setPhase] = useState<Phase>("question");
   const [saveError, setSaveError] = useState<string | null>(null);
+  const [isListening, setIsListening] = useState(false);
+  const [micError, setMicError] = useState<string | null>(null);
   const [isSaving, startSaving] = useTransition();
+  const recognitionRef = useRef<BrowserSpeechRecognition | null>(null);
 
   const currentItem = sessionItems[currentIndex];
   const isLastItem = currentIndex === sessionItems.length - 1;
+  const SpeechRecognitionCtor =
+    typeof window === "undefined" ? undefined : window.SpeechRecognition ?? window.webkitSpeechRecognition;
+  const speechSupported = Boolean(SpeechRecognitionCtor);
 
   useRewardSpeech({
     effect: phase === "correct" ? "success" : phase === "wrong" ? "error" : undefined,
@@ -51,6 +78,7 @@ export default function MembacaLevelOnePage() {
   function moveToNextQuestion() {
     setAnswer("");
     setSaveError(null);
+    setMicError(null);
     setCurrentIndex((value) => value + 1);
     setPhase("question");
   }
@@ -60,7 +88,60 @@ export default function MembacaLevelOnePage() {
     setCurrentIndex(0);
     setAnswer("");
     setSaveError(null);
+    setMicError(null);
     setPhase("question");
+  }
+
+  useEffect(() => {
+    return () => {
+      recognitionRef.current?.stop();
+      recognitionRef.current = null;
+    };
+  }, []);
+
+  function startVoiceInput() {
+    if (!SpeechRecognitionCtor) {
+      setMicError("Mikrofon belum didukung di browser ini.");
+      return;
+    }
+
+    recognitionRef.current?.stop();
+    const recognition = new SpeechRecognitionCtor();
+    recognition.continuous = false;
+    recognition.interimResults = false;
+    recognition.lang = "id-ID";
+    recognition.maxAlternatives = 1;
+    recognitionRef.current = recognition;
+    setMicError(null);
+    setIsListening(true);
+
+    recognition.onresult = (event) => {
+      const transcript = event.results[0]?.[0]?.transcript?.trim() ?? "";
+      if (transcript) {
+        setAnswer(transcript);
+      }
+    };
+
+    recognition.onerror = (event) => {
+      if (event.error === "not-allowed") {
+        setMicError("Izin mikrofon belum diberikan.");
+      } else if (event.error === "no-speech") {
+        setMicError("Suara belum terdengar. Coba bicara lagi.");
+      } else {
+        setMicError("Mikrofon belum berhasil membaca suara.");
+      }
+    };
+
+    recognition.onend = () => {
+      setIsListening(false);
+    };
+
+    try {
+      recognition.start();
+    } catch {
+      setIsListening(false);
+      setMicError("Mikrofon sedang tidak bisa dipakai.");
+    }
   }
 
   function persistReading() {
@@ -127,13 +208,35 @@ export default function MembacaLevelOnePage() {
                   placeholder="Ketik jawaban..."
                   className="mockup-input text-base sm:text-lg"
                 />
-                <button
-                  type="button"
-                  onClick={submitAnswer}
-                  className="pdf-button-green mt-4 rounded-[0.95rem] px-6 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
-                >
-                  Cek Jawaban
-                </button>
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
+                  <button
+                    type="button"
+                    onClick={startVoiceInput}
+                    disabled={!speechSupported || isListening}
+                    className={`rounded-[0.95rem] px-6 py-3 text-base font-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg ${
+                      speechSupported
+                        ? "pdf-button-blue text-black disabled:opacity-70"
+                        : "pdf-button-muted text-white opacity-75"
+                    }`}
+                  >
+                    {isListening ? "Mendengarkan..." : "Mikrofon"}
+                  </button>
+                  <button
+                    type="button"
+                    onClick={submitAnswer}
+                    className="pdf-button-green rounded-[0.95rem] px-6 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
+                  >
+                    Cek Jawaban
+                  </button>
+                </div>
+                <p className="mt-3 text-xs font-black text-[#6b5736] sm:text-sm">
+                  {speechSupported
+                    ? "Tekan tombol mikrofon lalu ucapkan jawabanmu."
+                    : "Browser ini belum mendukung input suara, jadi gunakan ketikan."}
+                </p>
+                {micError ? (
+                  <p className="mt-2 text-xs font-black text-[#bb4c35] sm:text-sm">{micError}</p>
+                ) : null}
               </div>
 
               <div className="mt-4 flex gap-3">
@@ -240,6 +343,7 @@ export default function MembacaLevelOnePage() {
                   type="button"
                   onClick={() => {
                     setAnswer("");
+                    setMicError(null);
                     setPhase("question");
                   }}
                   className="pdf-button-red rounded-[0.95rem] px-4 py-3 text-base font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
