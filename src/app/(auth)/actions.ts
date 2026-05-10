@@ -89,7 +89,7 @@ export async function signUpAction(
   }
 
   return {
-    success: "Akun hasil dijieun. Ayeuna mangga asup nganggo email jeung kata sandi.",
+    success: "Daptar hasil. Ayeuna tinggal asup wae.",
   };
 }
 

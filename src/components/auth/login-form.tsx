@@ -1,12 +1,16 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useState } from "react";
 import { signInAction, type AuthFormState } from "@/app/(auth)/actions";
 
 const initialState: AuthFormState = {};
+const LAST_EMAIL_KEY = "aksara-sunda-last-email";
 
 export function LoginForm() {
   const [state, formAction, pending] = useActionState(signInAction, initialState);
+  const [email, setEmail] = useState(() =>
+    typeof window === "undefined" ? "" : window.localStorage.getItem(LAST_EMAIL_KEY) ?? "",
+  );
 
   return (
     <form action={formAction} className="space-y-3.5 sm:space-y-5">
@@ -14,8 +18,11 @@ export function LoginForm() {
         <input
           name="email"
           type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           placeholder="Ketik email"
           className="mockup-input text-base sm:text-xl"
+          autoComplete="email"
           required
         />
       </label>
@@ -30,6 +37,7 @@ export function LoginForm() {
           type="password"
           placeholder="Ketik kata sandi"
           className="mockup-input text-base sm:text-xl"
+          autoComplete="current-password"
           required
         />
       </label>

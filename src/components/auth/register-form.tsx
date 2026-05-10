@@ -1,12 +1,27 @@
 "use client";
 
-import { useActionState } from "react";
+import { useActionState, useEffect, useState } from "react";
+import { useRouter } from "next/navigation";
 import { signUpAction, type AuthFormState } from "@/app/(auth)/actions";
 
 const initialState: AuthFormState = {};
+const LAST_EMAIL_KEY = "aksara-sunda-last-email";
 
 export function RegisterForm() {
+  const router = useRouter();
   const [state, formAction, pending] = useActionState(signUpAction, initialState);
+  const [email, setEmail] = useState("");
+
+  useEffect(() => {
+    if (!state.success || !email) return;
+
+    window.localStorage.setItem(LAST_EMAIL_KEY, email.trim().toLowerCase());
+    const timeout = window.setTimeout(() => {
+      router.push("/login");
+    }, 900);
+
+    return () => window.clearTimeout(timeout);
+  }, [email, router, state.success]);
 
   return (
     <form action={formAction} className="space-y-3.5 sm:space-y-4.5">
@@ -24,8 +39,11 @@ export function RegisterForm() {
         <input
           name="email"
           type="email"
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           placeholder="Ketik email"
           className="mockup-input text-base sm:text-xl"
+          autoComplete="email"
           required
         />
       </label>
@@ -36,6 +54,7 @@ export function RegisterForm() {
           type="password"
           placeholder="Ketik kata sandi (minimal 6)"
           className="mockup-input text-base sm:text-xl"
+          autoComplete="new-password"
           required
         />
       </label>
@@ -48,7 +67,7 @@ export function RegisterForm() {
 
       {state.success ? (
         <p className="rounded-[1.4rem] bg-[#dcefd3] px-5 py-4 text-left text-base font-semibold text-primary-strong shadow-[0_12px_22px_rgba(39,79,42,0.12)]">
-          {state.success}
+          {state.success} Email hidep langsung disimpen, sakedap deui pindah ka kaca asup.
         </p>
       ) : null}
 
