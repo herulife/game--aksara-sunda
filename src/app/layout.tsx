@@ -1,11 +1,11 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Noto_Sans_Sundanese } from "next/font/google";
+import { Baloo_2, Geist_Mono, Noto_Sans_Sundanese } from "next/font/google";
 import { BackgroundMusicProvider } from "@/components/game/background-music-provider";
 import { UiSoundProvider } from "@/components/game/ui-sound-provider";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const balooSans = Baloo_2({
+  variable: "--font-baloo-sans",
   subsets: ["latin"],
 });
 
@@ -33,7 +33,7 @@ export default function RootLayout({
   return (
     <html
       lang="id"
-      className={`${geistSans.variable} ${geistMono.variable} ${notoSansSundanese.variable} h-full antialiased`}
+      className={`${balooSans.variable} ${geistMono.variable} ${notoSansSundanese.variable} h-full antialiased`}
     >
       <body className="min-h-full flex flex-col">
         <BackgroundMusicProvider>

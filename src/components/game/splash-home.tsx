@@ -26,16 +26,16 @@ export function SplashHome({
   return (
     <main className="mockup-screen">
       <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[430px] flex-col items-center justify-center px-4 py-6 text-center sm:max-w-[540px] sm:px-6 sm:py-8">
-        <p className="mockup-title text-[1.95rem] font-semibold leading-none sm:text-[2.7rem]">
+        <p className="mockup-white-title text-[1.95rem] font-bold leading-none sm:text-[2.7rem]">
           Selamat Datang
         </p>
-        <h1 className="mt-1 text-[3.15rem] font-black leading-[0.82] tracking-[0.02em] text-[#60431e] drop-shadow-[0_3px_0_rgba(255,255,255,0.22)] sm:text-[4.85rem]">
+        <h1 className="mt-2 text-[3.4rem] font-black leading-[0.82] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[5.2rem]">
           SUNDA
           <br />
           GAME
         </h1>
-        <p className="mt-1 text-[0.84rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1.02rem]">
-          Permainan Edukasi Bahasa Sunda
+        <p className="mt-3 text-[0.9rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1.02rem]">
+          Permainan Edukasi Aksara Sunda
         </p>
 
         <div className="mt-4 flex items-end justify-center">
@@ -44,19 +44,19 @@ export function SplashHome({
             alt="Karakter pemain Aksara Sunda"
             width={1383}
             height={922}
-            className="h-auto w-[248px] drop-shadow-[0_16px_24px_rgba(39,30,14,0.16)] sm:w-[344px]"
+            className="h-auto w-[248px] drop-shadow-[0_18px_28px_rgba(39,30,14,0.22)] sm:w-[344px]"
             priority
           />
         </div>
 
         <Link
           href={startHref}
-          className="pdf-button-green relative z-20 mt-3 flex min-h-[58px] w-full max-w-[228px] touch-manipulation items-center justify-center rounded-[1rem] px-7 text-[1.58rem] font-black tracking-[0.05em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[70px] sm:max-w-[270px] sm:text-[2.1rem]"
+          className="pdf-button-green relative z-20 mt-4 flex min-h-[58px] w-full max-w-[228px] touch-manipulation items-center justify-center rounded-[1rem] px-7 text-[1.58rem] font-black tracking-[0.05em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[70px] sm:max-w-[270px] sm:text-[2.1rem]"
         >
           MULAI
         </Link>
 
-        <div className="relative z-20 mt-5 grid w-full max-w-[334px] grid-cols-2 gap-4">
+        <div className="relative z-20 mt-6 grid w-full max-w-[334px] grid-cols-2 gap-4">
           <button
             type="button"
             onClick={() => setShowGuide(true)}
@@ -69,7 +69,7 @@ export function SplashHome({
               height={544}
               className="h-5 w-5 sm:h-6 sm:w-6"
             />
-            <span>PETUNJUK</span>
+            <span>Petunjuk</span>
           </button>
           <button
             type="button"
@@ -85,7 +85,7 @@ export function SplashHome({
                 className="h-3 w-3 sm:h-3.5 sm:w-3.5"
               />
             </span>
-            <span>{musicEnabled ? "MUSIK ON" : "MUSIK OFF"}</span>
+            <span>{musicEnabled ? "Musik ON" : "Musik OFF"}</span>
           </button>
         </div>
 

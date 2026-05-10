@@ -36,14 +36,14 @@ export function LoginForm() {
       </label>
 
       <p className="-mt-1 text-left text-xs font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-sm">
-        Gunakan nama pemain yang dibuat saat daftar.
+        Gunakan nama pemain yang sudah pernah didaftarkan.
       </p>
 
       <label className="block">
         <input
           name="password"
           type="password"
-          placeholder="Ketik kata sandi"
+          placeholder="Ketik sandi pemain"
           className="mockup-input text-base sm:text-xl"
           autoComplete="current-password"
           required
@@ -61,7 +61,7 @@ export function LoginForm() {
         disabled={pending}
         className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.3rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[60px] sm:max-w-[234px] sm:text-[1.5rem]"
       >
-        {pending ? "MEMPROSES..." : "MASUK"}
+        {pending ? "MEMPROSES..." : "MULAI"}
       </button>
     </form>
   );

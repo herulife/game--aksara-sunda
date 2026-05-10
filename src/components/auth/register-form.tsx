@@ -42,7 +42,7 @@ export function RegisterForm() {
         <input
           name="password"
           type="password"
-          placeholder="Ketik kata sandi (minimal 6)"
+          placeholder="Buat sandi pemain (minimal 6)"
           className="mockup-input text-base sm:text-xl"
           autoComplete="new-password"
           required
@@ -66,7 +66,7 @@ export function RegisterForm() {
         disabled={pending}
         className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.3rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[60px] sm:max-w-[234px] sm:text-[1.5rem]"
       >
-        {pending ? "MEMPROSES..." : "DAFTAR"}
+        {pending ? "MEMPROSES..." : "LANJUT"}
       </button>
     </form>
   );

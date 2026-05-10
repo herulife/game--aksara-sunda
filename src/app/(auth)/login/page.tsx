@@ -15,11 +15,11 @@ export default async function LoginPage() {
 
   return (
     <AuthShell
-      headerTitle="Masuk Pemain"
+      headerTitle="Pemain Lama"
       title="Masukkan Nama Pemain"
-      description="Tulis nama pemain dan kata sandi untuk melanjutkan permainan."
-      footerText="Belum punya akun?"
-      footerLinkLabel="Daftar sekarang"
+      description="Tulis nama pemain dan sandi agar permainan bisa dilanjutkan."
+      footerText="Belum punya nama pemain?"
+      footerLinkLabel="Buat sekarang"
       footerLinkHref="/register"
     >
       <LoginForm />

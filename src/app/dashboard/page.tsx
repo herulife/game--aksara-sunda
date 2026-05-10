@@ -111,19 +111,19 @@ export default async function DashboardPage() {
                   className="h-[46px] w-[46px] rounded-full object-cover sm:h-[58px] sm:w-[58px]"
                 />
               </div>
-              <div className="mockup-card flex min-h-[56px] w-full items-center justify-center rounded-[1rem] px-3 py-2 pl-7 text-center text-[1rem] font-black text-black sm:min-h-[66px] sm:px-4 sm:py-3 sm:pl-9 sm:text-[1.1rem]">
+              <div className="mockup-avatar-card flex min-h-[56px] w-full items-center justify-center rounded-[1rem] px-3 py-2 pl-7 text-center text-[1rem] font-black text-black sm:min-h-[66px] sm:px-4 sm:py-3 sm:pl-9 sm:text-[1.1rem]">
                 Halo, {profile?.display_name ?? "Pemain"}!
               </div>
             </div>
 
-            <div className="grid w-[118px] gap-2 sm:w-[132px]">
-              <div className="pdf-panel-cream rounded-[0.95rem] px-3 py-2 text-center text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)]">
+            <div className="flex gap-2">
+              <div className="mockup-stat-card flex min-h-[56px] w-[88px] flex-col items-center justify-center rounded-[1rem] px-3 py-2 text-center text-black sm:min-h-[66px] sm:w-[98px]">
                 <div className="text-xs font-black leading-none sm:text-sm">Level</div>
                 <div className="mt-1 text-xl font-black leading-none sm:text-2xl">
                   {profile?.current_level ?? 1}
                 </div>
               </div>
-              <div className="pdf-panel-cream rounded-[0.95rem] px-3 py-2 text-center text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)]">
+              <div className="mockup-stat-card flex min-h-[56px] w-[88px] flex-col items-center justify-center rounded-[1rem] px-3 py-2 text-center text-black sm:min-h-[66px] sm:w-[98px]">
                 <div className="text-xs font-black leading-none sm:text-sm">Skor</div>
                 <div className="mt-1 text-xl font-black leading-none sm:text-2xl">
                   {profile?.total_score ?? 0}
@@ -133,11 +133,11 @@ export default async function DashboardPage() {
           </div>
 
           <div className="mt-6 flex flex-1 flex-col items-center justify-center text-center">
-            <h1 className="text-[3rem] font-black leading-[0.84] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[4.8rem]">
+            <h1 className="text-[3.05rem] font-black leading-[0.84] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[4.95rem]">
               SUNDA GAME
             </h1>
-            <p className="mt-2 text-[0.86rem] font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1rem]">
-              Permainan Edukasi Bahasa Sunda
+            <p className="mt-3 text-[0.86rem] font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1rem]">
+              Permainan Edukasi Aksara Sunda
             </p>
 
             <div className="mt-8 flex w-full max-w-[380px] flex-col gap-3.5 sm:max-w-[430px]">
