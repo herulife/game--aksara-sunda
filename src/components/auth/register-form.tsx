@@ -29,7 +29,7 @@ export function RegisterForm() {
         <input
           name="displayName"
           type="text"
-          placeholder="Ketik ngaran pamaen"
+          placeholder="Ketik nami pamaén"
           className="mockup-input text-base sm:text-xl"
           required
         />
@@ -52,7 +52,7 @@ export function RegisterForm() {
         <input
           name="password"
           type="password"
-          placeholder="Ketik kata sandi (minimal 6)"
+          placeholder="Ketik kecap konci (sahenteuna 6)"
           className="mockup-input text-base sm:text-xl"
           autoComplete="new-password"
           required
@@ -67,7 +67,7 @@ export function RegisterForm() {
 
       {state.success ? (
         <p className="rounded-[1.4rem] bg-[#dcefd3] px-5 py-4 text-left text-base font-semibold text-primary-strong shadow-[0_12px_22px_rgba(39,79,42,0.12)]">
-          {state.success} Email hidep langsung disimpen, sakedap deui pindah ka kaca asup.
+          {state.success} Email hidep langsung kasimpen, sakedap deui bade dipindahkeun ka kaca lebet.
         </p>
       ) : null}
 
@@ -76,7 +76,7 @@ export function RegisterForm() {
         disabled={pending}
         className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.35rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[62px] sm:max-w-[240px] sm:text-[1.55rem]"
       >
-        {pending ? "NGAMUAT..." : "DAFTAR"}
+        {pending ? "NUJU MUKA..." : "DAPTAR"}
       </button>
     </form>
   );

@@ -7,7 +7,7 @@ import { createSupabaseServerClient } from "@/lib/supabase/server";
 const mainMenuItems = [
   {
     href: "/level",
-    title: "Mulai Belajar",
+    title: "Mimitian Diajar",
     className: "pdf-button-green text-white",
     iconSrc: "/assets/icons/book-open.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -16,7 +16,7 @@ const mainMenuItems = [
   },
   {
     href: "/tracing/level-1",
-    title: "Menulis",
+    title: "Nulis",
     className: "pdf-button-yellow text-black",
     iconSrc: "/assets/icons/pencil.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -25,7 +25,7 @@ const mainMenuItems = [
   },
   {
     href: "/angka",
-    title: "Belajar Angka",
+    title: "Diajar Angka",
     className: "pdf-button-yellow text-black",
     iconSrc: "/assets/icons/star-gold.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -34,7 +34,7 @@ const mainMenuItems = [
   },
   {
     href: "/quiz/level-1",
-    title: "Kuis Huruf",
+    title: "Kuis Aksara",
     className: "pdf-button-green text-white",
     iconSrc: "/assets/icons/book-open.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -52,7 +52,7 @@ const mainMenuItems = [
   },
   {
     href: "/membaca/level-1",
-    title: "Membaca",
+    title: "Maca",
     className: "pdf-button-purple text-black",
     iconSrc: "/assets/icons/speaker-white.png",
     iconClassName: "h-6 w-6 sm:h-8 sm:w-8",
@@ -62,7 +62,7 @@ const mainMenuItems = [
   },
   {
     href: "/progres",
-    title: "Progres",
+    title: "Kamajuan",
     className: "pdf-button-blue text-black",
     iconSrc: "/assets/icons/progress-bars.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -71,7 +71,7 @@ const mainMenuItems = [
   },
   {
     href: "/pengaturan",
-    title: "Pengaturan",
+    title: "Setélan",
     className: "pdf-button-beige text-black",
     iconSrc: "/assets/icons/star-gray.png",
     iconClassName: "h-7 w-7 sm:h-9 sm:w-9",
@@ -99,7 +99,7 @@ export default async function DashboardPage() {
   return (
     <main className="mockup-screen">
       <header className="mockup-header px-4 py-3 text-lg sm:py-4 sm:text-2xl">
-        Menu Utama
+        Ménu Utama
       </header>
 
       <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[430px] flex-col px-4 pt-1 sm:max-w-[480px] sm:px-5 sm:pt-2">
@@ -117,7 +117,7 @@ export default async function DashboardPage() {
                   />
                 </div>
                 <div className="mockup-card flex min-h-[50px] w-full items-center justify-center rounded-[0.95rem] px-3 py-2 pl-6 text-center text-[0.95rem] font-black text-black sm:min-h-[66px] sm:px-4 sm:py-3 sm:pl-9 sm:text-xl">
-                  Halo, {profile?.display_name ?? "Pamaen"}!
+                  Wilujeng sumping, {profile?.display_name ?? "Pamaén"}!
                 </div>
               </div>
             </div>
@@ -139,7 +139,7 @@ export default async function DashboardPage() {
                 </div>
               </div>
               <div className="pdf-panel-cream rounded-[0.95rem] px-3 py-2.5 text-center text-black shadow-[0_12px_22px_rgba(35,28,15,0.16)] sm:py-3.5">
-                <div className="text-base font-black leading-none sm:text-2xl">Skor</div>
+                <div className="text-base font-black leading-none sm:text-2xl">Peunteun</div>
                 <div className="mt-1 flex justify-center sm:mt-2">
                   <Image
                     src="/assets/icons/star-gold.png"
@@ -159,7 +159,7 @@ export default async function DashboardPage() {
               SUNDA GAME
             </h1>
             <p className="mt-0.5 text-center text-[0.76rem] font-black text-black sm:text-[0.98rem]">
-              Sundanese Educational Game
+              Kaulinan Atikan Basa Sunda
             </p>
           </div>
 
@@ -197,7 +197,7 @@ export default async function DashboardPage() {
                   height={425}
                   className="h-5 w-5 sm:h-6 sm:w-6"
                 />
-                <span>Keluar</span>
+                <span>Kaluar</span>
               </button>
             </form>
           </div>

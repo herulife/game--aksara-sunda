@@ -15,11 +15,11 @@ export default async function RegisterPage() {
 
   return (
     <AuthShell
-      headerTitle="Daptar Pamaen Anyar"
-      title="Jieun Akun Aksara Sunda"
-      description="Eusian ngaran pamaen, email, jeung kata sandi pikeun ngamimitian maen."
-      footerText="Geus boga akun?"
-      footerLinkLabel="Asup di dieu"
+      headerTitle="Daptar Pamaén Anyar"
+      title="Damel Akun Aksara Sunda"
+      description="Eusian nami pamaén, email, sareng kecap konci kanggo ngamimitian maén."
+      footerText="Parantos gaduh akun?"
+      footerLinkLabel="Lebet di dieu"
       footerLinkHref="/login"
     >
       <RegisterForm />

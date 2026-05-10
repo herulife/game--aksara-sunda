@@ -12,15 +12,15 @@ function mapSupabaseAuthError(message: string) {
   const normalized = message.toLowerCase();
 
   if (normalized.includes("email not confirmed")) {
-    return "Akun can siap dipake. Pariksa email heula, tuluy cobian deui.";
+    return "Akun tacan tiasa dipaké. Mangga parios email heula, teras cobian deui.";
   }
 
   if (normalized.includes("invalid login credentials")) {
-    return "Email atawa kata sandi can luyu.";
+    return "Email atanapi kecap konci tacan merenah.";
   }
 
   if (normalized.includes("user already registered")) {
-    return "Email ieu geus kadaptar. Mangga langsung asup wae.";
+    return "Email ieu tos kadaptar. Mangga langsung lebet waé.";
   }
 
   return message;
@@ -63,11 +63,11 @@ export async function signUpAction(
   const displayName = String(formData.get("displayName") ?? "").trim();
 
   if (!email || !password || !displayName) {
-    return { error: "Semua field wajib diisi." };
+    return { error: "Sadaya kolom wajib dieusian." };
   }
 
   if (password.length < 6) {
-    return { error: "Password minimal 6 karakter." };
+    return { error: "Kecap konci sahenteuna 6 karakter." };
   }
 
   const supabase = await createSupabaseServerClient();
@@ -89,7 +89,7 @@ export async function signUpAction(
   }
 
   return {
-    success: "Daptar hasil. Ayeuna tinggal asup wae.",
+    success: "Daptar parantos hasil. Ayeuna kantun lebet waé.",
   };
 }
 
@@ -101,7 +101,7 @@ export async function signInAction(
   const password = String(formData.get("password") ?? "");
 
   if (!email || !password) {
-    return { error: "Email jeung kata sandi wajib dieusian." };
+    return { error: "Email sareng kecap konci wajib dieusian." };
   }
 
   const supabase = await createSupabaseServerClient();

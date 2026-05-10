@@ -59,10 +59,10 @@ export default async function ProgresPage() {
       : 0;
 
   const summaryRows = [
-    { label: "Total Skor", value: String(profile?.total_score ?? 0) },
-    { label: "Level Tertinggi", value: String(profile?.current_level ?? 1) },
-    { label: "Total Bermain", value: `${totalGames} Kali` },
-    { label: "Rata-rata Skor", value: String(averageScore) },
+    { label: "Jumlah Peunteun", value: String(profile?.total_score ?? 0) },
+    { label: "Level Pangluhurna", value: String(profile?.current_level ?? 1) },
+    { label: "Sabaraha Kali Maén", value: `${totalGames} Kali` },
+    { label: "Peunteun Rata-rata", value: String(averageScore) },
   ];
 
   const historyRows =
@@ -84,7 +84,7 @@ export default async function ProgresPage() {
   return (
     <main className="mockup-screen">
       <header className="mockup-header px-4 py-3 text-lg sm:py-4 sm:text-2xl">
-        Progres Pembelajaran
+        Kamajuan Diajar
       </header>
 
       <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[500px] flex-col items-center px-4 text-center sm:px-5">
@@ -100,7 +100,7 @@ export default async function ProgresPage() {
                 className="h-[46px] w-[46px] rounded-full object-cover"
               />
             </div>
-              <p className="text-lg font-black sm:text-xl">{profile?.display_name ?? "Pamaen"}</p>
+              <p className="text-lg font-black sm:text-xl">{profile?.display_name ?? "Pamaén"}</p>
             </div>
             <div className="rounded-[0.8rem] bg-[#dce7a0] px-3 py-1 text-sm font-black text-[#30461d] sm:text-base">
               Level {profile?.current_level ?? 1}
@@ -120,25 +120,25 @@ export default async function ProgresPage() {
           </div>
 
           <div className="mt-3 rounded-[0.9rem] bg-[#efe4b9] px-4 py-3 text-left shadow-[0_8px_16px_rgba(35,28,15,0.1)]">
-            <p className="text-sm font-black sm:text-base">Status Mode</p>
+            <p className="text-sm font-black sm:text-base">Kaayaan Mode</p>
             <div className="mt-2.5 grid gap-1.5 text-xs font-black sm:text-sm">
               <div className="flex items-center justify-between rounded-[0.8rem] bg-white/82 px-3 py-2">
                 <span>Kuis</span>
-                <span>{completedModes.has("quiz") ? "Selesai" : "Belum"}</span>
+                <span>{completedModes.has("quiz") ? "Réngsé" : "Acan"}</span>
               </div>
               <div className="flex items-center justify-between rounded-[0.8rem] bg-white/82 px-3 py-2">
-                <span>Menulis</span>
-                <span>{completedModes.has("tracing") ? "Selesai" : "Belum"}</span>
+                <span>Nulis</span>
+                <span>{completedModes.has("tracing") ? "Réngsé" : "Acan"}</span>
               </div>
               <div className="flex items-center justify-between rounded-[0.8rem] bg-white/82 px-3 py-2">
-                <span>Membaca</span>
-                <span>{completedModes.has("reading") ? "Selesai" : "Belum"}</span>
+                <span>Maca</span>
+                <span>{completedModes.has("reading") ? "Réngsé" : "Acan"}</span>
               </div>
             </div>
           </div>
 
           <div className="mt-3 rounded-[0.9rem] bg-[#efe4b9] px-4 py-3 text-left shadow-[0_8px_16px_rgba(35,28,15,0.1)]">
-            <p className="text-sm font-black sm:text-base">Riwayat Skor</p>
+            <p className="text-sm font-black sm:text-base">Runtuyan Peunteun</p>
             <div className="mt-2.5 space-y-1.5">
               {historyRows.length > 0 ? (
                 historyRows.map((row) => (
@@ -154,7 +154,7 @@ export default async function ProgresPage() {
                 ))
               ) : (
                   <div className="rounded-[0.8rem] bg-white/82 px-3 py-2.5 text-xs font-black shadow-[0_6px_12px_rgba(35,28,15,0.08)] sm:text-sm">
-                    Belum ada riwayat skor tersimpan.
+                    Tacan aya runtuyan peunteun nu kasimpen.
                   </div>
                 )}
             </div>

@@ -117,14 +117,14 @@ export default async function LevelPage() {
         </div>
 
         <div className="pdf-button-green mt-3 w-full rounded-[0.9rem] px-4 py-2 text-xs font-black leading-[1.25] text-white shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.9rem]">
-          Selesaikan level sebelumnya untuk membuka level berikutnya.
+          Réngsékeun heula level saméméhna sangkan level satuluyna kabuka.
         </div>
 
         <Link
           href="/angka"
           className="pdf-button-yellow mt-2 w-full rounded-[0.9rem] px-4 py-2 text-xs font-black leading-[1.25] text-black shadow-[0_12px_20px_rgba(35,28,15,0.16)] sm:text-[0.9rem]"
         >
-          Buka menu Belajar Angka Sunda
+          Buka ménu diajar angka Sunda
         </Link>
 
         <BottomNav active="/level" className="mt-3" />

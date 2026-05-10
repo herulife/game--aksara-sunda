@@ -42,10 +42,10 @@ function SettingToggleCard({
       </div>
       <p className="mt-2.5 text-base font-black sm:text-lg">{title}</p>
       <p className={`mt-1.5 text-xl font-black sm:text-2xl ${value ? "text-[#2f8b34]" : "text-[#bb4c35]"}`}>
-        {value ? "Aktif" : "Nonaktif"}
+        {value ? "Hurung" : "Pareum"}
       </p>
       <p className="mt-1.5 text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#5e4d31] sm:text-xs">
-        Ketuk untuk ubah
+        Ketok pikeun ngarobah
       </p>
     </button>
   );
@@ -65,7 +65,7 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
     setSound(nextSound);
     setMusic(nextMusic);
     window.localStorage.setItem(SOUND_PREF_KEY, String(nextSound));
-    setMessage("Menyimpan...");
+    setMessage("Nuju nyimpen...");
 
     startTransition(async () => {
       const result = await updateSettingsAction({
@@ -97,7 +97,7 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
           disabled={isPending}
         />
         <SettingToggleCard
-          title="Suara"
+          title="Sora"
           value={sound}
           icon="/assets/icons/speaker-white.png"
           width={469}
@@ -111,8 +111,8 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
               <Image src="/assets/icons/star-gold.png" alt="" width={259} height={246} className="h-5 w-5 sm:h-6 sm:w-6" />
             </span>
           </div>
-          <p className="mt-2.5 text-base font-black sm:text-lg">Tema Belajar</p>
-          <p className="mt-1.5 text-xl font-black sm:text-2xl">Lembut</p>
+          <p className="mt-2.5 text-base font-black sm:text-lg">Téma Diajar</p>
+          <p className="mt-1.5 text-xl font-black sm:text-2xl">Leuleus</p>
           <p className="mt-1.5 text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#5e4d31] sm:text-xs">
             Geus hurung
           </p>
@@ -120,7 +120,7 @@ export function SettingsPanel({ soundEnabled, musicEnabled }: SettingsPanelProps
       </div>
 
       <div className="mt-4 w-full max-w-[460px] rounded-[0.9rem] bg-white/80 px-4 py-3 text-sm font-black text-[#2d5f1f] shadow-[0_12px_20px_rgba(35,28,15,0.1)] sm:text-base">
-        {message ?? "Atur musik jeung sora supaya maenna leuwih merenah."}
+        {message ?? "Atur musik jeung sora sangkan maénna leuwih merenah."}
       </div>
     </>
   );

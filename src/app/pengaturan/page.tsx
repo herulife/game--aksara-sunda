@@ -27,13 +27,13 @@ export default async function PengaturanPage() {
   return (
     <main className="mockup-screen">
       <header className="mockup-header px-4 py-3 text-lg sm:py-4 sm:text-2xl">
-        Pengaturan
+        Setélan
       </header>
 
       <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[500px] flex-col items-center px-4 text-center sm:px-5">
-        <h1 className="responsive-title mockup-title">PENGATURAN</h1>
+        <h1 className="responsive-title mockup-title">SETÉLAN</h1>
         <p className="responsive-subtitle mockup-white-title mt-1">
-          Atur sora jeung pangalaman maen supaya leuwih merenah.
+          Atur sora jeung pangalaman maén sangkan leuwih merenah tur ngeunah dipaké.
         </p>
 
         <SettingsPanel

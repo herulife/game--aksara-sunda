@@ -28,14 +28,14 @@ export function LoginForm() {
       </label>
 
       <p className="-mt-1 text-left text-xs font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-sm">
-        Pakai email nu dipake waktu daptar.
+        Anggo email anu dianggo waktos ngadaptar.
       </p>
 
       <label className="block">
         <input
           name="password"
           type="password"
-          placeholder="Ketik kata sandi"
+          placeholder="Ketik kecap konci"
           className="mockup-input text-base sm:text-xl"
           autoComplete="current-password"
           required
@@ -53,7 +53,7 @@ export function LoginForm() {
         disabled={pending}
         className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.35rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[62px] sm:max-w-[240px] sm:text-[1.55rem]"
       >
-        {pending ? "NGAMUAT..." : "MULAI"}
+        {pending ? "NUJU MUKA..." : "LEBET"}
       </button>
     </form>
   );
