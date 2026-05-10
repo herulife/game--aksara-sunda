@@ -4,7 +4,7 @@ import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { SpeakButton } from "@/components/game/speak-button";
-import { learningLevelOneItems } from "@/lib/game-data";
+import { learningLevelOneItems, learningRarangkenItems } from "@/lib/game-data";
 
 function shuffleItems<T>(items: readonly T[]) {
   const cloned = [...items];
@@ -27,7 +27,7 @@ export default function BelajarLevelOnePage() {
         Belajar Level 1
       </header>
 
-      <section className="screen-stage relative z-10 mx-auto flex w-full max-w-[760px] flex-col items-center px-3 text-center sm:px-5">
+      <section className="screen-stage-scroll relative z-10 mx-auto flex w-full max-w-[760px] flex-col items-center px-3 text-center sm:px-5">
         <div className="flex w-full max-w-[620px] flex-wrap items-start justify-between gap-3">
           <div className="pdf-button-green rounded-[1rem] px-4 py-2 text-left text-lg font-black text-white shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:rounded-[1.2rem] sm:px-5 sm:py-2.5 sm:text-[1.8rem]">
             Huruf Dasar
@@ -89,6 +89,39 @@ export default function BelajarLevelOnePage() {
               </div>
             </div>
           ))}
+        </div>
+
+        <div className="pdf-panel-cream mt-3 w-full max-w-[620px] rounded-[1.05rem] px-4 py-3.5 text-left text-black shadow-[0_16px_28px_rgba(35,28,15,0.18)] sm:rounded-[1.25rem] sm:px-6 sm:py-5">
+          <p className="text-center text-lg font-black sm:text-[1.6rem]">Tanda Baca Aksara Sunda</p>
+          <p className="mt-1 text-center text-sm font-semibold text-[#5f4d31] sm:text-base">
+            Selain huruf dasar, aksara Sunda juga memakai tanda bunyi untuk mengubah cara baca.
+          </p>
+
+          <div className="mt-3 grid gap-2 sm:grid-cols-2">
+            {learningRarangkenItems.map((item) => (
+              <div
+                key={item.id}
+                className="rounded-[1rem] bg-white/80 px-4 py-3 shadow-[0_12px_22px_rgba(35,28,15,0.12)]"
+              >
+                <div className="flex items-center justify-between gap-3">
+                  <div>
+                    <p className="text-sm font-black sm:text-base">{item.title}</p>
+                    <p className="mt-1 text-xs font-semibold text-[#5f4d31] sm:text-sm">{item.note}</p>
+                  </div>
+                  <div className="font-aksara text-[1.5rem] leading-none sm:text-[2rem]">{item.mark}</div>
+                </div>
+                <div className="mt-3 flex items-center justify-between rounded-[0.9rem] bg-[#fffaf0] px-3 py-2">
+                  <div className="font-aksara text-[1.9rem] leading-none sm:text-[2.6rem]">{item.example}</div>
+                  <div className="text-right">
+                    <p className="text-[0.68rem] font-black uppercase tracking-[0.12em] text-[#2d5f1f] sm:text-xs">
+                      Contoh
+                    </p>
+                    <p className="text-base font-black sm:text-lg">{item.latin}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
 
         <div className="mt-3 flex w-full max-w-[620px] justify-start">

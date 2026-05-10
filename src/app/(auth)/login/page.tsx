@@ -15,11 +15,11 @@ export default async function LoginPage() {
 
   return (
     <AuthShell
-      headerTitle="Lebet Kaulinan"
-      title="Lebet Ka Aksara Sunda"
-      description="Lebetkeun nami pamaén sareng kecap konci sangkan tiasa langsung neraskeun maén."
-      footerText="Tacan gaduh akun?"
-      footerLinkLabel="Daptar di dieu"
+      headerTitle="Masuk Permainan"
+      title="Masuk ke Aksara Sunda"
+      description="Masukkan nama pemain dan kata sandi agar bisa langsung melanjutkan permainan."
+      footerText="Belum punya akun?"
+      footerLinkLabel="Daftar di sini"
       footerLinkHref="/register"
     >
       <LoginForm />

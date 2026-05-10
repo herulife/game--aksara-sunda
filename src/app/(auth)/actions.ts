@@ -12,19 +12,19 @@ function mapSupabaseAuthError(message: string) {
   const normalized = message.toLowerCase();
 
   if (normalized.includes("email not confirmed")) {
-    return "Akun tacan tiasa dipake acan. Mangga antosan heula sakedap, teras cobian deui.";
+    return "Akun belum bisa digunakan. Coba lagi sebentar lagi.";
   }
 
   if (normalized.includes("invalid login credentials")) {
-    return "Nami pamaén atanapi kecap konci tacan merenah.";
+    return "Nama pemain atau kata sandi belum sesuai.";
   }
 
   if (normalized.includes("user already registered")) {
-    return "Nami pamaén ieu tos kadaptar. Mangga langsung lebet waé.";
+    return "Nama pemain ini sudah terdaftar. Silakan langsung masuk.";
   }
 
   if (normalized.includes("email rate limit exceeded") || normalized.includes("rate limit")) {
-    return "Kacida seringna ngadaptar dina waktos caket. Antosan heula sawatara menit, teras cobian deui.";
+    return "Terlalu sering mendaftar dalam waktu dekat. Tunggu beberapa menit, lalu coba lagi.";
   }
 
   return message;
@@ -51,15 +51,15 @@ export async function signUpAction(
   const playerKey = normalizeUsername(displayName);
 
   if (!password || !displayName) {
-    return { error: "Sadaya kolom wajib dieusian." };
+    return { error: "Semua kolom wajib diisi." };
   }
 
   if (playerKey.length < 3) {
-    return { error: "Nami pamaén kedah sahenteuna 3 huruf atanapi angka." };
+    return { error: "Nama pemain minimal 3 huruf atau angka." };
   }
 
   if (password.length < 6) {
-    return { error: "Kecap konci sahenteuna 6 karakter." };
+    return { error: "Kata sandi minimal 6 karakter." };
   }
 
   const supabase = await createSupabaseServerClient();
@@ -68,11 +68,11 @@ export async function signUpAction(
   });
 
   if (availabilityError) {
-    return { error: "Aya gangguan alit. Mangga cobian deui sawatara waktos deui." };
+    return { error: "Sedang ada gangguan kecil. Coba lagi beberapa saat lagi." };
   }
 
   if (!available) {
-    return { error: "Nami pamaén ieu parantos dianggo. Mangga anggo nami séjén." };
+    return { error: "Nama pemain ini sudah dipakai. Silakan gunakan nama lain." };
   }
 
   const { error } = await supabase.auth.signUp({
@@ -91,7 +91,7 @@ export async function signUpAction(
   }
 
   return {
-    success: "Daptar parantos hasil. Ayeuna tinggal lebet waé.",
+    success: "Pendaftaran berhasil. Sekarang tinggal masuk saja.",
   };
 }
 
@@ -103,7 +103,7 @@ export async function signInAction(
   const password = String(formData.get("password") ?? "");
 
   if (!playerName || !password) {
-    return { error: "Nami pamaén sareng kecap konci wajib dieusian." };
+    return { error: "Nama pemain dan kata sandi wajib diisi." };
   }
 
   const email = playerName.includes("@")

@@ -31,7 +31,7 @@ export function RegisterForm() {
           type="text"
           value={playerName}
           onChange={(event) => setPlayerName(event.target.value)}
-          placeholder="Ketik nami pamaén"
+          placeholder="Ketik nama pemain"
           className="mockup-input text-base sm:text-xl"
           autoComplete="username"
           required
@@ -42,7 +42,7 @@ export function RegisterForm() {
         <input
           name="password"
           type="password"
-          placeholder="Ketik kecap konci (sahenteuna 6)"
+          placeholder="Ketik kata sandi (minimal 6)"
           className="mockup-input text-base sm:text-xl"
           autoComplete="new-password"
           required
@@ -57,7 +57,7 @@ export function RegisterForm() {
 
       {state.success ? (
         <p className="rounded-[1.4rem] bg-[#dcefd3] px-5 py-4 text-left text-base font-semibold text-primary-strong shadow-[0_12px_22px_rgba(39,79,42,0.12)]">
-          {state.success} Nami pamaén hidep langsung kasimpen, sakedap deui bade dipindahkeun ka kaca lebet.
+          {state.success} Nama pemainmu langsung disimpan, sebentar lagi kamu dipindahkan ke halaman masuk.
         </p>
       ) : null}
 
@@ -66,7 +66,7 @@ export function RegisterForm() {
         disabled={pending}
         className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.35rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[62px] sm:max-w-[240px] sm:text-[1.55rem]"
       >
-        {pending ? "NUJU MUKA..." : "DAPTAR"}
+        {pending ? "MEMPROSES..." : "DAFTAR"}
       </button>
     </form>
   );

@@ -28,7 +28,7 @@ export function LoginForm() {
           type="text"
           value={playerName}
           onChange={(event) => setPlayerName(event.target.value)}
-          placeholder="Ketik nami pamaén"
+          placeholder="Ketik nama pemain"
           className="mockup-input text-base sm:text-xl"
           autoComplete="username"
           required
@@ -36,14 +36,14 @@ export function LoginForm() {
       </label>
 
       <p className="-mt-1 text-left text-xs font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-sm">
-        Anggo nami pamaén anu didamel waktos daptar.
+        Gunakan nama pemain yang dibuat saat daftar.
       </p>
 
       <label className="block">
         <input
           name="password"
           type="password"
-          placeholder="Ketik kecap konci"
+          placeholder="Ketik kata sandi"
           className="mockup-input text-base sm:text-xl"
           autoComplete="current-password"
           required
@@ -61,7 +61,7 @@ export function LoginForm() {
         disabled={pending}
         className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.35rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[62px] sm:max-w-[240px] sm:text-[1.55rem]"
       >
-        {pending ? "NUJU MUKA..." : "LEBET"}
+        {pending ? "MEMPROSES..." : "MASUK"}
       </button>
     </form>
   );

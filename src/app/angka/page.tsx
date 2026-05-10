@@ -26,7 +26,7 @@ export default function AngkaPage() {
         Belajar Angka
       </header>
 
-      <section className="screen-stage relative z-10 mx-auto flex w-full max-w-[760px] flex-col items-center px-3 text-center sm:px-5">
+      <section className="screen-stage-scroll relative z-10 mx-auto flex w-full max-w-[760px] flex-col items-center px-3 text-center sm:px-5">
         <div className="flex w-full max-w-[620px] flex-wrap items-start justify-between gap-3">
           <div className="pdf-button-yellow rounded-[1rem] px-4 py-2.5 text-left text-xl font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:rounded-[1.3rem] sm:px-5 sm:py-3 sm:text-3xl">
             Angka Sunda

@@ -514,6 +514,16 @@ a[href][class*="mockup-pill"]:active {
   overflow: hidden;
 }
 
+.screen-stage-scroll {
+  min-height: calc(100svh - 62px);
+  height: calc(100svh - 62px);
+  padding-top: 0.5rem;
+  padding-bottom: 1rem;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: contain;
+}
+
 .mockup-screen::before {
   content: "";
   position: absolute;
@@ -712,7 +722,8 @@ a[href][class*="mockup-pill"]:active {
 
 @media (min-width: 640px) {
   .screen-stage,
-  .screen-stage-compact {
+  .screen-stage-compact,
+  .screen-stage-scroll {
     min-height: calc(100svh - 74px);
     height: calc(100svh - 74px);
   }
@@ -733,6 +744,11 @@ a[href][class*="mockup-pill"]:active {
   .screen-stage-compact {
     padding-top: 0.35rem;
     padding-bottom: 0.45rem;
+  }
+
+  .screen-stage-scroll {
+    padding-top: 0.4rem;
+    padding-bottom: 0.85rem;
   }
 
   .responsive-title {
@@ -756,7 +772,8 @@ a[href][class*="mockup-pill"]:active {
   }
 
   .screen-stage,
-  .screen-stage-compact {
+  .screen-stage-compact,
+  .screen-stage-scroll {
     min-height: calc(100svh - 56px);
     height: calc(100svh - 56px);
   }

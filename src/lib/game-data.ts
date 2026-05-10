@@ -41,41 +41,84 @@ export const learningLevelOneItems = [
   },
 ] as const;
 
+export const learningRarangkenItems = [
+  {
+    id: "panghulu",
+    mark: "\u1BA4",
+    example: "\u1B8A\u1BA4",
+    latin: "ki",
+    title: "Tanda bunyi i",
+    note: "Tanda ini menambahkan bunyi i pada huruf dasar.",
+  },
+  {
+    id: "panyuku",
+    mark: "\u1BA5",
+    example: "\u1B8A\u1BA5",
+    latin: "ku",
+    title: "Tanda bunyi u",
+    note: "Tanda ini menambahkan bunyi u pada huruf dasar.",
+  },
+  {
+    id: "pamepet",
+    mark: "\u1BA8",
+    example: "\u1B8A\u1BA8",
+    latin: "keu",
+    title: "Tanda bunyi eu",
+    note: "Tanda ini menambahkan bunyi eu pada huruf dasar.",
+  },
+  {
+    id: "paneuleung",
+    mark: "\u1BA7",
+    example: "\u1B8A\u1BA7",
+    latin: "ke",
+    title: "Tanda bunyi e",
+    note: "Tanda ini menambahkan bunyi e pada huruf dasar.",
+  },
+  {
+    id: "panolong",
+    mark: "\u1BA9",
+    example: "\u1B8A\u1BA9",
+    latin: "ko",
+    title: "Tanda bunyi o",
+    note: "Tanda ini menambahkan bunyi o pada huruf dasar.",
+  },
+] as const;
+
 export const learningNumberItems = [
   {
     id: "one",
     aksara: "\u1BB1",
     latin: "1",
-    title: "Angka Hiji",
-    note: "Ieu mangrupa angka hiji dina aksara Sunda.",
+    title: "Angka Satu",
+    note: "Ini adalah angka satu dalam aksara Sunda.",
   },
   {
     id: "three",
     aksara: "\u1BB3",
     latin: "3",
-    title: "Angka Tilu",
-    note: "Bisa dipake pikeun latihan maca angka dasar.",
+    title: "Angka Tiga",
+    note: "Cocok untuk latihan membaca angka dasar.",
   },
   {
     id: "five",
     aksara: "\u1BB5",
     latin: "5",
     title: "Angka Lima",
-    note: "Wangun angka ieu alus pikeun dibiasakeun dina kuis.",
+    note: "Bentuk angka ini bagus untuk dibiasakan dalam kuis.",
   },
   {
     id: "seven",
     aksara: "\u1BB7",
     latin: "7",
     title: "Angka Tujuh",
-    note: "Ngabantu ngenalkeun runtuyan angka Sunda leuwih jauh.",
+    note: "Membantu mengenal urutan angka Sunda lebih jauh.",
   },
   {
     id: "nine",
     aksara: "\u1BB9",
     latin: "9",
-    title: "Angka Salapan",
-    note: "Sok dipake dina latihan campuran hurup jeung angka.",
+    title: "Angka Sembilan",
+    note: "Sering dipakai dalam latihan campuran huruf dan angka.",
   },
 ] as const;
 

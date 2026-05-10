@@ -67,7 +67,7 @@ export default async function LevelPage() {
         Pilih Level
       </header>
 
-      <section className="screen-stage-compact relative z-10 mx-auto flex w-full max-w-[480px] flex-col items-center px-4 text-center sm:px-5">
+      <section className="screen-stage-scroll relative z-10 mx-auto flex w-full max-w-[480px] flex-col items-center px-4 text-center sm:px-5">
         <h1 className="responsive-title mockup-title">PILIH LEVEL</h1>
 
         <div className="mt-2.5 grid w-full gap-2">
