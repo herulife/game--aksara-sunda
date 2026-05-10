@@ -188,8 +188,8 @@ export default function MembacaLevelOnePage() {
               <div className="pdf-panel-cream mt-4 rounded-[1.1rem] px-4 py-5 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.2)] sm:px-6 sm:py-6">
                 <p className="text-lg font-black sm:text-3xl">Baca aksara Sunda berikut.</p>
 
-                <div className="mt-4 rounded-[1rem] bg-white/82 px-4 py-5 shadow-inner">
-                  <div className="mx-auto flex h-[132px] max-w-[220px] items-center justify-center rounded-[0.9rem] border-2 border-[#d9c89c] bg-[#fffaf0]">
+                <div className="mt-4 rounded-[1.05rem] bg-[linear-gradient(180deg,rgba(255,255,255,0.88),rgba(255,249,234,0.96))] px-4 py-5 shadow-inner sm:px-5 sm:py-6">
+                  <div className="mx-auto flex h-[136px] max-w-[240px] items-center justify-center rounded-[1rem] border-2 border-[#d9c89c] bg-[#fffaf0] shadow-[inset_0_1px_0_rgba(255,255,255,0.38),0_10px_18px_rgba(35,28,15,0.08)] sm:h-[156px] sm:max-w-[280px]">
                     <div className="font-aksara text-[3.2rem] leading-none sm:text-[4.4rem]">
                       {currentItem.aksara}
                     </div>
@@ -197,32 +197,54 @@ export default function MembacaLevelOnePage() {
                 </div>
 
                 <p className="mt-3 text-sm font-semibold leading-[1.45] text-[#5f4d31] sm:text-base">
-                  Tulis bacaan latinnya di kotak bawah ini.
+                  Ucapkan atau tulis bacaan latinnya di form bawah ini.
                 </p>
               </div>
 
               <div className="pdf-panel-cream mt-4 rounded-[1.1rem] px-4 py-4 text-center text-black shadow-[0_18px_30px_rgba(35,28,15,0.18)] sm:px-6">
-                <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
-                  <input
-                    value={answer}
-                    onChange={(event) => setAnswer(event.target.value)}
-                    placeholder="Ketik atau ucapkan jawaban..."
-                    className="mockup-input min-w-0 flex-1 text-base sm:text-lg"
-                  />
+                <div className="rounded-[1rem] bg-[rgba(255,255,255,0.56)] px-3 py-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.3)] sm:px-4 sm:py-4">
+                  <div className="flex flex-col gap-3 sm:flex-row sm:items-stretch">
+                    <input
+                      value={answer}
+                      onChange={(event) => setAnswer(event.target.value)}
+                      placeholder="Ketik atau ucapkan jawaban..."
+                      className="mockup-input min-w-0 flex-1 text-base sm:text-lg"
+                    />
+                    <button
+                      type="button"
+                      onClick={startVoiceInput}
+                      disabled={!speechSupported || isListening}
+                      className={`flex min-h-[56px] shrink-0 items-center justify-center gap-2 rounded-[1rem] px-5 py-3 text-base font-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:min-h-0 sm:w-[180px] sm:text-lg ${
+                        speechSupported
+                          ? "pdf-button-blue text-black disabled:opacity-70"
+                          : "pdf-button-muted text-white opacity-75"
+                      }`}
+                    >
+                      <span className="text-[1.05rem] leading-none sm:text-[1.18rem]">🎤</span>
+                      <span>{isListening ? "Mendengarkan..." : "Mikrofon"}</span>
+                    </button>
+                  </div>
+                  <p className="mt-3 text-left text-[0.78rem] font-black leading-[1.35] text-[#6b5736] sm:text-sm">
+                    {speechSupported
+                      ? "Tekan mikrofon, ucapkan jawabanmu, lalu periksa hasilnya."
+                      : "Browser ini belum mendukung input suara, jadi gunakan ketikan."}
+                  </p>
+                  {micError ? (
+                    <p className="mt-2 text-left text-[0.78rem] font-black text-[#bb4c35] sm:text-sm">{micError}</p>
+                  ) : null}
+                </div>
+
+                <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <button
                     type="button"
-                    onClick={startVoiceInput}
-                    disabled={!speechSupported || isListening}
-                    className={`flex min-h-[56px] shrink-0 items-center justify-center rounded-[0.95rem] px-5 py-3 text-base font-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:min-h-0 sm:w-[170px] sm:text-lg ${
-                      speechSupported
-                        ? "pdf-button-blue text-black disabled:opacity-70"
-                        : "pdf-button-muted text-white opacity-75"
-                    }`}
+                    onClick={() => {
+                      setAnswer("");
+                      setMicError(null);
+                    }}
+                    className="pdf-button-beige rounded-[0.95rem] px-6 py-3 text-base font-black text-black shadow-[0_14px_24px_rgba(35,28,15,0.18)] sm:text-lg"
                   >
-                    {isListening ? "Mendengarkan..." : "Mikrofon"}
+                    Kosongkan
                   </button>
-                </div>
-                <div className="mt-4 grid gap-3 sm:grid-cols-2">
                   <button
                     type="button"
                     onClick={submitAnswer}
@@ -231,14 +253,6 @@ export default function MembacaLevelOnePage() {
                     Cek Jawaban
                   </button>
                 </div>
-                <p className="mt-3 text-xs font-black text-[#6b5736] sm:text-sm">
-                  {speechSupported
-                    ? "Tekan tombol mikrofon lalu ucapkan jawabanmu."
-                    : "Browser ini belum mendukung input suara, jadi gunakan ketikan."}
-                </p>
-                {micError ? (
-                  <p className="mt-2 text-xs font-black text-[#bb4c35] sm:text-sm">{micError}</p>
-                ) : null}
               </div>
 
               <div className="mt-4 flex gap-3">
