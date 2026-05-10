@@ -25,7 +25,7 @@
   --color-accent-soft: var(--accent-soft);
   --color-border: var(--border);
   --color-danger: var(--danger);
-  --font-sans: var(--font-baloo-sans);
+  --font-sans: var(--font-fredoka-sans);
   --font-mono: var(--font-geist-mono);
 }
 
@@ -35,20 +35,21 @@
 
 html {
   min-height: 100%;
-  height: 100%;
-  overflow: hidden;
-  overscroll-behavior: none;
+  height: auto;
+  overflow-x: hidden;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
 }
 
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: var(--font-baloo-sans), Arial, Helvetica, sans-serif;
+  font-family: var(--font-fredoka-sans), Arial, Helvetica, sans-serif;
   min-height: 100vh;
-  height: 100%;
-  overflow: hidden;
+  height: auto;
   overflow-x: hidden;
-  overscroll-behavior: none;
+  overflow-y: auto;
+  overscroll-behavior-y: auto;
   background-image:
     radial-gradient(circle at top left, rgba(255, 255, 255, 0.55), transparent 28%),
     linear-gradient(180deg, rgba(114, 163, 123, 0.18), transparent 22%),
@@ -490,9 +491,9 @@ a[href][class*="mockup-pill"]:active {
 .mockup-screen {
   position: relative;
   min-height: 100svh;
-  height: 100svh;
-  overflow: hidden;
+  height: auto;
   overflow-x: hidden;
+  overflow-y: visible;
   background-image: url("/assets/backgrounds/village-background.png");
   background-position: center;
   background-size: cover;
@@ -500,29 +501,29 @@ a[href][class*="mockup-pill"]:active {
 }
 
 .screen-stage {
-  min-height: calc(100svh - 62px);
-  height: calc(100svh - 62px);
+  min-height: auto;
+  height: auto;
   padding-top: 0.5rem;
   padding-bottom: 0.65rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .screen-stage-compact {
-  min-height: calc(100svh - 62px);
-  height: calc(100svh - 62px);
+  min-height: auto;
+  height: auto;
   padding-top: 0.4rem;
   padding-bottom: 0.55rem;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .screen-stage-scroll {
-  min-height: calc(100svh - 62px);
-  height: calc(100svh - 62px);
+  min-height: auto;
+  height: auto;
   padding-top: 0.5rem;
   padding-bottom: 1rem;
   overflow-x: hidden;
-  overflow-y: auto;
-  overscroll-behavior-y: contain;
+  overflow-y: visible;
+  overscroll-behavior-y: auto;
 }
 
 .mockup-screen::before {
@@ -557,13 +558,35 @@ a[href][class*="mockup-pill"]:active {
 .mockup-title {
   color: #2d5f1f;
   font-weight: 900;
+  letter-spacing: -0.03em;
   text-shadow: 0 3px 8px rgba(255, 255, 255, 0.18);
 }
 
 .mockup-white-title {
   color: #fff;
   font-weight: 900;
+  letter-spacing: -0.03em;
   text-shadow: 0 4px 12px rgba(46, 38, 18, 0.22);
+}
+
+.mockup-hero-title {
+  color: #f5e7ae;
+  font-weight: 900;
+  letter-spacing: -0.04em;
+  line-height: 0.82;
+  text-shadow: 0 4px 12px rgba(46, 38, 18, 0.26);
+}
+
+.mockup-copy {
+  font-weight: 700;
+  letter-spacing: -0.01em;
+  line-height: 1.35;
+}
+
+.mockup-button-label {
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
 }
 
 .mockup-card {
@@ -749,8 +772,8 @@ a[href][class*="mockup-pill"]:active {
   .screen-stage,
   .screen-stage-compact,
   .screen-stage-scroll {
-    min-height: calc(100svh - 74px);
-    height: calc(100svh - 74px);
+    min-height: auto;
+    height: auto;
   }
 }
 
@@ -799,8 +822,8 @@ a[href][class*="mockup-pill"]:active {
   .screen-stage,
   .screen-stage-compact,
   .screen-stage-scroll {
-    min-height: calc(100svh - 56px);
-    height: calc(100svh - 56px);
+    min-height: auto;
+    height: auto;
   }
 }
 

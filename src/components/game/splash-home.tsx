@@ -25,42 +25,40 @@ export function SplashHome({
 
   return (
     <main className="mockup-screen">
-      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[430px] flex-col items-center justify-center px-4 py-6 text-center sm:max-w-[540px] sm:px-6 sm:py-8">
-        <p className="mockup-white-title text-[1.95rem] font-bold leading-none sm:text-[2.7rem]">
-          Selamat Datang
+      <section className="relative z-10 mx-auto flex min-h-[100svh] w-full max-w-[430px] flex-col items-center justify-center px-4 py-5 text-center sm:max-w-[540px] sm:px-6 sm:py-7">
+        <p className="mockup-white-title text-[1.68rem] leading-none sm:text-[2.12rem]">
+          Wilujeng Sumping
         </p>
-        <h1 className="mt-2 text-[3.4rem] font-black leading-[0.82] tracking-[0.02em] text-[#f5e7ae] drop-shadow-[0_4px_12px_rgba(46,38,18,0.26)] sm:text-[5.2rem]">
-          SUNDA
-          <br />
-          GAME
+        <h1 className="mockup-hero-title mt-2 text-[3.32rem] sm:text-[5rem]">
+          SUNDA GAME
         </h1>
-        <p className="mt-3 text-[0.9rem] font-bold text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[1.02rem]">
-          Permainan Edukasi Aksara Sunda
+        <p className="mockup-copy mt-3 text-[0.88rem] text-[#fff9ef] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-[0.98rem]">
+          Sundanese Educational Game
         </p>
 
-        <div className="mt-4 flex items-end justify-center">
+        <div className="mt-3 flex items-end justify-center">
           <Image
             src="/assets/characters/splash-characters.png"
             alt="Karakter pemain Aksara Sunda"
             width={1383}
             height={922}
-            className="h-auto w-[248px] drop-shadow-[0_18px_28px_rgba(39,30,14,0.22)] sm:w-[344px]"
+            className="h-auto w-[220px] drop-shadow-[0_18px_28px_rgba(39,30,14,0.22)] sm:w-[304px]"
             priority
           />
         </div>
 
         <Link
           href={startHref}
-          className="pdf-button-green relative z-20 mt-4 flex min-h-[58px] w-full max-w-[228px] touch-manipulation items-center justify-center rounded-[1rem] px-7 text-[1.58rem] font-black tracking-[0.05em] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[70px] sm:max-w-[270px] sm:text-[2.1rem]"
+          className="pdf-button-green mockup-button-label relative z-20 mt-4 flex min-h-[56px] w-full max-w-[206px] touch-manipulation items-center justify-center rounded-[1rem] px-7 text-[1.42rem] shadow-[0_5px_0_rgba(26,76,27,0.32),0_14px_24px_rgba(44,101,36,0.18)] sm:min-h-[66px] sm:max-w-[248px] sm:text-[1.88rem]"
         >
           MULAI
         </Link>
 
-        <div className="relative z-20 mt-6 grid w-full max-w-[334px] grid-cols-2 gap-4">
+        <div className="relative z-20 mt-5 grid w-full max-w-[334px] grid-cols-2 gap-3.5">
           <button
             type="button"
             onClick={() => setShowGuide(true)}
-            className="pdf-panel-cream flex min-h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[0.95rem] px-4 text-[0.88rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[66px] sm:text-[1.04rem]"
+            className="pdf-panel-cream mockup-button-label flex min-h-[52px] touch-manipulation items-center justify-center gap-2 rounded-[0.95rem] border-2 border-[rgba(35,28,15,0.18)] px-4 text-[0.85rem] text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[62px] sm:text-[0.96rem]"
           >
             <Image
               src="/assets/icons/book-open.png"
@@ -74,29 +72,22 @@ export function SplashHome({
           <button
             type="button"
             onClick={() => void toggleMusic()}
-            className="pdf-panel-cream flex min-h-[54px] touch-manipulation items-center justify-center gap-2 rounded-[0.95rem] px-4 text-[0.88rem] font-black text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[66px] sm:text-[1.04rem]"
+            className="pdf-panel-cream mockup-button-label flex min-h-[52px] touch-manipulation items-center justify-center gap-2 rounded-[0.95rem] border-2 border-[rgba(35,28,15,0.18)] px-4 text-[0.85rem] text-black shadow-[0_4px_0_rgba(152,130,67,0.26),0_12px_18px_rgba(35,28,15,0.12)] sm:min-h-[62px] sm:text-[0.96rem]"
           >
             <span className="flex h-5 w-5 items-center justify-center rounded-full bg-[#3f8e41] text-white shadow-[0_6px_12px_rgba(39,30,14,0.16)] sm:h-6 sm:w-6">
               <Image
-                src="/assets/icons/speaker-white.png"
+                src="/assets/icons/icon-musik.png"
                 alt=""
-                width={469}
-                height={396}
+                width={512}
+                height={512}
                 className="h-3 w-3 sm:h-3.5 sm:w-3.5"
               />
             </span>
-            <span>{musicEnabled ? "Musik ON" : "Musik OFF"}</span>
+            <span>{musicEnabled ? "Musik: ON" : "Musik: OFF"}</span>
           </button>
         </div>
 
-        {showRegisterLink ? (
-          <Link
-            href="/login"
-            className="relative z-20 mt-4 touch-manipulation text-[0.8rem] font-bold text-[#fff8ec] underline underline-offset-4 drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)]"
-          >
-            Sudah punya akun? Masuk di sini
-          </Link>
-        ) : null}
+        {showRegisterLink ? null : null}
       </section>
 
       {showGuide ? (

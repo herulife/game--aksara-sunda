@@ -16,8 +16,8 @@ export default async function LoginPage() {
   return (
     <AuthShell
       headerTitle="Pemain Lama"
-      title="Masukkan Nama Pemain"
-      description="Tulis nama pemain dan sandi agar permainan bisa dilanjutkan."
+      title="LEBETKEUN NAMI PAMAEN"
+      description="Mangga lebetkeun nami sareng sandi kanggo neraskeun kaulinan."
       footerText="Belum punya nama pemain?"
       footerLinkLabel="Buat sekarang"
       footerLinkHref="/register"

@@ -10,7 +10,7 @@ export default async function Home() {
   const {
     data: { user },
   } = await supabase.auth.getUser();
-  const startHref = user ? "/dashboard" : "/register";
+  const startHref = user ? "/dashboard" : "/login";
 
   const { data: profile } = user
     ? await supabase

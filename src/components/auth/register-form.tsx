@@ -24,15 +24,15 @@ export function RegisterForm() {
   }, [playerName, router, state.success]);
 
   return (
-    <form action={formAction} className="space-y-3.5 sm:space-y-4.5">
+    <form action={formAction} className="space-y-3 sm:space-y-4">
       <label className="block">
         <input
           name="displayName"
           type="text"
           value={playerName}
           onChange={(event) => setPlayerName(event.target.value)}
-          placeholder="Ketik nama pemain"
-          className="mockup-input text-base sm:text-xl"
+          placeholder="Ketik nami anjeun"
+          className="mockup-input text-[1rem] sm:text-[1.08rem]"
           autoComplete="username"
           required
         />
@@ -43,20 +43,20 @@ export function RegisterForm() {
           name="password"
           type="password"
           placeholder="Buat sandi pemain (minimal 6)"
-          className="mockup-input text-base sm:text-xl"
+          className="mockup-input text-[1rem] sm:text-[1.08rem]"
           autoComplete="new-password"
           required
         />
       </label>
 
       {state.error ? (
-        <p className="rounded-[1.4rem] bg-[#f7d7cf] px-5 py-4 text-left text-base font-semibold text-danger shadow-[0_12px_22px_rgba(90,45,32,0.12)]">
+        <p className="rounded-[1.2rem] bg-[#f7d7cf] px-4 py-3 text-left text-sm font-semibold text-danger shadow-[0_12px_22px_rgba(90,45,32,0.12)] sm:text-base">
           {state.error}
         </p>
       ) : null}
 
       {state.success ? (
-        <p className="rounded-[1.4rem] bg-[#dcefd3] px-5 py-4 text-left text-base font-semibold text-primary-strong shadow-[0_12px_22px_rgba(39,79,42,0.12)]">
+        <p className="rounded-[1.2rem] bg-[#dcefd3] px-4 py-3 text-left text-sm font-semibold text-primary-strong shadow-[0_12px_22px_rgba(39,79,42,0.12)] sm:text-base">
           {state.success} Sebentar lagi kamu dipindahkan ke halaman masuk.
         </p>
       ) : null}
@@ -64,7 +64,7 @@ export function RegisterForm() {
       <button
         type="submit"
         disabled={pending}
-        className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.3rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[60px] sm:max-w-[234px] sm:text-[1.5rem]"
+        className="pdf-button-green mockup-button-label mx-auto block min-h-[56px] w-full rounded-[0.95rem] px-5 text-[1.32rem] transition disabled:opacity-60 sm:min-h-[60px] sm:text-[1.42rem]"
       >
         {pending ? "MEMPROSES..." : "LANJUT"}
       </button>

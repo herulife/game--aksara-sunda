@@ -15,7 +15,7 @@ export function LoginForm() {
   return (
     <form
       action={formAction}
-      className="space-y-3.5 sm:space-y-5"
+      className="space-y-3 sm:space-y-4"
       onSubmit={() => {
         if (typeof window !== "undefined" && playerName.trim()) {
           window.localStorage.setItem(LAST_PLAYER_NAME_KEY, playerName.trim());
@@ -29,14 +29,14 @@ export function LoginForm() {
           value={playerName}
           onChange={(event) => setPlayerName(event.target.value)}
           placeholder="Ketik nama pemain"
-          className="mockup-input text-base sm:text-xl"
+          className="mockup-input text-[1rem] sm:text-[1.08rem]"
           autoComplete="username"
           required
         />
       </label>
 
-      <p className="-mt-1 text-left text-xs font-bold text-[#fff8ec] drop-shadow-[0_3px_8px_rgba(46,38,18,0.22)] sm:text-sm">
-        Gunakan nama pemain yang sudah pernah didaftarkan.
+      <p className="-mt-1 text-left text-[0.78rem] font-bold text-[#6a5736] sm:text-[0.82rem]">
+        Gunakan nama pemain yang sudah pernah dibuat.
       </p>
 
       <label className="block">
@@ -44,14 +44,14 @@ export function LoginForm() {
           name="password"
           type="password"
           placeholder="Ketik sandi pemain"
-          className="mockup-input text-base sm:text-xl"
+          className="mockup-input text-[1rem] sm:text-[1.08rem]"
           autoComplete="current-password"
           required
         />
       </label>
 
       {state.error ? (
-        <p className="rounded-[1.4rem] bg-[#f7d7cf] px-5 py-4 text-left text-base font-semibold text-danger shadow-[0_12px_22px_rgba(90,45,32,0.12)]">
+        <p className="rounded-[1.2rem] bg-[#f7d7cf] px-4 py-3 text-left text-sm font-semibold text-danger shadow-[0_12px_22px_rgba(90,45,32,0.12)] sm:text-base">
           {state.error}
         </p>
       ) : null}
@@ -59,7 +59,7 @@ export function LoginForm() {
       <button
         type="submit"
         disabled={pending}
-        className="pdf-button-green mx-auto block min-h-[54px] w-full max-w-[210px] rounded-[0.9rem] px-5 text-[1.3rem] font-black tracking-[0.04em] transition disabled:opacity-60 sm:min-h-[60px] sm:max-w-[234px] sm:text-[1.5rem]"
+        className="pdf-button-green mockup-button-label mx-auto block min-h-[56px] w-full rounded-[0.95rem] px-5 text-[1.32rem] transition disabled:opacity-60 sm:min-h-[60px] sm:text-[1.42rem]"
       >
         {pending ? "MEMPROSES..." : "MULAI"}
       </button>
